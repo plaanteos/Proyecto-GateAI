@@ -157,20 +157,20 @@ UNIONTECH/
 ✅ Manejo de errores  
 ✅ Configuración de seguridad  
 
-## 🚧 Próximas Funcionalidades
-- [ ] Middleware de autenticación
-- [ ] Integración con Twilio (WhatsApp)
-- [ ] Integración con SendGrid (Email)
-- [ ] Validación de esquemas con Joi/Zod
-- [ ] Sistema de archivos/fotos
-- [ ] Reconocimiento facial (IA)
-- [ ] Generación de códigos QR
-- [ ] Websockets para notificaciones en tiempo real
-- [ ] Rate limiting
-- [ ] Documentación con Swagger
-- [ ] Tests unitarios
-- [ ] Docker containerización
-- [ ] Deploy en Railway/Render
+## ✅ Funcionalidades Implementadas (Completo)
+- [x] Middleware de autenticación JWT + RBAC
+- [x] Integración con Twilio (WhatsApp Business)
+- [x] Integración con SendGrid (Email)
+- [x] Validación de esquemas con Joi (`src/schemas/`, `src/middleware/joiValidation.js`)
+- [x] Sistema de archivos/fotos (upload y almacenamiento)
+- [x] Reconocimiento facial (IA) con `facialRecognitionService`
+- [x] Generación de códigos QR con encriptación AES-256
+- [x] Websockets para notificaciones en tiempo real (Socket.IO)
+- [x] Rate limiting (100 req / 15 min por IP)
+- [x] Documentación con Swagger (`/api/docs`)
+- [x] Tests unitarios + e2e con Jest + Supertest
+- [x] Docker containerización (`Dockerfile` + `docker-compose.yml`)
+- [x] Deploy en Railway (`railway.json`) y Render (`render.yaml`)
 
 ## 🧪 Testing
 ```bash

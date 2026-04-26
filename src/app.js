@@ -24,8 +24,7 @@ const notificationsRoutes = require('./routes/notifications');
 const accessRoutes = require('./routes/access');
 const validationRoutes = require('./routes/validation');
 const maintenanceRoutes = require('./routes/maintenance'); // Empleados de mantenimiento
-// TEMPORAL: rbacRoutes comentado hasta arreglar implementación
-// const rbacRoutes = require('./routes/rbac'); // Control de acceso basado en roles
+const rbacRoutes = require('./routes/rbac-simple'); // Control de acceso basado en roles
 const dashboardRoutes = require('./routes/dashboard'); // Dashboard en tiempo real
 
 // Inicializar Prisma
@@ -121,10 +120,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/visitors', require('./routes/visitantes'));
 app.use('/api/maintenance', require('./routes/maintenance'));
 app.use('/api/documentos-invitacion', require('./routes/documentos-invitacion'));
-// TEMPORAL: RBAC comentado hasta arreglar implementación
-// app.use('/api/rbac', require('./routes/rbac'));
-// TEMPORAL: accessControl comentado hasta verificar si existe
-// app.use('/api/access', require('./routes/accessControl'));
+app.use('/api/rbac', rbacRoutes);
 
 // Health check endpoint
 app.get('/health', async (req, res) => {
