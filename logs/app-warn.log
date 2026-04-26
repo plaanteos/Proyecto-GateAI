@@ -1,0 +1,9 @@
+{"timestamp":"2025-10-14T12:24:09.591Z","level":"warn","message":"Route not found","url":"/api/reports/visitors","method":"POST","ip":"::ffff:127.0.0.1","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:25:16.500Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:25:17.082Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:28:25.081Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:28:25.430Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:29:32.969Z","level":"warn","message":"Route not found","url":"/api/reports/visitors","method":"POST","ip":"::ffff:127.0.0.1","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:32:45.585Z","level":"warn","message":"Route not found","url":"/api/reports/visitors","method":"POST","ip":"::ffff:127.0.0.1","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:33:53.435Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:33:54.470Z","level":"warn","message":"Route not found","url":"/api/auth/me","method":"GET","ip":"::ffff:127.0.0.1","pid":15796,"env":"test"}

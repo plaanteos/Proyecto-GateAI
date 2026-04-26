@@ -1,0 +1,264 @@
+/* Correcciones específicas para el ChatBot y mejoras de visibilidad */
+
+/* Asegurar que todos los textos sean claramente visibles */
+body, .card-body, .modal-body, .form-control, .table td, .alert {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+}
+
+/* Mejorar contraste en cards */
+.card {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    color: #111827 !important;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3) !important;
+    color: #ffffff !important;
+}
+
+/* Corregir botones */
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5, #3730a3) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280, #4b5563) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    border: none !important;
+    color: #111827 !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+/* Mejorar tablas */
+.table {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+}
+
+.table th {
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+    border-bottom: 2px solid #d1d5db !important;
+}
+
+.table td {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9fafb !important;
+}
+
+/* Mejorar formularios */
+.form-control, .form-select {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 2px solid #d1d5db !important;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+.form-label {
+    color: #111827 !important;
+    font-weight: 600 !important;
+}
+
+/* Mejorar alertas */
+.alert {
+    color: #111827 !important;
+}
+
+.alert-success {
+    background-color: #ecfdf5 !important;
+    border-left: 4px solid #10b981 !important;
+    color: #065f46 !important;
+}
+
+.alert-warning {
+    background-color: #fffbeb !important;
+    border-left: 4px solid #f59e0b !important;
+    color: #92400e !important;
+}
+
+.alert-danger {
+    background-color: #fef2f2 !important;
+    border-left: 4px solid #ef4444 !important;
+    color: #991b1b !important;
+}
+
+.alert-info {
+    background-color: #f0f9ff !important;
+    border-left: 4px solid #06b6d4 !important;
+    color: #0c4a6e !important;
+}
+
+/* Mejorar modales */
+.modal-content {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3) !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #d1d5db !important;
+}
+
+.modal-body, .modal-footer {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+}
+
+/* Mejorar badges */
+.badge {
+    font-weight: 600 !important;
+}
+
+.badge.bg-primary {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-success {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.badge.bg-warning {
+    background-color: #f59e0b !important;
+    color: #111827 !important;
+}
+
+.badge.bg-danger {
+    background-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* Mejorar navegación */
+.navbar {
+    background: linear-gradient(135deg, #4f46e5, #3730a3) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* Mejorar contenido principal */
+.container-fluid, .container, .row, .col, [class*="col-"] {
+    background-color: transparent !important;
+}
+
+/* Específico para el chat bot */
+.chat-container {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+}
+
+.chat-message {
+    background-color: #f9fafb !important;
+    color: #111827 !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.chat-input {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 2px solid #d1d5db !important;
+}
+
+.chat-input:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Corregir problemas de visibilidad en elementos específicos */
+p, span, div, label, small, .text-muted {
+    color: #111827 !important;
+}
+
+.text-primary {
+    color: #4f46e5 !important;
+}
+
+.text-secondary {
+    color: #6b7280 !important;
+}
+
+.text-success {
+    color: #10b981 !important;
+}
+
+.text-warning {
+    color: #f59e0b !important;
+}
+
+.text-danger {
+    color: #ef4444 !important;
+}
+
+.text-info {
+    color: #06b6d4 !important;
+}
+
+/* Asegurar visibilidad en listas */
+ul, ol, li {
+    color: #111827 !important;
+}
+
+/* Corregir dropdowns */
+.dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    color: #111827 !important;
+}
+
+.dropdown-item {
+    color: #111827 !important;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+}
+
+/* Corregir sidebar */
+.sidebar, .offcanvas {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border-right: 1px solid #d1d5db !important;
+}

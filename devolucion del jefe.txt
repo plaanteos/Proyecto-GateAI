@@ -1,0 +1,155 @@
+tener en cuenta lo siguiente:
+
+📌 Pasos en Figma para un prototipo rápido: 1️⃣ Crea un nuevo archivo y define el flujo de usuario (ejemplo: login → escaneo facial → dashboard).
+
+2️⃣ Diseña las pantallas principales (Inicio, Registro, Validación, Reportes).
+
+3️⃣ Agrega interactividad para que los botones simulen acciones.
+
+4️⃣ Comparte el enlace con tu equipo o testers.
+
+🚀 ¿Quieres que te ayude a estructurar las primeras pantallas en Figma?
+
+🔹 Pantallas del Prototipo
+1️⃣ Pantalla de Inicio (Login)
+
+Usuario ingresa con correo/contraseña o autenticación biométrica.
+
+Opción de “Olvidé mi contraseña” y “Registrarse”.
+
+2️⃣ Registro de Usuario
+
+Formulario para registrar empleados, visitantes o residentes.
+
+Opción para escanear DNI y capturar foto.
+
+3️⃣ Escaneo Facial / Escaneo de DNI
+
+Cámara activa para reconocimiento facial.
+
+Opción de ingresar con código QR o escanear documento.
+
+4️⃣ Dashboard Principal
+
+Lista de accesos recientes (nombre, fecha, hora, estado).
+
+Gráficos de estadísticas de accesos.
+
+Botón para generar accesos temporales.
+
+5️⃣ Gestión de Accesos
+
+Registro manual de acceso de visitantes.
+
+Generación de QR para invitados.
+
+Opciones para aceptar/rechazar accesos.
+
+6️⃣ Notificaciones y Alertas
+
+Avisos en tiempo real cuando un acceso es rechazado.
+
+Registro de intentos fallidos de acceso.
+
+7️⃣ Configuración y Perfil
+
+Ajustes de seguridad, permisos y roles de usuario.
+
+Integración con WhatsApp para generar accesos.
+
+1. Pantalla de Inicio (Login)
+Elementos:
+
+Logo de la app.
+
+Campos: Email y Contraseña.
+
+Botón: "Iniciar sesión".
+
+Opción: "¿Olvidaste tu contraseña?" (recuperación).
+
+Enlace: "Registrarse" (si no tiene cuenta).
+
+Acceso rápido con Google o Apple (opcional).
+
+2. Pantalla de Registro
+Elementos:
+
+Campos obligatorios:
+
+Nombre completo.
+
+Email.
+
+Contraseña (con validación de seguridad).
+
+Número de teléfono (opcional, para verificación en 2 pasos).
+
+Checkbox: "Acepto términos y condiciones".
+
+Botón: "Registrarse".
+
+Enlace: "¿Ya tienes cuenta? Inicia sesión".
+
+3. Pantalla de Perfil del Usuario
+Secciones:
+
+Información personal:
+
+Foto de perfil (editable).
+
+Nombre, email, teléfono.
+
+Botón: "Editar perfil".
+
+Dirección del edificio/barrio:
+
+Nombre del edificio/Unidad (ej: "Torre A, Apt 304").
+
+Botón: "Cambiar dirección" (si tiene múltiples propiedades).
+
+Accesos:
+
+Lista de invitados autorizados (con fechas de acceso).
+
+Botón: "Invitar a nuevo huésped".
+
+Configuración:
+
+Notificaciones, idioma, cerrar sesión.
+
+4. Pantalla para Invitar Huéspedes (Clave para tu app)
+Flujo:
+
+Seleccionar tipo de invitado:
+
+Temporal (ej: visita de un día).
+
+Recurrente (ej: empleada doméstica).
+
+Formulario de invitación:
+
+Nombre del invitado.
+
+Email/Teléfono del invitado.
+
+Fechas y horarios de acceso.
+
+Áreas permitidas (ej: "Solo ascensor y piscina").
+
+Confirmación:
+
+Envío por SMS/Email/WhatsApp.
+
+Código QR o PIN temporal (para acceso físico).
+
+5. Pantalla de Gestión de Invitados
+Listado de invitados activos:
+
+Nombre, fecha de acceso, estado (Activo/Expirado).
+
+Opción para revocar acceso o editar permisos.
+
+Historial de accesos:
+
+Registro de entradas/salidas (con hora y fecha).

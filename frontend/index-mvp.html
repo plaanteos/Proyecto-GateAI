@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnionTech MVP - Sistema de Control de Acceso</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 48px 0 0;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+            border-radius: 0.375rem;
+            margin: 0.125rem 0.5rem;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+            color: #0d6efd;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        .sidebar .nav-link i {
+            width: 20px;
+        }
+
+        main {
+            margin-left: 240px;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                top: 0;
+                position: relative;
+                height: auto;
+            }
+            
+            main {
+                margin-left: 0;
+            }
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            transition: box-shadow 0.15s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #0d6efd, #0056b3);
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(45deg, #198754, #146c43);
+        }
+
+        .bg-gradient-warning {
+            background: linear-gradient(45deg, #ffc107, #ffca2c);
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(45deg, #0dcaf0, #3dd5f3);
+        }
+
+        .btn-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 350px;
+        }
+
+        .login-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .login-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .stats-card {
+            transition: transform 0.2s;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #495057;
+            background-color: #f8f9fa;
+        }
+
+        .badge {
+            font-size: 0.75em;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .alert {
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 1rem;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .real-time-indicator {
+            position: relative;
+        }
+
+        .real-time-indicator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            background-color: #28a745;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .status-online {
+            color: #28a745;
+        }
+
+        .status-offline {
+            color: #dc3545;
+        }
+
+        .status-warning {
+            color: #ffc107;
+        }
+
+        .camera-preview {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .qr-scanner {
+            width: 100%;
+            height: 300px;
+            background-color: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .qr-scanner:hover {
+            border-color: #0d6efd;
+        }
+
+        .permission-badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .role-admin { border-left: 4px solid #dc3545; }
+        .role-security { border-left: 4px solid #fd7e14; }
+        .role-operator { border-left: 4px solid #0d6efd; }
+        .role-employee { border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- El contenido se carga dinámicamente con JavaScript -->
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/app-mvp.js"></script>
+    
+    <script>
+        // Configuración global
+        window.UnionTechConfig = {
+            version: '2.0.0-MVP',
+            environment: 'development',
+            apiUrl: 'http://localhost:3000/api',
+            features: {
+                realTimeUpdates: true,
+                facialRecognition: true,
+                qrGeneration: true,
+                notifications: true,
+                multipleRoles: true
+            }
+        };
+
+        // Service Worker para notificaciones (opcional)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(console.error);
+        }
+
+        // Configurar interceptor para errores de red
+        window.addEventListener('offline', () => {
+            if (window.app) {
+                window.app.showNotification('Conexión perdida - Trabajando en modo offline', 'warning', 0);
+            }
+        });
+
+        window.addEventListener('online', () => {
+            if (window.app) {
+                window.app.showNotification('Conexión restaurada', 'success');
+            }
+        });
+
+        // Manejar errores globales
+        window.addEventListener('error', (event) => {
+            console.error('Error global:', event.error);
+            if (window.app) {
+                window.app.showNotification('Error inesperado en la aplicación', 'error');
+            }
+        });
+
+        // Función para formatear fechas
+        window.formatDate = function(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        };
+
+        // Función para validar permisos
+        window.hasPermission = function(permission) {
+            return window.app && 
+                   window.app.currentUser && 
+                   window.app.currentUser.permissions.includes(permission);
+        };
+
+        // Función para obtener color por rol
+        window.getRoleColor = function(role) {
+            const colors = {
+                'admin': '#dc3545',
+                'security': '#fd7e14', 
+                'operator': '#0d6efd',
+                'employee': '#28a745'
+            };
+            return colors[role] || '#6c757d';
+        };
+
+        // Función para mostrar confirmación
+        window.showConfirm = function(message, callback) {
+            if (confirm(message)) {
+                callback();
+            }
+        };
+
+        // Función para copiar al portapapeles
+        window.copyToClipboard = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                if (window.app) {
+                    window.app.showNotification('Copiado al portapapeles', 'success');
+                }
+            }).catch(err => {
+                console.error('Error copiando:', err);
+            });
+        };
+
+        console.log('🚀 UnionTech MVP Frontend inicializado');
+        console.log('📊 Versión:', window.UnionTechConfig.version);
+        console.log('🔧 Características habilitadas:', window.UnionTechConfig.features);
+    </script>
+</body>
+</html>

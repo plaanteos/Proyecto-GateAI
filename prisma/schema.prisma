@@ -1,0 +1,422 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de datos basado en la base de datos SQL Server
+
+model Personas {
+  id                 Int       @id @default(autoincrement())
+  documento_identidad String    @unique @db.NVarChar(50)
+  nombre             String    @db.NVarChar(100)
+  apellido           String    @db.NVarChar(100)
+  fecha_nacimiento   DateTime? @db.Date
+  telefono           String?   @db.NVarChar(20)
+  email              String?   @db.NVarChar(100)
+  activo             Boolean   @default(true)
+  fecha_registro     DateTime  @default(now())
+  created_at         DateTime  @default(now())
+  updated_at         DateTime? @updatedAt
+  deleted_at         DateTime?
+
+  // Relaciones
+  usuarios               Usuarios[]
+  credenciales           Credenciales[]
+  fotos                  Fotos[]
+  invitaciones           Invitaciones[]
+  niveles_acceso         Persona_Nivel_Acceso[]
+  asignaciones_hechas    Persona_Nivel_Acceso[] @relation("AsignadoPor")
+  empleados_mantenimiento Empleados_Mantenimiento[]
+
+  @@map("Personas")
+}
+
+model Roles {
+  id          Int       @id @default(autoincrement())
+  nombre      String    @unique @db.NVarChar(50)
+  descripcion String?   @db.NVarChar(200)
+  activo      Boolean   @default(true)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime? @updatedAt
+
+  // Relaciones
+  usuarios    Usuarios[]
+  permisos    Rol_Permisos[]
+
+  @@map("Roles")
+}
+
+model Permisos {
+  id          Int       @id @default(autoincrement())
+  nombre      String    @unique @db.NVarChar(100)
+  descripcion String?   @db.NVarChar(200)
+  modulo      String    @db.NVarChar(50)
+  accion      String    @db.NVarChar(50)
+  activo      Boolean   @default(true)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime? @updatedAt
+
+  // Relaciones
+  roles       Rol_Permisos[]
+  usuarios    Usuario_Permisos[]
+
+  @@map("Permisos")
+}
+
+model Rol_Permisos {
+  id         Int       @id @default(autoincrement())
+  rol_id     Int
+  permiso_id Int
+  activo     Boolean   @default(true)
+  created_at DateTime  @default(now())
+  updated_at DateTime? @updatedAt
+
+  // Relaciones
+  rol        Roles     @relation(fields: [rol_id], references: [id])
+  permiso    Permisos  @relation(fields: [permiso_id], references: [id])
+
+  @@unique([rol_id, permiso_id])
+  @@map("RolPermisos")
+}
+
+model Usuario_Permisos {
+  id               Int       @id @default(autoincrement())
+  usuario_id       Int
+  permiso_id       Int
+  otorgado_por     Int?
+  revocado_por     Int?
+  fecha_revocacion DateTime?
+  activo           Boolean   @default(true)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime? @updatedAt
+
+  // Relaciones
+  usuario          Usuarios  @relation(fields: [usuario_id], references: [id])
+  permiso          Permisos  @relation(fields: [permiso_id], references: [id])
+
+  @@unique([usuario_id, permiso_id])
+  @@map("UsuarioPermisos")
+}
+
+model Usuarios {
+  id            Int       @id @default(autoincrement())
+  persona_id    Int
+  username      String    @unique @db.NVarChar(50)
+  password_hash String    @db.NVarChar(200)
+  rol_id        Int
+  activo        Boolean   @default(true)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime? @updatedAt
+  deleted_at    DateTime?
+
+  // Relaciones
+  persona                    Personas                @relation(fields: [persona_id], references: [id])
+  rol                        Roles                   @relation(fields: [rol_id], references: [id])
+  auditorias                 Auditoria[]
+  permisos_adicionales       Usuario_Permisos[]
+  documentos_verificados     Documentos_Invitacion[]
+
+  @@map("Usuarios")
+}
+
+model Edificios {
+  id             Int       @id @default(autoincrement())
+  nombre         String    @db.NVarChar(100)
+  direccion      String    @db.NVarChar(200)
+  ciudad         String?   @db.NVarChar(100)
+  codigo_postal  String?   @db.NVarChar(20)
+  activo         Boolean   @default(true)
+  fecha_registro DateTime  @default(now())
+  created_at     DateTime  @default(now())
+  updated_at     DateTime? @updatedAt
+  deleted_at     DateTime?
+
+  // Relaciones
+  puertas_acceso Puertas_Acceso[]
+
+  @@map("Edificios")
+}
+
+model Puertas_Acceso {
+  id           Int       @id @default(autoincrement())
+  edificio_id  Int
+  nombre       String    @db.NVarChar(100)
+  ubicacion    String?   @db.NVarChar(100)
+  tipo_acceso  String    @db.NVarChar(10)
+  activa       Boolean   @default(true)
+  created_at   DateTime  @default(now())
+  updated_at   DateTime? @updatedAt
+  deleted_at   DateTime?
+
+  // Relaciones
+  edificio              Edificios                 @relation(fields: [edificio_id], references: [id])
+  registros_acceso      Registros_Acceso[]
+  niveles_acceso        Nivel_Acceso_Puerta[]
+  accesos_mantenimiento Accesos_Mantenimiento[]
+
+  @@map("Puertas_Acceso")
+}
+
+model Credenciales {
+  id               Int       @id @default(autoincrement())
+  persona_id       Int
+  tipo_credencial  String    @db.NVarChar(20)
+  identificador    String    @unique @db.NVarChar(100)
+  fecha_emision    DateTime  @default(now())
+  fecha_expiracion DateTime?
+  estado           String    @default("activa") @db.NVarChar(20)
+  activa           Boolean   @default(true)
+  created_at       DateTime  @default(now())
+  updated_at       DateTime? @updatedAt
+  deleted_at       DateTime?
+
+  // Relaciones
+  persona          Personas            @relation(fields: [persona_id], references: [id])
+  registros_acceso Registros_Acceso[]
+
+  @@map("Credenciales")
+}
+
+model Niveles_Acceso {
+  id          Int       @id @default(autoincrement())
+  nombre      String    @db.NVarChar(100)
+  descripcion String?   @db.NVarChar(200)
+  activo      Boolean   @default(true)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime? @updatedAt
+  deleted_at  DateTime?
+
+  // Relaciones
+  personas    Persona_Nivel_Acceso[]
+  puertas     Nivel_Acceso_Puerta[]
+
+  @@map("Niveles_Acceso")
+}
+
+model Persona_Nivel_Acceso {
+  persona_id       Int
+  nivel_id         Int
+  fecha_asignacion DateTime @default(now())
+  asignado_por     Int?
+
+  // Relaciones
+  persona          Personas       @relation(fields: [persona_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  nivel            Niveles_Acceso @relation(fields: [nivel_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  asignador        Personas?      @relation("AsignadoPor", fields: [asignado_por], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([persona_id, nivel_id])
+  @@map("Persona_Nivel_Acceso")
+}
+
+model Nivel_Acceso_Puerta {
+  nivel_id        Int
+  puerta_id       Int
+  horario_acceso  String? @db.NVarChar(50)
+
+  // Relaciones
+  nivel           Niveles_Acceso @relation(fields: [nivel_id], references: [id])
+  puerta          Puertas_Acceso @relation(fields: [puerta_id], references: [id])
+
+  @@id([nivel_id, puerta_id])
+  @@map("Nivel_Acceso_Puerta")
+}
+
+model Registros_Acceso {
+  id                  Int       @id @default(autoincrement())
+  credencial_id       Int
+  puerta_id           Int
+  fecha_hora          DateTime
+  tipo_evento         String    @db.NVarChar(10)
+  motivo_denegacion   String?   @db.NVarChar(200)
+  metodo_validacion   String?   @db.NVarChar(20)
+  created_at          DateTime  @default(now())
+
+  // Relaciones
+  credencial          Credenciales   @relation(fields: [credencial_id], references: [id])
+  puerta              Puertas_Acceso @relation(fields: [puerta_id], references: [id])
+
+  @@map("Registros_Acceso")
+}
+
+model Fotos {
+  id           Int      @id @default(autoincrement())
+  persona_id   Int
+  tipo_foto    String   @db.NVarChar(10)
+  url          String   @db.NVarChar(200)
+  hash         String?  @db.NVarChar(64)
+  fecha_subida DateTime @default(now())
+  created_at   DateTime @default(now())
+
+  // Relaciones
+  persona      Personas @relation(fields: [persona_id], references: [id])
+
+  @@map("Fotos")
+}
+
+model Invitaciones {
+  id                   Int       @id @default(autoincrement())
+  persona_id           Int
+  fecha_invitacion     DateTime  @default(now())
+  fecha_expiracion     DateTime?
+  restricciones        String?   @db.NVarChar(200)
+  tipo_invitacion      String?   @default("visitante") @db.NVarChar(20)
+  estado               String    @default("pendiente") @db.NVarChar(10)
+  documentos_requeridos String?  @db.NVarChar(MAX) // JSON array con tipos de documentos requeridos
+  documentos_completados Boolean @default(false) // Flag para indicar si todos los documentos están subidos
+  estado_documentos    String    @default("PENDIENTE") @db.NVarChar(20) // 'PENDIENTE', 'PARCIAL', 'COMPLETO', 'VERIFICADO'
+  created_at           DateTime  @default(now())
+  updated_at           DateTime? @updatedAt
+  deleted_at           DateTime?
+
+  // Relaciones
+  persona              Personas              @relation(fields: [persona_id], references: [id])
+  documentos           Documentos_Invitacion[]
+
+  @@map("Invitaciones")
+}
+
+model Auditoria {
+  id                   Int      @id @default(autoincrement())
+  usuario_id           Int?
+  accion               String   @db.NVarChar(100)
+  descripcion          String?  @db.NVarChar(500)
+  tabla_afectada       String?  @db.NVarChar(100)
+  registro_id          Int?
+  valores_anteriores   Json?
+  valores_nuevos       Json?
+  ip_address           String?  @db.NVarChar(50)
+  user_agent          String?  @db.NVarChar(500)
+  fecha                DateTime @default(now())
+
+  // Relaciones
+  usuario              Usuarios? @relation(fields: [usuario_id], references: [id])
+
+  @@map("Auditoria")
+}
+
+// ===== NUEVAS TABLAS PARA FUNCIONALIDADES AVANZADAS =====
+
+model Empleados_Mantenimiento {
+  id                      Int       @id @default(autoincrement())
+  persona_id              Int
+  empresa_mantenimiento   String    @db.NVarChar(200)
+  tipo_empleado           String    @db.NVarChar(20) // TEMPORAL, RECURRENTE, PERMANENTE
+  especialidad            String    @db.NVarChar(50) // JARDINERIA, PLOMERIA, etc.
+  estado                  String    @default("ACTIVO") @db.NVarChar(20)
+  fecha_inicio            DateTime
+  fecha_fin               DateTime?
+  fecha_desactivacion     DateTime?
+  motivo_desactivacion    String?   @db.NVarChar(200)
+  horario_permitido       Json?
+  zonas_permitidas        Json?
+  documentos_verificacion Json?
+  created_by              Int?
+  metadata                Json?
+  created_at              DateTime  @default(now())
+  updated_at              DateTime? @updatedAt
+
+  // Relaciones
+  persona                 Personas                        @relation(fields: [persona_id], references: [id])
+  credenciales           Credenciales_Mantenimiento[]
+  accesos                Accesos_Mantenimiento[]
+
+  @@map("EmpleadosMantenimiento")
+}
+
+model Credenciales_Mantenimiento {
+  id                   Int       @id @default(autoincrement())
+  empleado_id          Int
+  codigo_qr            String    @unique @db.NVarChar(200)
+  qr_data              Json?
+  tipo_credencial      String    @db.NVarChar(20)
+  estado               String    @default("ACTIVA") @db.NVarChar(20)
+  fecha_expiracion     DateTime?
+  fecha_vencimiento_real DateTime?
+  motivo_vencimiento   String?   @db.NVarChar(100)
+  zonas_permitidas     Json?
+  horario_permitido    Json?
+  usos_permitidos      Int       @default(-1) // -1 = ilimitado
+  usos_realizados      Int       @default(0)
+  ultimo_acceso        DateTime?
+  metadata             Json?
+  created_at           DateTime  @default(now())
+  updated_at           DateTime? @updatedAt
+
+  // Relaciones
+  empleado             Empleados_Mantenimiento @relation(fields: [empleado_id], references: [id])
+  accesos              Accesos_Mantenimiento[]
+
+  @@map("CredencialesMantenimiento")
+}
+
+model Accesos_Mantenimiento {
+  id                    Int       @id @default(autoincrement())
+  credencial_id         Int
+  puerta_id             Int
+  tipo_acceso           String    @db.NVarChar(10) // ENTRADA, SALIDA
+  fecha_acceso          DateTime
+  fecha_salida          DateTime?
+  duracion_visita       Int? // en minutos
+  metodo_validacion     String    @db.NVarChar(20)
+  ip_address            String?   @db.NVarChar(50)
+  dispositivo           String?   @db.NVarChar(200)
+  coordenadas           Json?
+  foto_acceso           String?   @db.NVarChar(500)
+  observaciones         String?   @db.NVarChar(500)
+  observaciones_salida  String?   @db.NVarChar(500)
+  metadata              Json?
+  created_at            DateTime  @default(now())
+
+  // Relaciones
+  credencial            Credenciales_Mantenimiento @relation(fields: [credencial_id], references: [id])
+  puerta                Puertas_Acceso              @relation(fields: [puerta_id], references: [id])
+
+  @@map("AccesosMantenimiento")
+}
+
+model System_Stats {
+  id           Int      @id @default(autoincrement())
+  metric_name  String   @db.NVarChar(100)
+  metric_value Float
+  metadata     Json?
+  created_at   DateTime @default(now())
+
+  @@map("SystemStats")
+}
+
+// ===== DOCUMENTOS DE INVITACIONES =====
+
+model Documentos_Invitacion {
+  id                   Int       @id @default(autoincrement())
+  invitacion_id        Int
+  tipo_documento       String    @db.NVarChar(50) // 'IDENTIFICACION', 'CONTRATO', 'SEGURO', 'CERTIFICACION'
+  nombre_archivo       String    @db.NVarChar(255)
+  ruta_archivo         String    @db.NVarChar(500)
+  mime_type            String    @db.NVarChar(100)
+  tamanio_bytes        BigInt
+  hash_archivo         String    @db.NVarChar(64) // SHA-256 del archivo para verificación
+  estado               String    @default("PENDIENTE") @db.NVarChar(20) // 'PENDIENTE', 'VERIFICADO', 'RECHAZADO'
+  verificado_por       Int?
+  fecha_verificacion   DateTime?
+  observaciones        String?   @db.NVarChar(500)
+  metadata             Json?     // Metadata adicional del archivo
+  created_at           DateTime  @default(now())
+  updated_at           DateTime? @updatedAt
+  deleted_at           DateTime?
+
+  // Relaciones
+  invitacion           Invitaciones @relation(fields: [invitacion_id], references: [id])
+  verificador          Usuarios?    @relation(fields: [verificado_por], references: [id])
+
+  @@map("DocumentosInvitacion")
+}

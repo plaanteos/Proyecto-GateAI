@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  uniontech-app:
+    build: .
+    container_name: uniontech-security
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOST=0.0.0.0
+      - JWT_SECRET=${JWT_SECRET:-uniontech_default_secret_change_in_production}
+      - JWT_EXPIRE=24h
+      - LOG_LEVEL=info
+      - CORS_ORIGIN=*
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./.env.prod:/app/.env.prod:ro
+    networks:
+      - uniontech-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Nginx para proxy reverso (opcional)
+  nginx:
+    image: nginx:alpine
+    container_name: uniontech-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - uniontech-app
+    networks:
+      - uniontech-network
+
+  # PostgreSQL (opcional para base de datos real)
+  postgres:
+    image: postgres:15-alpine
+    container_name: uniontech-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=uniontech_db
+      - POSTGRES_USER=uniontech_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-uniontech_secure_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./base de datos/Database-uniontech-mejorada.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - uniontech-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U uniontech_user -d uniontech_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis para cache (opcional)
+  redis:
+    image: redis:7-alpine
+    container_name: uniontech-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-uniontech_redis_pass}
+    volumes:
+      - redis_data:/data
+    networks:
+      - uniontech-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  uniontech-network:
+    driver: bridge

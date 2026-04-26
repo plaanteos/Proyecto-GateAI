@@ -1,0 +1,146 @@
+{"timestamp":"2025-09-03T20:42:59.066Z","level":"info","message":"Prisma Client inicializado correctamente","pid":21104,"env":"development"}
+{"timestamp":"2025-09-03T20:42:59.139Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":21104,"env":"development"}
+{"timestamp":"2025-09-05T16:50:33.050Z","level":"info","message":"Prisma Client inicializado correctamente","pid":1020,"env":"development"}
+{"timestamp":"2025-09-05T16:50:33.165Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":1020,"env":"development"}
+{"timestamp":"2025-09-10T14:52:19.181Z","level":"info","message":"Prisma Client inicializado correctamente","pid":20184,"env":"development"}
+{"timestamp":"2025-09-10T14:52:20.000Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":20184,"env":"development"}
+{"timestamp":"2025-09-10T14:52:32.356Z","level":"info","message":"Prisma Client inicializado correctamente","pid":2252,"env":"development"}
+{"timestamp":"2025-09-10T14:52:32.424Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":2252,"env":"development"}
+{"timestamp":"2025-09-10T14:56:02.022Z","level":"info","message":"Prisma Client inicializado correctamente","pid":13348,"env":"development"}
+{"timestamp":"2025-09-10T14:56:34.184Z","level":"info","message":"Prisma Client inicializado correctamente","pid":16656,"env":"development"}
+{"timestamp":"2025-09-10T14:56:34.285Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":16656,"env":"development"}
+{"timestamp":"2025-09-10T14:57:08.095Z","level":"info","message":"Prisma Client inicializado correctamente","pid":16992,"env":"development"}
+{"timestamp":"2025-09-10T14:57:08.180Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":16992,"env":"development"}
+{"timestamp":"2025-09-10T14:57:13.092Z","level":"info","message":"Prisma Client inicializado correctamente","pid":22112,"env":"development"}
+{"timestamp":"2025-09-10T14:57:13.161Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":22112,"env":"development"}
+{"timestamp":"2025-09-10T15:01:05.250Z","level":"info","message":"Prisma Client inicializado correctamente","pid":6444,"env":"development"}
+{"timestamp":"2025-09-10T15:01:05.367Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":6444,"env":"development"}
+{"timestamp":"2025-09-10T15:07:00.500Z","level":"info","message":"Prisma Client inicializado correctamente","pid":15696,"env":"development"}
+{"timestamp":"2025-09-10T15:07:09.604Z","level":"info","message":"Prisma Client inicializado correctamente","pid":6508,"env":"development"}
+{"timestamp":"2025-09-10T15:07:46.050Z","level":"info","message":"Prisma Client inicializado correctamente","pid":11500,"env":"development"}
+{"timestamp":"2025-09-15T12:54:57.983Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":12160,"env":"development"}
+{"timestamp":"2025-09-15T12:55:00.754Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":12160,"env":"development"}
+{"timestamp":"2025-09-15T12:55:13.692Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":17432,"env":"development"}
+{"timestamp":"2025-09-15T12:55:14.847Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":17432,"env":"development"}
+{"timestamp":"2025-09-15T12:57:14.854Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":13928,"env":"development"}
+{"timestamp":"2025-09-15T12:57:16.086Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":13928,"env":"development"}
+{"timestamp":"2025-09-15T12:58:04.792Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":17496,"env":"development"}
+{"timestamp":"2025-09-15T12:58:05.867Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":17496,"env":"development"}
+{"timestamp":"2025-09-15T13:41:57.405Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15892,"env":"development"}
+{"timestamp":"2025-09-15T13:41:59.075Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":15892,"env":"development"}
+{"timestamp":"2025-09-15T13:45:38.531Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19240,"env":"development"}
+{"timestamp":"2025-09-15T13:45:39.379Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":19240,"env":"development"}
+{"timestamp":"2025-09-15T13:46:38.418Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":1960,"env":"development"}
+{"timestamp":"2025-09-15T13:46:39.209Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":1960,"env":"development"}
+{"timestamp":"2025-10-14T12:16:10.868Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":17404,"env":"test"}
+{"timestamp":"2025-10-14T12:16:14.441Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":17404,"env":"test"}
+{"timestamp":"2025-10-14T12:16:17.548Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":17404,"env":"test"}
+{"timestamp":"2025-10-14T12:17:26.576Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15928,"env":"test"}
+{"timestamp":"2025-10-14T12:17:31.890Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15928,"env":"test"}
+{"timestamp":"2025-10-14T12:17:35.061Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15928,"env":"test"}
+{"timestamp":"2025-10-14T12:18:31.271Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18344,"env":"test"}
+{"timestamp":"2025-10-14T12:18:34.175Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18344,"env":"test"}
+{"timestamp":"2025-10-14T12:18:36.715Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18344,"env":"test"}
+{"timestamp":"2025-10-14T12:20:15.612Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:20:15.654Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:20:19.017Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:20:19.028Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:20:21.687Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:20:21.769Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18412,"env":"test"}
+{"timestamp":"2025-10-14T12:21:15.077Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:21:15.126Z","level":"info","message":"Prisma Client inicializado correctamente","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:21:19.296Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:21:19.308Z","level":"info","message":"Prisma Client inicializado correctamente","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:21:22.002Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:21:22.019Z","level":"info","message":"Prisma Client inicializado correctamente","pid":9840,"env":"test"}
+{"timestamp":"2025-10-14T12:22:02.922Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:22:02.967Z","level":"info","message":"Prisma Client inicializado correctamente","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:22:03.284Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:23:07.097Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:23:07.120Z","level":"info","message":"Prisma Client inicializado correctamente","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:23:07.237Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:24:12.695Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:24:12.712Z","level":"info","message":"Prisma Client inicializado correctamente","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:24:12.828Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":19284,"env":"test"}
+{"timestamp":"2025-10-14T12:26:19.240Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:26:19.303Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:26:19.623Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:27:23.532Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:27:23.565Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:27:23.715Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:28:28.515Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:28:28.532Z","level":"info","message":"Prisma Client inicializado correctamente","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:28:28.675Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":18940,"env":"test"}
+{"timestamp":"2025-10-14T12:30:35.688Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:30:35.810Z","level":"info","message":"Prisma Client inicializado correctamente","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:30:36.272Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:31:43.037Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:31:43.104Z","level":"info","message":"Prisma Client inicializado correctamente","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:31:43.370Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:32:48.998Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:32:49.012Z","level":"info","message":"Prisma Client inicializado correctamente","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:32:49.143Z","level":"info","message":"Iniciando apagado graceful del servidor...","pid":15796,"env":"test"}
+{"timestamp":"2025-10-14T12:35:30.123Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19168,"env":"development"}
+{"timestamp":"2025-10-14T12:35:30.981Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":19168,"env":"development"}
+{"timestamp":"2025-10-14T12:36:41.632Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":12676,"env":"development"}
+{"timestamp":"2025-10-14T12:36:42.265Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":12676,"env":"development"}
+{"timestamp":"2025-10-14T12:38:44.563Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":16032,"env":"development"}
+{"timestamp":"2025-10-14T12:38:45.310Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":16032,"env":"development"}
+{"timestamp":"2025-10-14T12:39:27.103Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":6736,"env":"development"}
+{"timestamp":"2025-10-14T12:39:27.845Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":6736,"env":"development"}
+{"timestamp":"2025-10-14T12:39:34.120Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":6736,"env":"development"}
+{"timestamp":"2025-10-14T12:39:34.128Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":6736,"env":"development"}
+{"timestamp":"2025-10-14T12:40:02.036Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19012,"env":"development"}
+{"timestamp":"2025-10-14T12:40:03.092Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":19012,"env":"development"}
+{"timestamp":"2025-10-14T12:40:10.540Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":19012,"env":"development"}
+{"timestamp":"2025-10-14T12:40:10.551Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":19012,"env":"development"}
+{"timestamp":"2025-10-14T12:42:03.855Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":10540,"env":"development"}
+{"timestamp":"2025-10-14T12:42:04.587Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":10540,"env":"development"}
+{"timestamp":"2025-10-14T12:42:10.996Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":10540,"env":"development"}
+{"timestamp":"2025-10-14T12:42:11.008Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":10540,"env":"development"}
+{"timestamp":"2025-10-14T12:44:15.377Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":4080,"env":"development"}
+{"timestamp":"2025-10-14T12:44:16.129Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":4080,"env":"development"}
+{"timestamp":"2025-10-14T12:44:22.003Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":4080,"env":"development"}
+{"timestamp":"2025-10-14T12:44:22.017Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":4080,"env":"development"}
+{"timestamp":"2025-10-14T12:44:47.764Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":16100,"env":"development"}
+{"timestamp":"2025-10-14T12:44:48.421Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":16100,"env":"development"}
+{"timestamp":"2025-10-14T12:44:53.722Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":16100,"env":"development"}
+{"timestamp":"2025-10-14T12:44:53.733Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":16100,"env":"development"}
+{"timestamp":"2025-10-14T12:46:49.028Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":18064,"env":"development"}
+{"timestamp":"2025-10-14T12:46:49.787Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":18064,"env":"development"}
+{"timestamp":"2025-10-14T12:46:56.362Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":18064,"env":"development"}
+{"timestamp":"2025-10-14T12:46:56.382Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":18064,"env":"development"}
+{"timestamp":"2025-10-14T12:49:02.761Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":2672,"env":"development"}
+{"timestamp":"2025-10-14T12:49:03.452Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":2672,"env":"development"}
+{"timestamp":"2025-10-14T12:49:08.884Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":2672,"env":"development"}
+{"timestamp":"2025-10-14T12:49:08.894Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":2672,"env":"development"}
+{"timestamp":"2025-10-14T12:52:10.976Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:52:11.643Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:52:17.881Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:52:17.885Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:52:18.078Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:52:38.808Z","level":"info","message":"🔌 Dashboard en tiempo real desconectado","pid":16900,"env":"development"}
+{"timestamp":"2025-10-14T12:54:00.882Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19396,"env":"development"}
+{"timestamp":"2025-10-14T12:54:01.679Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":19396,"env":"development"}
+{"timestamp":"2025-10-14T12:54:07.463Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":19396,"env":"development"}
+{"timestamp":"2025-10-14T12:54:07.472Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":19396,"env":"development"}
+{"timestamp":"2025-10-14T12:54:07.604Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":19396,"env":"development"}
+{"timestamp":"2025-10-14T12:55:38.204Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":6384,"env":"development"}
+{"timestamp":"2025-10-14T12:55:38.810Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":6384,"env":"development"}
+{"timestamp":"2025-10-14T12:55:44.214Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":6384,"env":"development"}
+{"timestamp":"2025-10-14T12:55:44.523Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":6384,"env":"development"}
+{"timestamp":"2025-10-14T12:55:44.705Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":6384,"env":"development"}
+{"timestamp":"2025-10-14T13:36:16.363Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":11012,"env":"development"}
+{"timestamp":"2025-10-14T13:38:41.024Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:38:41.272Z","level":"info","message":"📊 Dashboard en modo fallback (sin base de datos)","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:38:41.828Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:38:48.802Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:38:48.813Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:38:48.966Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:41:31.752Z","level":"info","message":"🔌 Dashboard en tiempo real desconectado","pid":13552,"env":"development"}
+{"timestamp":"2025-10-14T13:42:33.671Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":19284,"env":"development"}
+{"timestamp":"2025-10-14T13:42:34.205Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":19284,"env":"development"}
+{"timestamp":"2025-10-14T13:42:38.863Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":19284,"env":"development"}
+{"timestamp":"2025-10-14T13:42:38.889Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":19284,"env":"development"}
+{"timestamp":"2025-10-14T13:42:39.011Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":19284,"env":"development"}
+{"timestamp":"2025-10-14T13:42:57.355Z","level":"info","message":"🔌 Dashboard en tiempo real desconectado","pid":19284,"env":"development"}
