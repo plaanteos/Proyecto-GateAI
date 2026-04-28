@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { auth } = require('../middleware/auth');
+const { requirePermission } = require('../middleware/rbac');
+
+// Aplicar autenticación a todas las rutas
+router.use(auth);
 
 // GET /api/edificios - Listar todos los edificios
-router.get('/', async (req, res) => {
+router.get('/', requirePermission('buildings.read'), async (req, res) => {
   try {
     const edificios = await req.prisma.edificios.findMany({
       include: {
@@ -17,7 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST /api/edificios - Crear nuevo edificio
-router.post('/', async (req, res) => {
+router.post('/', requirePermission('buildings.create'), async (req, res) => {
   try {
     const { nombre, direccion, ciudad, codigo_postal } = req.body;
     

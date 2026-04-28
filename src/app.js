@@ -118,6 +118,9 @@ app.use((req, res, next) => {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/visitors', require('./routes/visitantes'));
+app.use('/api/edificios', require('./routes/edificios'));
+app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/whatsapp', require('./routes/whatsapp'));
 app.use('/api/maintenance', require('./routes/maintenance'));
 app.use('/api/documentos-invitacion', require('./routes/documentos-invitacion'));
 app.use('/api/rbac', rbacRoutes);

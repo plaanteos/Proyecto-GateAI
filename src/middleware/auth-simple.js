@@ -1,35 +1,43 @@
+/**
+ * Middleware de autenticación unificado
+ * Reemplaza la versión anterior con mockData — ahora solo usa JWT real
+ */
 const jwt = require('jsonwebtoken');
-const { findUserById } = require('../data/mockData');
-
-const JWT_SECRET = process.env.JWT_SECRET || 'tu_clave_secreta_super_segura';
 
 // Middleware de autenticación principal
 const auth = (req, res, next) => {
+  if (!process.env.JWT_SECRET) {
+    return res.status(500).json({ success: false, message: 'JWT_SECRET no configurado en el servidor' });
+  }
   try {
     const authHeader = req.header('Authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Token no proporcionado' });
+      return res.status(401).json({
+        success: false,
+        message: 'Token de acceso requerido'
+      });
     }
 
     const token = authHeader.replace('Bearer ', '');
-    const decoded = jwt.verify(token, JWT_SECRET);
-    
-    // Buscar usuario en datos hardcodeados
-    const user = findUserById(decoded.userId);
-    if (!user) {
-      return res.status(401).json({ error: 'Usuario no encontrado' });
-    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    // Normalizar estructura de req.user para todo el sistema
     req.user = {
-      id: decoded.userId,
+      id: decoded.id || decoded.userId,
       username: decoded.username,
-      rolId: decoded.rolId,
-      rolNombre: decoded.rolNombre
+      role: decoded.role || decoded.rol || decoded.rolNombre || 'user',
+      persona_id: decoded.persona_id
     };
-    
+
     next();
   } catch (error) {
-    res.status(401).json({ error: 'Token inválido' });
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ success: false, message: 'Token expirado' });
+    }
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ success: false, message: 'Token inválido' });
+    }
+    return res.status(500).json({ success: false, message: 'Error verificando token' });
   }
 };
 
@@ -39,21 +47,17 @@ const optionalAuth = (req, res, next) => {
     const authHeader = req.header('Authorization');
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.replace('Bearer ', '');
-      const decoded = jwt.verify(token, JWT_SECRET);
-      const user = findUserById(decoded.userId);
-      
-      if (user) {
-        req.user = {
-          id: decoded.userId,
-          username: decoded.username,
-          rolId: decoded.rolId,
-          rolNombre: decoded.rolNombre
-        };
-      }
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = {
+        id: decoded.id || decoded.userId,
+        username: decoded.username,
+        role: decoded.role || decoded.rol || decoded.rolNombre || 'user',
+        persona_id: decoded.persona_id
+      };
     }
     next();
   } catch (error) {
-    // Si hay error en el token, continúa sin usuario
+    req.user = null;
     next();
   }
 };
@@ -62,21 +66,25 @@ const optionalAuth = (req, res, next) => {
 const requireRole = (roles) => {
   return (req, res, next) => {
     if (!req.user) {
-      return res.status(401).json({ error: 'Autenticación requerida' });
+      return res.status(401).json({ success: false, message: 'Autenticación requerida' });
     }
 
-    const userRoles = Array.isArray(roles) ? roles : [roles];
-    if (!userRoles.includes(req.user.rolNombre)) {
-      return res.status(403).json({ error: 'Permisos insuficientes' });
+    const allowedRoles = Array.isArray(roles) ? roles : [roles];
+    if (!allowedRoles.includes(req.user.role)) {
+      return res.status(403).json({
+        success: false,
+        message: 'Permisos insuficientes',
+        requiredRoles: allowedRoles,
+        userRole: req.user.role
+      });
     }
 
     next();
   };
 };
 
-// Middlewares específicos por rol
-const requireAdmin = requireRole('admin');
-const requireSecurity = requireRole(['admin', 'security']);
+const requireAdmin = requireRole(['admin', 'super_admin']);
+const requireSecurity = requireRole(['admin', 'super_admin', 'security']);
 
 module.exports = {
   auth,

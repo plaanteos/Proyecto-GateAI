@@ -1,13 +1,18 @@
 /**
  * Configuración de Servicios Externos
  * Gestión centralizada de todos los servicios externos del sistema
+ * Las dependencias cloud (GCS, AWS) son opcionales y se cargan dinámicamente.
  */
 
 const nodemailer = require('nodemailer');
 const twilio = require('twilio');
-const { Storage } = require('@google-cloud/storage');
-const aws = require('aws-sdk');
 const logger = require('./logger');
+
+// Carga opcional de dependencias cloud para no romper en producción básica
+let GCSStorage = null;
+let awsSDK = null;
+try { GCSStorage = require('@google-cloud/storage').Storage; } catch (_) { /* no instalado */ }
+try { awsSDK = require('aws-sdk'); } catch (_) { /* no instalado */ }
 
 class ExternalServicesManager {
     constructor() {
@@ -176,19 +181,29 @@ class ExternalServicesManager {
             
             switch (storageType) {
                 case 'gcs':
-                    this.services.storage = new Storage({
+                    if (!GCSStorage) {
+                        logger.warn('⚠️  @google-cloud/storage no instalado, usando almacenamiento local');
+                        this.services.storage = this.createLocalStorageService();
+                        break;
+                    }
+                    this.services.storage = new GCSStorage({
                         projectId: process.env.GCS_PROJECT_ID,
                         keyFilename: process.env.GCS_KEY_FILE
                     });
                     break;
                 
                 case 's3':
-                    aws.config.update({
+                    if (!awsSDK) {
+                        logger.warn('⚠️  aws-sdk no instalado, usando almacenamiento local');
+                        this.services.storage = this.createLocalStorageService();
+                        break;
+                    }
+                    awsSDK.config.update({
                         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
                         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
                         region: process.env.AWS_REGION
                     });
-                    this.services.storage = new aws.S3();
+                    this.services.storage = new awsSDK.S3();
                     break;
                 
                 default:

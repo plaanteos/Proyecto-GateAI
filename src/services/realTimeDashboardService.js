@@ -64,9 +64,29 @@ class RealTimeDashboardService {
                 try {
                     const { token } = data;
                     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+                    // Modo fallback: sin base de datos
+                    if (!this.prisma) {
+                        const userId = decoded.id || decoded.userId;
+                        this.connectedClients.set(socket.id, {
+                            userId,
+                            username: decoded.username || 'usuario',
+                            role: decoded.role || decoded.rol || 'user',
+                            connectedAt: new Date(),
+                            lastActivity: new Date()
+                        });
+                        socket.userId = userId;
+                        socket.userRole = decoded.role || decoded.rol || 'user';
+                        socket.emit('authenticated', {
+                            message: 'Autenticado correctamente (modo fallback)',
+                            user: { id: userId, username: decoded.username, role: socket.userRole }
+                        });
+                        await this.sendInitialDashboardData(socket);
+                        return;
+                    }
                     
                     const user = await this.prisma.usuarios.findUnique({
-                        where: { id: decoded.userId },
+                        where: { id: decoded.id || decoded.userId },
                         include: {
                             persona: true,
                             rol: true

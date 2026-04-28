@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlserver"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -17,12 +17,12 @@ datasource db {
 
 model Personas {
   id                 Int       @id @default(autoincrement())
-  documento_identidad String    @unique @db.NVarChar(50)
-  nombre             String    @db.NVarChar(100)
-  apellido           String    @db.NVarChar(100)
+  documento_identidad String    @unique @db.VarChar(50)
+  nombre             String    @db.VarChar(100)
+  apellido           String    @db.VarChar(100)
   fecha_nacimiento   DateTime? @db.Date
-  telefono           String?   @db.NVarChar(20)
-  email              String?   @db.NVarChar(100)
+  telefono           String?   @db.VarChar(20)
+  email              String?   @db.VarChar(100)
   activo             Boolean   @default(true)
   fecha_registro     DateTime  @default(now())
   created_at         DateTime  @default(now())
@@ -43,8 +43,8 @@ model Personas {
 
 model Roles {
   id          Int       @id @default(autoincrement())
-  nombre      String    @unique @db.NVarChar(50)
-  descripcion String?   @db.NVarChar(200)
+  nombre      String    @unique @db.VarChar(50)
+  descripcion String?   @db.VarChar(200)
   activo      Boolean   @default(true)
   created_at  DateTime  @default(now())
   updated_at  DateTime? @updatedAt
@@ -58,10 +58,10 @@ model Roles {
 
 model Permisos {
   id          Int       @id @default(autoincrement())
-  nombre      String    @unique @db.NVarChar(100)
-  descripcion String?   @db.NVarChar(200)
-  modulo      String    @db.NVarChar(50)
-  accion      String    @db.NVarChar(50)
+  nombre      String    @unique @db.VarChar(100)
+  descripcion String?   @db.VarChar(200)
+  modulo      String    @db.VarChar(50)
+  accion      String    @db.VarChar(50)
   activo      Boolean   @default(true)
   created_at  DateTime  @default(now())
   updated_at  DateTime? @updatedAt
@@ -111,8 +111,8 @@ model Usuario_Permisos {
 model Usuarios {
   id            Int       @id @default(autoincrement())
   persona_id    Int
-  username      String    @unique @db.NVarChar(50)
-  password_hash String    @db.NVarChar(200)
+  username      String    @unique @db.VarChar(50)
+  password_hash String    @db.VarChar(200)
   rol_id        Int
   activo        Boolean   @default(true)
   created_at    DateTime  @default(now())
@@ -131,10 +131,10 @@ model Usuarios {
 
 model Edificios {
   id             Int       @id @default(autoincrement())
-  nombre         String    @db.NVarChar(100)
-  direccion      String    @db.NVarChar(200)
-  ciudad         String?   @db.NVarChar(100)
-  codigo_postal  String?   @db.NVarChar(20)
+  nombre         String    @db.VarChar(100)
+  direccion      String    @db.VarChar(200)
+  ciudad         String?   @db.VarChar(100)
+  codigo_postal  String?   @db.VarChar(20)
   activo         Boolean   @default(true)
   fecha_registro DateTime  @default(now())
   created_at     DateTime  @default(now())
@@ -150,9 +150,9 @@ model Edificios {
 model Puertas_Acceso {
   id           Int       @id @default(autoincrement())
   edificio_id  Int
-  nombre       String    @db.NVarChar(100)
-  ubicacion    String?   @db.NVarChar(100)
-  tipo_acceso  String    @db.NVarChar(10)
+  nombre       String    @db.VarChar(100)
+  ubicacion    String?   @db.VarChar(100)
+  tipo_acceso  String    @db.VarChar(10)
   activa       Boolean   @default(true)
   created_at   DateTime  @default(now())
   updated_at   DateTime? @updatedAt
@@ -170,11 +170,11 @@ model Puertas_Acceso {
 model Credenciales {
   id               Int       @id @default(autoincrement())
   persona_id       Int
-  tipo_credencial  String    @db.NVarChar(20)
-  identificador    String    @unique @db.NVarChar(100)
+  tipo_credencial  String    @db.VarChar(20)
+  identificador    String    @unique @db.VarChar(100)
   fecha_emision    DateTime  @default(now())
   fecha_expiracion DateTime?
-  estado           String    @default("activa") @db.NVarChar(20)
+  estado           String    @default("activa") @db.VarChar(20)
   activa           Boolean   @default(true)
   created_at       DateTime  @default(now())
   updated_at       DateTime? @updatedAt
@@ -189,8 +189,8 @@ model Credenciales {
 
 model Niveles_Acceso {
   id          Int       @id @default(autoincrement())
-  nombre      String    @db.NVarChar(100)
-  descripcion String?   @db.NVarChar(200)
+  nombre      String    @db.VarChar(100)
+  descripcion String?   @db.VarChar(200)
   activo      Boolean   @default(true)
   created_at  DateTime  @default(now())
   updated_at  DateTime? @updatedAt
@@ -221,7 +221,7 @@ model Persona_Nivel_Acceso {
 model Nivel_Acceso_Puerta {
   nivel_id        Int
   puerta_id       Int
-  horario_acceso  String? @db.NVarChar(50)
+  horario_acceso  String? @db.VarChar(50)
 
   // Relaciones
   nivel           Niveles_Acceso @relation(fields: [nivel_id], references: [id])
@@ -236,9 +236,9 @@ model Registros_Acceso {
   credencial_id       Int
   puerta_id           Int
   fecha_hora          DateTime
-  tipo_evento         String    @db.NVarChar(10)
-  motivo_denegacion   String?   @db.NVarChar(200)
-  metodo_validacion   String?   @db.NVarChar(20)
+  tipo_evento         String    @db.VarChar(10)
+  motivo_denegacion   String?   @db.VarChar(200)
+  metodo_validacion   String?   @db.VarChar(20)
   created_at          DateTime  @default(now())
 
   // Relaciones
@@ -251,9 +251,9 @@ model Registros_Acceso {
 model Fotos {
   id           Int      @id @default(autoincrement())
   persona_id   Int
-  tipo_foto    String   @db.NVarChar(10)
-  url          String   @db.NVarChar(200)
-  hash         String?  @db.NVarChar(64)
+  tipo_foto    String   @db.VarChar(10)
+  url          String   @db.VarChar(200)
+  hash         String?  @db.VarChar(64)
   fecha_subida DateTime @default(now())
   created_at   DateTime @default(now())
 
@@ -268,12 +268,12 @@ model Invitaciones {
   persona_id           Int
   fecha_invitacion     DateTime  @default(now())
   fecha_expiracion     DateTime?
-  restricciones        String?   @db.NVarChar(200)
-  tipo_invitacion      String?   @default("visitante") @db.NVarChar(20)
-  estado               String    @default("pendiente") @db.NVarChar(10)
-  documentos_requeridos String?  @db.NVarChar(MAX) // JSON array con tipos de documentos requeridos
-  documentos_completados Boolean @default(false) // Flag para indicar si todos los documentos están subidos
-  estado_documentos    String    @default("PENDIENTE") @db.NVarChar(20) // 'PENDIENTE', 'PARCIAL', 'COMPLETO', 'VERIFICADO'
+  restricciones        String?   @db.VarChar(200)
+  tipo_invitacion      String?   @default("visitante") @db.VarChar(20)
+  estado               String    @default("pendiente") @db.VarChar(10)
+  documentos_requeridos String?  @db.Text // JSON array con tipos de documentos requeridos
+  documentos_completados Boolean @default(false) // Flag para indicar si todos los documentos estÃ¡n subidos
+  estado_documentos    String    @default("PENDIENTE") @db.VarChar(20) // 'PENDIENTE', 'PARCIAL', 'COMPLETO', 'VERIFICADO'
   created_at           DateTime  @default(now())
   updated_at           DateTime? @updatedAt
   deleted_at           DateTime?
@@ -288,14 +288,14 @@ model Invitaciones {
 model Auditoria {
   id                   Int      @id @default(autoincrement())
   usuario_id           Int?
-  accion               String   @db.NVarChar(100)
-  descripcion          String?  @db.NVarChar(500)
-  tabla_afectada       String?  @db.NVarChar(100)
+  accion               String   @db.VarChar(100)
+  descripcion          String?  @db.VarChar(500)
+  tabla_afectada       String?  @db.VarChar(100)
   registro_id          Int?
   valores_anteriores   Json?
   valores_nuevos       Json?
-  ip_address           String?  @db.NVarChar(50)
-  user_agent          String?  @db.NVarChar(500)
+  ip_address           String?  @db.VarChar(50)
+  user_agent          String?  @db.VarChar(500)
   fecha                DateTime @default(now())
 
   // Relaciones
@@ -309,14 +309,14 @@ model Auditoria {
 model Empleados_Mantenimiento {
   id                      Int       @id @default(autoincrement())
   persona_id              Int
-  empresa_mantenimiento   String    @db.NVarChar(200)
-  tipo_empleado           String    @db.NVarChar(20) // TEMPORAL, RECURRENTE, PERMANENTE
-  especialidad            String    @db.NVarChar(50) // JARDINERIA, PLOMERIA, etc.
-  estado                  String    @default("ACTIVO") @db.NVarChar(20)
+  empresa_mantenimiento   String    @db.VarChar(200)
+  tipo_empleado           String    @db.VarChar(20) // TEMPORAL, RECURRENTE, PERMANENTE
+  especialidad            String    @db.VarChar(50) // JARDINERIA, PLOMERIA, etc.
+  estado                  String    @default("ACTIVO") @db.VarChar(20)
   fecha_inicio            DateTime
   fecha_fin               DateTime?
   fecha_desactivacion     DateTime?
-  motivo_desactivacion    String?   @db.NVarChar(200)
+  motivo_desactivacion    String?   @db.VarChar(200)
   horario_permitido       Json?
   zonas_permitidas        Json?
   documentos_verificacion Json?
@@ -328,7 +328,6 @@ model Empleados_Mantenimiento {
   // Relaciones
   persona                 Personas                        @relation(fields: [persona_id], references: [id])
   credenciales           Credenciales_Mantenimiento[]
-  accesos                Accesos_Mantenimiento[]
 
   @@map("EmpleadosMantenimiento")
 }
@@ -336,13 +335,13 @@ model Empleados_Mantenimiento {
 model Credenciales_Mantenimiento {
   id                   Int       @id @default(autoincrement())
   empleado_id          Int
-  codigo_qr            String    @unique @db.NVarChar(200)
+  codigo_qr            String    @unique @db.VarChar(200)
   qr_data              Json?
-  tipo_credencial      String    @db.NVarChar(20)
-  estado               String    @default("ACTIVA") @db.NVarChar(20)
+  tipo_credencial      String    @db.VarChar(20)
+  estado               String    @default("ACTIVA") @db.VarChar(20)
   fecha_expiracion     DateTime?
   fecha_vencimiento_real DateTime?
-  motivo_vencimiento   String?   @db.NVarChar(100)
+  motivo_vencimiento   String?   @db.VarChar(100)
   zonas_permitidas     Json?
   horario_permitido    Json?
   usos_permitidos      Int       @default(-1) // -1 = ilimitado
@@ -363,17 +362,17 @@ model Accesos_Mantenimiento {
   id                    Int       @id @default(autoincrement())
   credencial_id         Int
   puerta_id             Int
-  tipo_acceso           String    @db.NVarChar(10) // ENTRADA, SALIDA
+  tipo_acceso           String    @db.VarChar(10) // ENTRADA, SALIDA
   fecha_acceso          DateTime
   fecha_salida          DateTime?
   duracion_visita       Int? // en minutos
-  metodo_validacion     String    @db.NVarChar(20)
-  ip_address            String?   @db.NVarChar(50)
-  dispositivo           String?   @db.NVarChar(200)
+  metodo_validacion     String    @db.VarChar(20)
+  ip_address            String?   @db.VarChar(50)
+  dispositivo           String?   @db.VarChar(200)
   coordenadas           Json?
-  foto_acceso           String?   @db.NVarChar(500)
-  observaciones         String?   @db.NVarChar(500)
-  observaciones_salida  String?   @db.NVarChar(500)
+  foto_acceso           String?   @db.VarChar(500)
+  observaciones         String?   @db.VarChar(500)
+  observaciones_salida  String?   @db.VarChar(500)
   metadata              Json?
   created_at            DateTime  @default(now())
 
@@ -386,7 +385,7 @@ model Accesos_Mantenimiento {
 
 model System_Stats {
   id           Int      @id @default(autoincrement())
-  metric_name  String   @db.NVarChar(100)
+  metric_name  String   @db.VarChar(100)
   metric_value Float
   metadata     Json?
   created_at   DateTime @default(now())
@@ -399,16 +398,16 @@ model System_Stats {
 model Documentos_Invitacion {
   id                   Int       @id @default(autoincrement())
   invitacion_id        Int
-  tipo_documento       String    @db.NVarChar(50) // 'IDENTIFICACION', 'CONTRATO', 'SEGURO', 'CERTIFICACION'
-  nombre_archivo       String    @db.NVarChar(255)
-  ruta_archivo         String    @db.NVarChar(500)
-  mime_type            String    @db.NVarChar(100)
+  tipo_documento       String    @db.VarChar(50) // 'IDENTIFICACION', 'CONTRATO', 'SEGURO', 'CERTIFICACION'
+  nombre_archivo       String    @db.VarChar(255)
+  ruta_archivo         String    @db.VarChar(500)
+  mime_type            String    @db.VarChar(100)
   tamanio_bytes        BigInt
-  hash_archivo         String    @db.NVarChar(64) // SHA-256 del archivo para verificación
-  estado               String    @default("PENDIENTE") @db.NVarChar(20) // 'PENDIENTE', 'VERIFICADO', 'RECHAZADO'
+  hash_archivo         String    @db.VarChar(64) // SHA-256 del archivo para verificaciÃ³n
+  estado               String    @default("PENDIENTE") @db.VarChar(20) // 'PENDIENTE', 'VERIFICADO', 'RECHAZADO'
   verificado_por       Int?
   fecha_verificacion   DateTime?
-  observaciones        String?   @db.NVarChar(500)
+  observaciones        String?   @db.VarChar(500)
   metadata             Json?     // Metadata adicional del archivo
   created_at           DateTime  @default(now())
   updated_at           DateTime? @updatedAt

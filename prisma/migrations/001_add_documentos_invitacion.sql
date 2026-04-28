@@ -1,6 +1,36 @@
--- Migración para agregar gestión de documentos en invitaciones
--- Fecha: 2025-10-14
--- Descripción: Implementa la funcionalidad requerida en "nuevos problemas.txt"
+-- Migración: Documentos de Invitaciones
+-- Motor: PostgreSQL
+-- Fecha: 2026-04-28
+
+CREATE TABLE IF NOT EXISTS "DocumentosInvitacion" (
+    id                 SERIAL PRIMARY KEY,
+    invitacion_id      INTEGER NOT NULL REFERENCES "Invitaciones"(id),
+    tipo_documento     VARCHAR(50) NOT NULL,
+    nombre_archivo     VARCHAR(255) NOT NULL,
+    ruta_archivo       VARCHAR(500) NOT NULL,
+    mime_type          VARCHAR(100) NOT NULL,
+    tamanio_bytes      BIGINT NOT NULL,
+    hash_archivo       VARCHAR(64) NOT NULL,
+    estado             VARCHAR(20) DEFAULT 'PENDIENTE',
+    verificado_por     INTEGER REFERENCES "Usuarios"(id),
+    fecha_verificacion TIMESTAMP,
+    observaciones      VARCHAR(500),
+    metadata           JSONB,
+    created_at         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at         TIMESTAMP,
+    deleted_at         TIMESTAMP
+);
+
+-- Índices
+CREATE INDEX IF NOT EXISTS idx_docs_invitacion_id ON "DocumentosInvitacion"(invitacion_id);
+CREATE INDEX IF NOT EXISTS idx_docs_estado        ON "DocumentosInvitacion"(estado);
+CREATE INDEX IF NOT EXISTS idx_docs_hash          ON "DocumentosInvitacion"(hash_archivo);
+
+-- Agregar columnas a Invitaciones si no existen
+ALTER TABLE "Invitaciones"
+  ADD COLUMN IF NOT EXISTS documentos_completados BOOLEAN DEFAULT FALSE,
+  ADD COLUMN IF NOT EXISTS estado_documentos      VARCHAR(20) DEFAULT 'PENDIENTE';
+
 
 -- Crear tabla para documentos de invitaciones
 CREATE TABLE DocumentosInvitacion (

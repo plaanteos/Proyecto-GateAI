@@ -144,3 +144,22 @@
 {"timestamp":"2025-10-14T13:42:38.889Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":19284,"env":"development"}
 {"timestamp":"2025-10-14T13:42:39.011Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":19284,"env":"development"}
 {"timestamp":"2025-10-14T13:42:57.355Z","level":"info","message":"🔌 Dashboard en tiempo real desconectado","pid":19284,"env":"development"}
+{"timestamp":"2026-04-26T21:48:30.728Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:48:30.787Z","level":"info","message":"📊 Dashboard en modo fallback (sin base de datos)","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:48:30.885Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:48:32.245Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:48:32.246Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:48:32.269Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":2916,"env":"development"}
+{"timestamp":"2026-04-26T21:50:19.456Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T21:50:19.491Z","level":"info","message":"📊 Dashboard en modo fallback (sin base de datos)","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T21:50:19.556Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T21:50:20.472Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T21:50:20.473Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T21:50:20.496Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":9788,"env":"development"}
+{"timestamp":"2026-04-26T22:09:35.633Z","level":"info","message":"🔴 Redis Service iniciado en modo fallback (memoria)","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T22:09:35.670Z","level":"info","message":"📊 Dashboard en modo fallback (sin base de datos)","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T22:09:35.737Z","level":"info","message":"✅ Servicios de expiración de invitaciones inicializados","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T22:09:36.683Z","level":"info","message":"⏱️ Actualizaciones periódicas del dashboard iniciadas","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T22:09:36.684Z","level":"info","message":"🔄 Dashboard en tiempo real inicializado","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T22:09:36.703Z","level":"info","message":"⚠️ Usando cache en memoria (Redis no disponible)","pid":21224,"env":"development"}
+{"timestamp":"2026-04-26T23:00:00.844Z","level":"info","message":"🧹 Iniciando limpieza de invitaciones vencidas...","pid":21224,"env":"development"}

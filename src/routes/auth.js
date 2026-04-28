@@ -1,29 +1,31 @@
 const express = require('express');
-const authController = require('../controllers/authController-demo');
+const AuthController = require('../controllers/authController');
 const { authValidation, handleValidationErrors } = require('../middleware/validation');
-const { auth } = require('../middleware/auth-demo');
-const { ErrorHandler } = require('../middleware/errorHandler');
+const { auth } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Instanciar controlador real con Prisma
+const authController = new AuthController();
 
 // POST /api/auth/login
 router.post('/login', 
   authValidation.login,
   handleValidationErrors,
-  authController.login
+  (req, res) => authController.login(req, res)
 );
 
 // POST /api/auth/register
 router.post('/register',
   authValidation.register,
   handleValidationErrors,
-  authController.register
+  (req, res) => authController.register(req, res)
 );
 
 // GET /api/auth/verify - Verificar token válido
 router.get('/verify',
   auth,
-  authController.verifyToken
+  (req, res) => authController.verifyToken(req, res)
 );
 
 // PUT /api/auth/change-password
@@ -31,28 +33,28 @@ router.put('/change-password',
   auth,
   authValidation.changePassword,
   handleValidationErrors,
-  authController.changePassword
+  (req, res) => authController.changePassword(req, res)
 );
 
 // POST /api/auth/request-reset - Solicitar reset de contraseña
 router.post('/request-reset',
-  authController.requestPasswordReset
+  (req, res) => authController.requestPasswordReset(req, res)
 );
 
 // GET /api/auth/verify-reset/:token - Verificar token de reset
 router.get('/verify-reset/:token',
-  authController.verifyResetToken
+  (req, res) => authController.verifyResetToken(req, res)
 );
 
 // POST /api/auth/reset-password - Restablecer contraseña
 router.post('/reset-password',
-  authController.resetPassword
+  (req, res) => authController.resetPassword(req, res)
 );
 
 // POST /api/auth/logout
 router.post('/logout',
   auth,
-  ErrorHandler.asyncHandler(authController.logout)
+  (req, res) => authController.logout(req, res)
 );
 
 module.exports = router;

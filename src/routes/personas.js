@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { auth } = require('../middleware/auth');
+const { requirePermission } = require('../middleware/rbac');
+
+// Aplicar autenticación a todas las rutas
+router.use(auth);
 
 // GET /api/personas - Listar todas las personas
-router.get('/', async (req, res) => {
+router.get('/', requirePermission('users.read'), async (req, res) => {
   try {
     const { page = 1, limit = 10, activo } = req.query;
     const skip = (page - 1) * limit;

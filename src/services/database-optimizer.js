@@ -8,7 +8,8 @@ const logger = require('../config/logger');
 
 class DatabaseOptimizer {
     constructor() {
-        this.prisma = new PrismaClient();
+        this.isFallback = process.env.SKIP_DB_CONNECTION === 'true' || process.env.DATABASE_MODE === 'fallback';
+        this.prisma = this.isFallback ? null : new PrismaClient();
         this.performanceMetrics = new Map();
         this.indexRecommendations = [];
     }
@@ -433,6 +434,11 @@ class DatabaseOptimizer {
      * Monitorear rendimiento en tiempo real
      */
     startPerformanceMonitoring() {
+        if (this.isFallback) {
+            logger.warn('⚠️ Monitoreo de DB omitido (modo fallback)');
+            return;
+        }
+
         logger.info('📊 Iniciando monitoreo de rendimiento de DB...');
 
         setInterval(async () => {
@@ -519,6 +525,20 @@ class DatabaseOptimizer {
      * Obtener reporte completo de optimización
      */
     async getOptimizationReport() {
+        if (this.isFallback) {
+            return {
+                timestamp: new Date().toISOString(),
+                indexes: [],
+                views: [],
+                queryAnalysis: [],
+                connectionOptimization: null,
+                maintenanceConfig: null,
+                currentMetrics: null,
+                recommendations: this.generateOptimizationRecommendations(),
+                fallback: true
+            };
+        }
+
         const report = {
             timestamp: new Date().toISOString(),
             indexes: await this.createOptimizedIndexes(),

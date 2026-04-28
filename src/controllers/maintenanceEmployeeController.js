@@ -474,6 +474,94 @@ class MaintenanceEmployeeController {
     }
 
     /**
+     * Genera código QR para un empleado de mantenimiento
+     */
+    async generateQR(req, res) {
+        try {
+            const { id } = req.params;
+            const qrcode = require('qrcode');
+
+            const employee = await maintenanceService.prisma.empleados_mantenimiento.findUnique({
+                where: { id: parseInt(id) },
+                include: {
+                    persona: true,
+                    credenciales: { where: { estado: 'ACTIVA' }, take: 1 }
+                }
+            });
+
+            if (!employee) {
+                return res.status(404).json({ success: false, message: 'Empleado no encontrado' });
+            }
+
+            if (employee.estado !== 'ACTIVO') {
+                return res.status(400).json({ success: false, message: 'El empleado no está activo' });
+            }
+
+            // Generar payload del QR
+            const qrPayload = JSON.stringify({
+                tipo: 'EMPLEADO_MANTENIMIENTO',
+                empleado_id: employee.id,
+                documento: employee.documento_identidad,
+                nombre: `${employee.persona.nombre} ${employee.persona.apellido}`,
+                empresa: employee.empresa_mantenimiento,
+                especialidad: employee.especialidad,
+                emitido: new Date().toISOString(),
+                expira: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+            });
+
+            const qrDataUrl = await qrcode.toDataURL(qrPayload, {
+                errorCorrectionLevel: 'H',
+                width: 300
+            });
+
+            // Registrar auditoría
+            await maintenanceService.prisma.auditoria.create({
+                data: {
+                    usuario_id: req.user.id,
+                    accion: 'GENERATE_MAINTENANCE_QR',
+                    tabla_afectada: 'EmpleadosMantenimiento',
+                    registro_id: parseInt(id),
+                    ip_address: req.ip,
+                    user_agent: req.get('User-Agent')
+                }
+            });
+
+            logger.info(`📱 QR generado para empleado ${id} por usuario ${req.user.id}`);
+
+            res.json({
+                success: true,
+                data: {
+                    qrCode: qrDataUrl,
+                    employee: {
+                        id: employee.id,
+                        nombre: `${employee.persona.nombre} ${employee.persona.apellido}`,
+                        empresa: employee.empresa_mantenimiento,
+                        especialidad: employee.especialidad
+                    },
+                    generatedAt: new Date().toISOString(),
+                    expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+                },
+                message: 'QR generado exitosamente'
+            });
+
+        } catch (error) {
+            logger.error('Error generando QR:', error);
+            res.status(500).json({
+                success: false,
+                message: 'Error generando código QR',
+                error: error.message
+            });
+        }
+    }
+
+    /**
+     * Alias de getStatistics para compatibilidad con rutas
+     */
+    async getMaintenanceStats(req, res) {
+        return this.getStatistics(req, res);
+    }
+
+    /**
      * Elimina empleado de mantenimiento (soft delete)
      */
     async deleteEmployee(req, res) {

@@ -15,10 +15,15 @@ const auth = (req, res, next) => {
 
     // Verificar token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    // Agregar información del usuario al request
-    req.user = decoded;
-    
+
+    // Normalizar estructura de req.user para todo el sistema
+    req.user = {
+      id: decoded.id || decoded.userId,
+      username: decoded.username,
+      role: decoded.role || decoded.rol || decoded.rolNombre || 'user',
+      persona_id: decoded.persona_id
+    };
+
     next();
   } catch (error) {
     if (error.name === 'TokenExpiredError') {
@@ -52,7 +57,12 @@ const optionalAuth = (req, res, next) => {
     
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
+      req.user = {
+        id: decoded.id || decoded.userId,
+        username: decoded.username,
+        role: decoded.role || decoded.rol || decoded.rolNombre || 'user',
+        persona_id: decoded.persona_id
+      };
     }
     
     next();

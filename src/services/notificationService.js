@@ -1,6 +1,41 @@
 require('dotenv').config();
+const http = require('http');
 const twilio = require('twilio');
 const sgMail = require('@sendgrid/mail');
+
+// ── WhatsApp Bot local (chatbot-whatsapp.js en puerto 3002) ──────────────────
+const BOT_URL = `http://localhost:${process.env.WHATSAPP_BOT_PORT || 3002}`;
+
+async function callBot(path, body) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(body);
+    const req = http.request(
+      `${BOT_URL}${path}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) } },
+      (res) => {
+        let raw = '';
+        res.on('data', c => raw += c);
+        res.on('end', () => {
+          try { resolve({ status: res.statusCode, body: JSON.parse(raw) }); }
+          catch { resolve({ status: res.statusCode, body: raw }); }
+        });
+      }
+    );
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
+
+async function getBotStatus() {
+  return new Promise((resolve) => {
+    http.get(`${BOT_URL}/status`, (res) => {
+      let raw = '';
+      res.on('data', c => raw += c);
+      res.on('end', () => { try { resolve(JSON.parse(raw)); } catch { resolve(null); } });
+    }).on('error', () => resolve(null));
+  });
+}
 
 // Verificar credenciales de Twilio
 const twilioSid = process.env.TWILIO_ACCOUNT_SID;
@@ -44,46 +79,94 @@ if (isSendGridConfigured) {
 
 class NotificationService {
   
-  // Enviar WhatsApp
+  // Enviar WhatsApp — usa bot local primero, Twilio como fallback
   async enviarWhatsApp(telefono, mensaje) {
+    // 1. Intentar bot local (whatsapp-web.js)
     try {
-      // Verificar si Twilio está configurado
+      const botState = await getBotStatus();
+      if (botState && botState.connected) {
+        const resp = await callBot('/send', { telefono, mensaje });
+        if (resp.body && resp.body.success) {
+          console.log(`✅ WhatsApp enviado via bot local a ${telefono}`);
+          return { success: true, to: telefono, channel: 'whatsapp', via: 'bot' };
+        }
+      }
+    } catch (e) {
+      console.log('⚠️ Bot local no disponible, intentando Twilio...');
+    }
+
+    // 2. Fallback: Twilio
+    try {
       if (!isTwilioConfigured || !twilioClient) {
         return {
           success: false,
-          error: 'Twilio no configurado. Configurar TWILIO_ACCOUNT_SID y TWILIO_AUTH_TOKEN en .env',
+          error: 'Bot WhatsApp no conectado y Twilio no configurado.',
           to: telefono,
           channel: 'whatsapp',
           simulated: true
         };
       }
-
-      // Formatear número para WhatsApp
       const numeroFormateado = `whatsapp:${telefono.startsWith('+') ? telefono : '+' + telefono}`;
-      
       const message = await twilioClient.messages.create({
         body: mensaje,
         from: process.env.TWILIO_WHATSAPP_NUMBER,
         to: numeroFormateado
       });
-
-      console.log(`✅ WhatsApp enviado: ${message.sid}`);
-      return {
-        success: true,
-        messageId: message.sid,
-        to: telefono,
-        channel: 'whatsapp'
-      };
-
+      console.log(`✅ WhatsApp enviado via Twilio: ${message.sid}`);
+      return { success: true, messageId: message.sid, to: telefono, channel: 'whatsapp', via: 'twilio' };
     } catch (error) {
       console.error('❌ Error enviando WhatsApp:', error.message);
-      return {
-        success: false,
-        error: error.message,
-        to: telefono,
-        channel: 'whatsapp'
-      };
+      return { success: false, error: error.message, to: telefono, channel: 'whatsapp' };
     }
+  }
+
+  // Enviar QR de acceso por WhatsApp (imagen)
+  async enviarQRAcceso(telefono, { nombre, visitanteId, tipo, fecha, hora, areas } = {}) {
+    // Intentar bot local (soporta imágenes)
+    try {
+      const botState = await getBotStatus();
+      if (botState && botState.connected) {
+        const resp = await callBot('/send-qr', { telefono, nombre, visitanteId, tipo, fecha, hora, areas });
+        if (resp.body && resp.body.success) {
+          console.log(`✅ QR de acceso enviado a ${telefono}`);
+          return { success: true, to: telefono, channel: 'whatsapp', via: 'bot' };
+        }
+      }
+    } catch (e) { /* no bot */ }
+
+    // Fallback: enviar mensaje de texto con los datos
+    const msg =
+      `🎫 *Código de acceso - UnionTech*\n\n` +
+      `👤 Visitante: ${nombre || 'N/A'}\n` +
+      `🆔 ID: ${visitanteId}\n` +
+      `${tipo === 'recurrente' ? '🔄 Recurrente' : '📅 Temporal'}` +
+      `${fecha ? `\n📅 Fecha: ${fecha}` : ''}${hora ? `\n🕐 Hora: ${hora}` : ''}` +
+      `${areas ? `\n📍 Áreas: ${areas}` : ''}\n\n` +
+      `Preséntate en recepción con tu DNI y este mensaje.`;
+    return this.enviarWhatsApp(telefono, msg);
+  }
+
+  // Enviar alerta de seguridad por WhatsApp
+  async enviarAlertaSeguridad(telefono, { tipo, detalle, nivel } = {}) {
+    try {
+      const botState = await getBotStatus();
+      if (botState && botState.connected) {
+        const resp = await callBot('/send-alert', { telefono, tipo, detalle, nivel });
+        if (resp.body && resp.body.success) {
+          return { success: true, to: telefono, via: 'bot' };
+        }
+      }
+    } catch (e) { /* no bot */ }
+
+    const nivelEmoji = nivel === 'alta' ? '🔴' : nivel === 'media' ? '🟡' : '🟢';
+    const msg = `${nivelEmoji} *ALERTA DE SEGURIDAD*\n\n⚠️ Tipo: ${tipo}\n${detalle ? `📋 ${detalle}\n` : ''}🕐 ${new Date().toLocaleString('es-AR')}`;
+    return this.enviarWhatsApp(telefono, msg);
+  }
+
+  // Obtener estado del bot WhatsApp
+  async getBotStatus() {
+    const s = await getBotStatus();
+    return s || { connected: false, status: 'unavailable' };
   }
 
   // Enviar Email

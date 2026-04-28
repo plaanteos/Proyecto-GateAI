@@ -1,7 +1,7 @@
 {
   "name": "uniontech",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "src/server-complete.js",
   "description": "Sistema completo de control de accesos empresariales con WhatsApp/Email",
   "scripts": {
     "start": "node src/server-complete.js",
@@ -86,10 +86,12 @@
     "path-to-regexp": "^6.2.1",
     "prisma": "^6.16.0",
     "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
     "redis": "^4.7.1",
     "socket.io": "^4.8.1",
     "twilio": "^5.8.0",
     "uuid": "^11.1.0",
+    "whatsapp-web.js": "^1.34.7",
     "winston": "^3.17.0"
   },
   "devDependencies": {

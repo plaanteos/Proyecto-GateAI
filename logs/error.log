@@ -241,3 +241,26 @@ For more information, check the blog post at https://a.co/cUPnyil
 2025-10-14 10:42:43 [ERROR]: ❌ ERROR: Error obteniendo estadísticas rápidas: [object Object]
 2025-10-14 10:42:48 [ERROR]: ❌ ERROR: Error obteniendo estadísticas rápidas: [object Object]
 2025-10-14 10:42:53 [ERROR]: ❌ ERROR: Error obteniendo estadísticas rápidas: [object Object]
+2026-04-26 18:48:32 [ERROR]: (node:2916) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-26 18:50:20 [ERROR]: (node:9788) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-26 19:09:36 [ERROR]: (node:21224) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-26 19:30:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
+2026-04-26 20:00:04 [ERROR]: ❌ ERROR: ❌ Error en limpieza de invitaciones: [object Object]
+2026-04-26 20:00:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
+2026-04-26 20:30:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
+2026-04-26 21:30:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]

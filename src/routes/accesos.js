@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { auth } = require('../middleware/auth');
+const { requirePermission } = require('../middleware/rbac');
+
+// Aplicar autenticación a todas las rutas
+router.use(auth);
 
 // GET /api/accesos - Listar registros de acceso
-router.get('/', async (req, res) => {
+router.get('/', requirePermission('access.read'), async (req, res) => {
   try {
     const { fecha_desde, fecha_hasta, puerta_id, tipo_evento } = req.query;
     
@@ -41,7 +46,7 @@ router.get('/', async (req, res) => {
 });
 
 // POST /api/accesos - Registrar nuevo acceso
-router.post('/', async (req, res) => {
+router.post('/', requirePermission('access.validate'), async (req, res) => {
   try {
     const { credencial_id, puerta_id, tipo_evento, metodo_validacion, motivo_denegacion } = req.body;
     

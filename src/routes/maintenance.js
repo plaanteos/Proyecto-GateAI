@@ -70,48 +70,40 @@ router.post('/validate-access',
  * @desc Generar código QR para empleado
  * @access Requiere permiso: access.validate
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.post('/generate-qr/:id',
     requirePermission('access.validate'),
-    MaintenanceEmployeeController.generateQR
+    (req, res) => MaintenanceEmployeeController.generateQR(req, res)
 );
-*/
 
 /**
  * @route PUT /api/maintenance/renew-credential/:id
  * @desc Renovar credencial de empleado
  * @access Requiere permiso: access.manage
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.put('/renew-credential/:id',
     requirePermission('access.manage'),
-    MaintenanceEmployeeController.renewCredential
+    (req, res) => MaintenanceEmployeeController.renewCredential(req, res)
 );
-*/
 
 /**
  * @route GET /api/maintenance/access-logs/:id
  * @desc Obtener registros de acceso de empleado
  * @access Requiere permiso: access.read
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.get('/access-logs/:id',
     requirePermission('access.read'),
-    MaintenanceEmployeeController.getAccessLogs
+    (req, res) => MaintenanceEmployeeController.getEmployeeAccessHistory(req, res)
 );
-*/
 
 /**
  * @route GET /api/maintenance/stats
  * @desc Obtener estadísticas del sistema de mantenimiento
  * @access Requiere permiso: maintenance.read
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.get('/stats',
     requirePermission('maintenance.read'),
-    MaintenanceEmployeeController.getMaintenanceStats
+    (req, res) => MaintenanceEmployeeController.getMaintenanceStats(req, res)
 );
-*/
 
 /**
  * @route PUT /api/maintenance/employees/:employeeId
@@ -168,24 +160,20 @@ router.put('/employees/:employeeId/renew-credential',
  * @desc Obtener historial específico de empleado
  * @access Requiere permiso: access.read
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.get('/employee-history/:id',
     requirePermission('access.read'),
-    MaintenanceEmployeeController.getEmployeeAccessHistory
+    (req, res) => MaintenanceEmployeeController.getEmployeeAccessHistory(req, res)
 );
-*/
 
 /**
  * @route GET /api/maintenance/statistics
  * @desc Obtener estadísticas de empleados de mantenimiento
  * @access Requiere permiso: access.read
  */
-/* TEMPORAL: Comentado hasta implementar método
 router.get('/statistics',
     requirePermission('access.read'),
-    MaintenanceEmployeeController.getStatistics
+    (req, res) => MaintenanceEmployeeController.getStatistics(req, res)
 );
-*/
 
 /**
  * @route POST /api/maintenance/registro-rapido

@@ -3,6 +3,9 @@
  * Integra todas las funcionalidades y optimizaciones implementadas
  */
 
+// Cargar variables de entorno PRIMERO antes de cualquier otra importación
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -34,16 +37,24 @@ const { auth: authMiddleware } = require('./middleware/auth');
 const { requireAdmin, requirePermission } = require('./middleware/rbac');
 const { handleValidationErrors } = require('./middleware/validation');
 const errorHandler = require('./middleware/error-handler');
+const { auditMiddleware } = require('./middleware/auditLogger');
 
 // Rutas
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const visitorRoutes = require('./routes/visitantes');
 const dashboardRoutes = require('./routes/dashboard');
-const rbacRoutes = require('./routes/rbac-simple'); // Temporal: usando versión simplificada
+const rbacRoutes = require('./routes/rbac-simple');
 const maintenanceRoutes = require('./routes/maintenance');
 const systemRoutes = require('./routes/system');
 const documentosInvitacionRoutes = require('./routes/documentos-invitacion');
+const personasRoutes = require('./routes/personas');
+const edificiosRoutes = require('./routes/edificios');
+const accesosRoutes = require('./routes/accesos');
+const securityRoutes = require('./routes/security');
+const notificationsRoutes = require('./routes/notifications');
+const reportsRoutes = require('./routes/reports');
+const whatsappRoutes = require('./routes/whatsapp');
 
 class UNIONTECHServer {
     constructor() {
@@ -212,6 +223,9 @@ class UNIONTECHServer {
         
         // Middleware de performance
         this.app.use(performanceOptimizer.createPerformanceMiddleware());
+
+        // Middleware de auditoría
+        this.app.use(auditMiddleware());
         
         // Health check endpoint
         this.app.get('/health', (req, res) => {
@@ -260,10 +274,17 @@ class UNIONTECHServer {
     this.app.use('/api/auth', authRoutes);
     this.app.use('/api/users', authMiddleware, userRoutes);
     this.app.use('/api/visitantes', authMiddleware, visitorRoutes);
+    this.app.use('/api/personas', personasRoutes);
+    this.app.use('/api/edificios', edificiosRoutes);
+    this.app.use('/api/accesos', accesosRoutes);
     this.app.use('/api/documentos-invitacion', authMiddleware, documentosInvitacionRoutes);
     this.app.use('/api/dashboard', authMiddleware, dashboardRoutes);
     this.app.use('/api/rbac', authMiddleware, rbacRoutes);
-    this.app.use('/api/maintenance', authMiddleware, maintenanceRoutes);
+    this.app.use('/api/maintenance', maintenanceRoutes);
+    this.app.use('/api/security', authMiddleware, securityRoutes);
+    this.app.use('/api/notifications', authMiddleware, notificationsRoutes);
+    this.app.use('/api/reports', authMiddleware, reportsRoutes);
+    this.app.use('/api/whatsapp', authMiddleware, whatsappRoutes);
     this.app.use('/api/system', authMiddleware, requireAdmin(), systemRoutes);
         
         // Ruta raíz
