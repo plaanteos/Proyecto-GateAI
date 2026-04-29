@@ -1,0 +1,31 @@
+# Variables de entorno locales - NO incluir en imagen Docker
+.env
+.env.local
+.env.*.local
+
+# Dependencias
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Datos locales (Railway usa su propia DB)
+data/
+uploads/
+
+# Git
+.git/
+.gitignore
+
+# Dev tools
+.vscode/
+*.md
+
+# Tests
+tests/
+coverage/
+
+# Archivos temporales
+*.tmp
+*.cache

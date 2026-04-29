@@ -28,8 +28,8 @@ COPY --chown=uniontech:nodejs . .
 RUN npx prisma generate
 
 # Crear directorios necesarios
-RUN mkdir -p logs data/documents data/faces
-RUN chown -R uniontech:nodejs logs data
+RUN mkdir -p logs data/documents data/faces uploads/documentos-invitaciones
+RUN chown -R uniontech:nodejs logs data uploads
 
 # Configurar variables de entorno
 ENV NODE_ENV=production
