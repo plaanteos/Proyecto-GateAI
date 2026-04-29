@@ -1,7 +1,7 @@
 // UnionTech Frontend con Roles y Vistas Diferenciadas
 class UnionTechApp {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:3000/api';
+        this.apiBaseUrl = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
         this.currentUser = null;
         this.currentRole = null;
         this.dashboardData = null;

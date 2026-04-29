@@ -32,7 +32,7 @@ class AuthSystem {
 
     async login(username, password) {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const response = await fetch(`${window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app'}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ class AuthSystem {
     // Método para refrescar token (simulado)
     async refreshToken() {
         try {
-            const response = await this.authenticatedFetch('http://localhost:3000/api/auth/refresh', {
+            const response = await this.authenticatedFetch(`${window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app'}/api/auth/refresh`, {
                 method: 'POST'
             });
             

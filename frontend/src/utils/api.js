@@ -1,6 +1,7 @@
 // UnionTech - API Utilities
+const _DEFAULT_API_URL = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
 class APIClient {
-    constructor(baseUrl = 'http://localhost:3000/api') {
+    constructor(baseUrl = _DEFAULT_API_URL) {
         this.baseUrl = baseUrl;
     }
 

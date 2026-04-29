@@ -1,9 +1,10 @@
 // UnionTech - Aplicación Principal
+const _API_BASE = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
 class UnionTechApp {
     constructor() {
         this.currentUser = null;
         this.currentPage = 'dashboard';
-        this.apiBaseUrl = 'http://localhost:3000/api';
+        this.apiBaseUrl = _API_BASE;
         
         // Inicializar extensión de validación solo si está disponible
         if (typeof ValidationExtension !== 'undefined') {
