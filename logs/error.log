@@ -514,3 +514,207 @@ Error: listen EADDRINUSE: address already in use :::3001
     at new Promise (<anonymous>)
     at UNIONTECHServer.start (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\server-complete.js:490:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-04-28 21:59:39 [ERROR]: (node:22256) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-28 22:00:00 [ERROR]: ❌ Error en limpieza de invitaciones: 
+Invalid `this.prisma.invitaciones.findMany()` invocation in
+C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:52:71
+
+  49 logger.info('🧹 Iniciando limpieza de invitaciones vencidas...');
+  50 
+  51 // Obtener invitaciones vencidas
+→ 52 const expiredInvitations = await this.prisma.invitaciones.findMany({
+       where: {
+         OR: [
+           {
+             fecha_expiracion: {
+               lt: new Date("2026-04-29T01:00:00.288Z")
+             },
+             estado: {
+               in: [
+                 "PENDIENTE",
+                 "CONFIRMADA"
+               ]
+             }
+           },
+           {
+             tipo_invitacion: "TEMPORAL",
+             created_at: {
+               lt: new Date("2026-04-28T01:00:00.288Z")
+             },
+             estado: "PENDIENTE"
+           }
+         ]
+       },
+       include: {
+         persona: true,
+         puerta_acceso: {
+         ~~~~~~~~~~~~~
+           include: {
+             edificio: true
+           }
+         },
+     ?   documentos?: true
+       }
+     })
+
+Unknown field `puerta_acceso` for include statement on model `Invitaciones`. Available options are marked with ?. {"name":"PrismaClientValidationError","clientVersion":"6.16.0"}
+PrismaClientValidationError: 
+Invalid `this.prisma.invitaciones.findMany()` invocation in
+C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:52:71
+
+  49 logger.info('🧹 Iniciando limpieza de invitaciones vencidas...');
+  50 
+  51 // Obtener invitaciones vencidas
+→ 52 const expiredInvitations = await this.prisma.invitaciones.findMany({
+       where: {
+         OR: [
+           {
+             fecha_expiracion: {
+               lt: new Date("2026-04-29T01:00:00.288Z")
+             },
+             estado: {
+               in: [
+                 "PENDIENTE",
+                 "CONFIRMADA"
+               ]
+             }
+           },
+           {
+             tipo_invitacion: "TEMPORAL",
+             created_at: {
+               lt: new Date("2026-04-28T01:00:00.288Z")
+             },
+             estado: "PENDIENTE"
+           }
+         ]
+       },
+       include: {
+         persona: true,
+         puerta_acceso: {
+         ~~~~~~~~~~~~~
+           include: {
+             edificio: true
+           }
+         },
+     ?   documentos?: true
+       }
+     })
+
+Unknown field `puerta_acceso` for include statement on model `Invitaciones`. Available options are marked with ?.
+    at Nn (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at ei.handleRequestError (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6911)
+    at ei.handleAndLogRequestError (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6593)
+    at ei.request (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6300)
+    at async a (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:130:9551)
+    at async InvitationExpirationService.cleanupExpiredInvitations (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:52:40)
+    at async Task._execution (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:23:13)
+2026-04-28 22:00:00 [ERROR]: Error enviando notificaciones de expiración: 
+Invalid `this.prisma.invitaciones.findMany()` invocation in
+C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:148:72
+
+  145 try {
+  146     const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+  147     
+→ 148     const expiringInvitations = await this.prisma.invitaciones.findMany({
+            where: {
+              fecha_expiracion: {
+                lte: new Date("2026-04-29T03:00:00.293Z"),
+                gt: new Date("2026-04-29T01:00:00.293Z")
+              },
+              estado: {
+                in: [
+                  "PENDIENTE",
+                  "CONFIRMADA"
+                ]
+              },
+              notificacion_expiracion_enviada: false,
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          ?   AND?: InvitacionesWhereInput | InvitacionesWhereInput[],
+          ?   OR?: InvitacionesWhereInput[],
+          ?   NOT?: InvitacionesWhereInput | InvitacionesWhereInput[],
+          ?   id?: IntFilter | Int,
+          ?   persona_id?: IntFilter | Int,
+          ?   fecha_invitacion?: DateTimeFilter | DateTime,
+          ?   restricciones?: StringNullableFilter | String | Null,
+          ?   tipo_invitacion?: StringNullableFilter | String | Null,
+          ?   documentos_requeridos?: StringNullableFilter | String | Null,
+          ?   documentos_completados?: BoolFilter | Boolean,
+          ?   estado_documentos?: StringFilter | String,
+          ?   created_at?: DateTimeFilter | DateTime,
+          ?   updated_at?: DateTimeNullableFilter | DateTime | Null,
+          ?   deleted_at?: DateTimeNullableFilter | DateTime | Null,
+          ?   persona?: PersonasScalarRelationFilter | PersonasWhereInput,
+          ?   documentos?: Documentos_InvitacionListRelationFilter
+            },
+            include: {
+              persona: true,
+              puerta_acceso: {
+                include: {
+                  edificio: true
+                }
+              }
+            }
+          })
+
+Unknown argument `notificacion_expiracion_enviada`. Available options are marked with ?. {"name":"PrismaClientValidationError","clientVersion":"6.16.0"}
+PrismaClientValidationError: 
+Invalid `this.prisma.invitaciones.findMany()` invocation in
+C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:148:72
+
+  145 try {
+  146     const twoHoursFromNow = new Date(Date.now() + 2 * 60 * 60 * 1000);
+  147     
+→ 148     const expiringInvitations = await this.prisma.invitaciones.findMany({
+            where: {
+              fecha_expiracion: {
+                lte: new Date("2026-04-29T03:00:00.293Z"),
+                gt: new Date("2026-04-29T01:00:00.293Z")
+              },
+              estado: {
+                in: [
+                  "PENDIENTE",
+                  "CONFIRMADA"
+                ]
+              },
+              notificacion_expiracion_enviada: false,
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          ?   AND?: InvitacionesWhereInput | InvitacionesWhereInput[],
+          ?   OR?: InvitacionesWhereInput[],
+          ?   NOT?: InvitacionesWhereInput | InvitacionesWhereInput[],
+          ?   id?: IntFilter | Int,
+          ?   persona_id?: IntFilter | Int,
+          ?   fecha_invitacion?: DateTimeFilter | DateTime,
+          ?   restricciones?: StringNullableFilter | String | Null,
+          ?   tipo_invitacion?: StringNullableFilter | String | Null,
+          ?   documentos_requeridos?: StringNullableFilter | String | Null,
+          ?   documentos_completados?: BoolFilter | Boolean,
+          ?   estado_documentos?: StringFilter | String,
+          ?   created_at?: DateTimeFilter | DateTime,
+          ?   updated_at?: DateTimeNullableFilter | DateTime | Null,
+          ?   deleted_at?: DateTimeNullableFilter | DateTime | Null,
+          ?   persona?: PersonasScalarRelationFilter | PersonasWhereInput,
+          ?   documentos?: Documentos_InvitacionListRelationFilter
+            },
+            include: {
+              persona: true,
+              puerta_acceso: {
+                include: {
+                  edificio: true
+                }
+              }
+            }
+          })
+
+Unknown argument `notificacion_expiracion_enviada`. Available options are marked with ?.
+    at Nn (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at ei.handleRequestError (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6911)
+    at ei.handleAndLogRequestError (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6593)
+    at ei.request (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:121:6300)
+    at async a (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\@prisma\client\runtime\library.js:130:9551)
+    at async InvitationExpirationService.notifyExpiringInvitations (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:148:41)
+    at async Task._execution (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\services\invitationExpirationService.js:28:13)

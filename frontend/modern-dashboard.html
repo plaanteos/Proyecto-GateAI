@@ -1753,11 +1753,8 @@
     <script src="js/access-registration.js"></script>
     <script src="js/reports-dashboard.js"></script>
     <script>
-    // ===== API BASE & AUTH GUARD =====
+    // ===== API BASE =====
     window._APIBASE = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
-    if (!localStorage.getItem('uniontech_token') && !localStorage.getItem('authToken')) {
-        window.location.replace('/');
-    }
     </script>
     <script>
     // ===== ACCESS SYSTEM =====

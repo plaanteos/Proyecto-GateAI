@@ -107,7 +107,7 @@ class UnionTechMVP {
                 localStorage.setItem('uniontech_user', JSON.stringify(this.currentUser));
                 
                 this.showNotification('¡Bienvenido al sistema!', 'success');
-                this.showDashboard();
+                window.location.replace('modern-dashboard.html');
             } else {
                 this.showNotification(data.error || 'Error de autenticación', 'error');
             }
