@@ -31,6 +31,9 @@ RUN npx prisma generate
 RUN mkdir -p logs data/documents data/faces uploads/documentos-invitaciones
 RUN chown -R uniontech:nodejs logs data uploads
 
+# Dar permisos de ejecución al script de inicio
+RUN chmod +x start.sh
+
 # Configurar variables de entorno
 ENV NODE_ENV=production
 ENV PORT=3000
@@ -48,4 +51,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Comando de inicio con dumb-init
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "src/server-complete.js"]
+CMD ["/bin/sh", "start.sh"]

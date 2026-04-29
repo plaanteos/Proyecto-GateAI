@@ -149,7 +149,7 @@ class DatabaseOptimizer {
         
         // Crear índice usando SQL raw
         const fieldsList = fields.join(', ');
-        const sql = `CREATE NONCLUSTERED INDEX ${name} ON ${table} (${fieldsList})`;
+        const sql = `CREATE INDEX IF NOT EXISTS ${name} ON "${table}" (${fieldsList})`;
         
         await this.prisma.$executeRawUnsafe(sql);
     }
@@ -174,9 +174,10 @@ class DatabaseOptimizer {
             {
                 name: 'Búsqueda de usuarios por email',
                 query: `
-                    SELECT TOP 1 * 
+                    SELECT * 
                     FROM "User" 
-                    WHERE email = @email AND isActive = 1
+                    WHERE email = @email AND "isActive" = true
+                    LIMIT 1
                 `,
                 expectedRows: '1',
                 recommendation: 'Índice compuesto email+isActive crítico'
@@ -198,8 +199,8 @@ class DatabaseOptimizer {
                     SELECT 
                         COUNT(*) as total,
                         COUNT(CASE WHEN status = 'checked_in' THEN 1 END) as active
-                    FROM Visitor 
-                    WHERE CAST(createdAt AS DATE) = CAST(GETDATE() AS DATE)
+                    FROM "Visitor" 
+                    WHERE "createdAt"::DATE = CURRENT_DATE
                 `,
                 expectedRows: '<5000',
                 recommendation: 'Índice en createdAt con include status'
@@ -240,19 +241,12 @@ class DatabaseOptimizer {
     async configureAutoStatistics() {
         logger.info('📊 Configurando estadísticas automáticas...');
 
-        const statisticsConfig = [
-            'ALTER DATABASE CURRENT SET AUTO_CREATE_STATISTICS ON',
-            'ALTER DATABASE CURRENT SET AUTO_UPDATE_STATISTICS ON',
-            'ALTER DATABASE CURRENT SET AUTO_UPDATE_STATISTICS_ASYNC ON'
-        ];
-
-        for (const config of statisticsConfig) {
-            try {
-                await this.prisma.$executeRawUnsafe(config);
-                logger.info(`✅ Configuración aplicada: ${config}`);
-            } catch (error) {
-                logger.warn(`⚠️ Error en configuración: ${config}`, error.message);
-            }
+        // PostgreSQL gestiona estadísticas automáticamente (ANALYZE)
+        try {
+            await this.prisma.$executeRawUnsafe('ANALYZE');
+            logger.info('✅ Estadísticas de PostgreSQL actualizadas (ANALYZE)');
+        } catch (error) {
+            logger.warn('⚠️ No se pudo ejecutar ANALYZE:', error.message);
         }
     }
 
@@ -295,20 +289,21 @@ class DatabaseOptimizer {
                         v.email,
                         v.company,
                         v.purpose,
-                        v.hostUserId,
-                        u.name as hostName,
-                        v.createdAt,
-                        al.timestamp as checkinTime,
+                        v."hostUserId",
+                        u.name as "hostName",
+                        v."createdAt",
+                        al.timestamp as "checkinTime",
                         al.location
-                    FROM Visitor v
-                    INNER JOIN "User" u ON v.hostUserId = u.id
-                    LEFT JOIN AccessLog al ON v.id = al.visitorId 
+                    FROM "Visitor" v
+                    INNER JOIN "User" u ON v."hostUserId" = u.id
+                    LEFT JOIN "AccessLog" al ON v.id = al."visitorId" 
                         AND al.type = 'checkin'
                         AND al.id = (
-                            SELECT TOP 1 id 
-                            FROM AccessLog 
-                            WHERE visitorId = v.id 
+                            SELECT id 
+                            FROM "AccessLog" 
+                            WHERE "visitorId" = v.id 
                             ORDER BY timestamp DESC
+                            LIMIT 1
                         )
                     WHERE v.status = 'checked_in'
                 `
@@ -318,15 +313,15 @@ class DatabaseOptimizer {
                 sql: `
                     CREATE VIEW vw_DailyStatistics AS
                     SELECT 
-                        CAST(createdAt AS DATE) as date,
-                        COUNT(*) as totalVisitors,
-                        COUNT(CASE WHEN status = 'checked_in' THEN 1 END) as activeVisitors,
-                        COUNT(CASE WHEN status = 'checked_out' THEN 1 END) as completedVisits,
-                        COUNT(DISTINCT company) as uniqueCompanies,
-                        COUNT(DISTINCT hostUserId) as activeHosts
-                    FROM Visitor
-                    WHERE createdAt >= DATEADD(day, -30, GETDATE())
-                    GROUP BY CAST(createdAt AS DATE)
+                        "createdAt"::DATE as date,
+                        COUNT(*) as "totalVisitors",
+                        COUNT(CASE WHEN status = 'checked_in' THEN 1 END) as "activeVisitors",
+                        COUNT(CASE WHEN status = 'checked_out' THEN 1 END) as "completedVisits",
+                        COUNT(DISTINCT company) as "uniqueCompanies",
+                        COUNT(DISTINCT "hostUserId") as "activeHosts"
+                    FROM "Visitor"
+                    WHERE "createdAt" >= NOW() - INTERVAL '30 days'
+                    GROUP BY "createdAt"::DATE
                 `
             },
             {
@@ -334,18 +329,18 @@ class DatabaseOptimizer {
                 sql: `
                     CREATE VIEW vw_UserPermissions AS
                     SELECT DISTINCT
-                        u.id as userId,
+                        u.id as "userId",
                         u.email,
-                        r.name as roleName,
-                        p.name as permissionName,
+                        r.name as "roleName",
+                        p.name as "permissionName",
                         p.resource,
                         p.action
                     FROM "User" u
-                    INNER JOIN UserRole ur ON u.id = ur.userId
-                    INNER JOIN Role r ON ur.roleId = r.id
-                    INNER JOIN RolePermission rp ON r.id = rp.roleId
-                    INNER JOIN Permission p ON rp.permissionId = p.id
-                    WHERE u.isActive = 1
+                    INNER JOIN "UserRole" ur ON u.id = ur."userId"
+                    INNER JOIN "Role" r ON ur."roleId" = r.id
+                    INNER JOIN "RolePermission" rp ON r.id = rp."roleId"
+                    INNER JOIN "Permission" p ON rp."permissionId" = p.id
+                    WHERE u."isActive" = true
                 `
             }
         ];
