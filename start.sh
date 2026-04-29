@@ -1,10 +1,13 @@
 #!/bin/sh
-set -e
 
-echo "🔄 Ejecutando migraciones de base de datos..."
-npx prisma migrate deploy || echo "⚠️ Migraciones fallaron, continuando..."
+echo "=== UNIONTECH STARTUP ==="
+echo "NODE_ENV: $NODE_ENV"
+echo "DATABASE_URL set: $([ -n "$DATABASE_URL" ] && echo 'YES' || echo 'NO')"
 
-echo "🌱 Creando usuario admin si no existe..."
+echo "--- Ejecutando migraciones ---"
+npx prisma migrate deploy 2>&1 || echo "WARN: migrate deploy falló, continuando..."
+
+echo "--- Creando usuario admin ---"
 node -e "
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
@@ -57,7 +60,7 @@ async function seed() {
 }
 
 seed();
-" || echo "⚠️ Seed falló, continuando..."
+" 2>&1 || echo "WARN: Seed falló, continuando..."
 
-echo "🚀 Iniciando servidor..."
+echo "--- Iniciando servidor ---"
 exec node src/server-complete.js

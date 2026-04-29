@@ -12,8 +12,8 @@ RUN adduser -S uniontech -u 1001
 # Establecer directorio de trabajo
 WORKDIR /app
 
-# Instalar dumb-init para manejo de señales
-RUN apk add --no-cache dumb-init
+# Instalar dumb-init para manejo de señales y dos2unix para fix de CRLF
+RUN apk add --no-cache dumb-init dos2unix
 
 # Copiar archivos de dependencias
 COPY package*.json ./
@@ -31,8 +31,8 @@ RUN npx prisma generate
 RUN mkdir -p logs data/documents data/faces uploads/documentos-invitaciones
 RUN chown -R uniontech:nodejs logs data uploads
 
-# Dar permisos de ejecución al script de inicio
-RUN chmod +x start.sh
+# Dar permisos de ejecución al script de inicio y corregir line endings CRLF->LF
+RUN dos2unix start.sh && chmod +x start.sh
 
 # Configurar variables de entorno
 ENV NODE_ENV=production
