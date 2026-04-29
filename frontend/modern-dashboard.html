@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -554,7 +554,7 @@
                 <button class="icon-button" onclick="toggleNotifications()" title="Notificaciones">
                     <span class="material-icons">notifications</span>
                 </button>
-                <button class="icon-button" onclick="toggleSettings()" title="Configuración">
+                <button class="icon-button" onclick="toggleSettings()" title="ConfiguraciÃ³n">
                     <span class="material-icons">settings</span>
                 </button>
                 <div class="user-menu" onclick="toggleUserMenu()">
@@ -582,7 +582,7 @@
                     <span>Reportes</span>
                 </a>
                 
-                <div class="nav-section">Gestión</div>
+                <div class="nav-section">GestiÃ³n</div>
                 <a href="#users" class="nav-item" onclick="navigateTo('users')">
                     <span class="material-icons">people</span>
                     <span>Usuarios</span>
@@ -599,7 +599,7 @@
                 <div class="nav-section">Sistema</div>
                 <a href="#biometric" class="nav-item" onclick="navigateTo('biometric')">
                     <span class="material-icons">fingerprint</span>
-                    <span>Biométrico</span>
+                    <span>BiomÃ©trico</span>
                 </a>
                 <a href="#security" class="nav-item" onclick="navigateTo('security')">
                     <span class="material-icons">shield</span>
@@ -607,7 +607,7 @@
                 </a>
                 <a href="#settings" class="nav-item" onclick="navigateTo('settings')">
                     <span class="material-icons">tune</span>
-                    <span>Configuración</span>
+                    <span>ConfiguraciÃ³n</span>
                 </a>
             </nav>
         </aside>
@@ -693,7 +693,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">Accesos por Hora</div>
-                            <div class="card-subtitle">Actividad del día actual</div>
+                            <div class="card-subtitle">Actividad del dÃ­a actual</div>
                         </div>
                         <div class="card-content">
                             <div class="chart-container">
@@ -704,8 +704,8 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Métodos de Acceso</div>
-                            <div class="card-subtitle">Distribución por tipo</div>
+                            <div class="card-title">MÃ©todos de Acceso</div>
+                            <div class="card-subtitle">DistribuciÃ³n por tipo</div>
                         </div>
                         <div class="card-content">
                             <div class="chart-container">
@@ -719,14 +719,14 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Actividad Reciente</div>
-                        <div class="card-subtitle">Últimos accesos al sistema</div>
+                        <div class="card-subtitle">Ãšltimos accesos al sistema</div>
                     </div>
                     <div class="card-content">
                         <table class="data-table">
                             <thead>
                                 <tr>
                                     <th>Usuario</th>
-                                    <th>Método</th>
+                                    <th>MÃ©todo</th>
                                     <th>Edificio</th>
                                     <th>Hora</th>
                                     <th>Estado</th>
@@ -734,7 +734,7 @@
                                 </tr>
                             </thead>
                             <tbody id="recent-activity">
-                                <!-- Datos se cargarán dinámicamente -->
+                                <!-- Datos se cargarÃ¡n dinÃ¡micamente -->
                             </tbody>
                         </table>
                     </div>
@@ -745,19 +745,19 @@
             <div id="access-page" class="hidden">
                 <div class="page-header">
                     <h1 class="page-title">Control de Acceso</h1>
-                    <p class="page-subtitle">Registro y validación de accesos - UnionTech</p>
+                    <p class="page-subtitle">Registro y validaciÃ³n de accesos - UnionTech</p>
                 </div>
                 <div class="grid grid-cols-1">
                     <!-- Methods selector -->
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Método de Acceso</div>
+                            <div class="card-title">MÃ©todo de Acceso</div>
                         </div>
                         <div class="card-content">
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px;">
                                 <div class="method-card" data-method="qr" onclick="accessSystem.selectMethod('qr')" style="border:2px solid var(--divider-color);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;">
                                     <span class="material-icons" style="font-size:2rem;color:var(--primary-color);">qr_code</span>
-                                    <div style="font-weight:500;margin-top:8px;">Código QR</div>
+                                    <div style="font-weight:500;margin-top:8px;">CÃ³digo QR</div>
                                 </div>
                                 <div class="method-card" data-method="facial" onclick="accessSystem.selectMethod('facial')" style="border:2px solid var(--divider-color);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;">
                                     <span class="material-icons" style="font-size:2rem;color:var(--success-color);">face</span>
@@ -769,7 +769,7 @@
                                 </div>
                                 <div class="method-card" data-method="multimodal" onclick="accessSystem.selectMethod('multimodal')" style="border:2px solid var(--divider-color);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;">
                                     <span class="material-icons" style="font-size:2rem;color:var(--secondary-color);">verified_user</span>
-                                    <div style="font-weight:500;margin-top:8px;">Múltiple</div>
+                                    <div style="font-weight:500;margin-top:8px;">MÃºltiple</div>
                                 </div>
                             </div>
 
@@ -777,10 +777,10 @@
 
                             <!-- QR Form -->
                             <div id="access-qr-form" class="access-form hidden">
-                                <h3 style="margin-bottom:16px;"><span class="material-icons" style="vertical-align:middle;margin-right:8px;">qr_code_scanner</span>Escanear Código QR</h3>
+                                <h3 style="margin-bottom:16px;"><span class="material-icons" style="vertical-align:middle;margin-right:8px;">qr_code_scanner</span>Escanear CÃ³digo QR</h3>
                                 <div id="qr-reader" style="background:#000;border-radius:12px;overflow:hidden;margin:16px 0;min-height:200px;"></div>
                                 <div style="display:flex;gap:8px;">
-                                    <button onclick="accessSystem.startQRScanner()" class="btn btn-primary"><span class="material-icons">camera_alt</span> Iniciar Escáner</button>
+                                    <button onclick="accessSystem.startQRScanner()" class="btn btn-primary"><span class="material-icons">camera_alt</span> Iniciar EscÃ¡ner</button>
                                     <button onclick="accessSystem.stopQRScanner()" class="btn btn-outline"><span class="material-icons">stop</span> Detener</button>
                                 </div>
                             </div>
@@ -805,22 +805,22 @@
                                         <label style="display:block;margin-bottom:8px;font-weight:500;">Tipo de Documento</label>
                                         <select id="documentType" class="form-control" required style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                             <option value="">Selecciona el tipo</option>
-                                            <option value="cedula">Cédula de Ciudadanía</option>
+                                            <option value="cedula">CÃ©dula de CiudadanÃ­a</option>
                                             <option value="pasaporte">Pasaporte</option>
                                             <option value="tarjeta_identidad">Tarjeta de Identidad</option>
                                             <option value="empleado">ID Empleado</option>
                                         </select>
                                     </div>
                                     <div style="margin-bottom:16px;">
-                                        <label style="display:block;margin-bottom:8px;font-weight:500;">Número de Documento</label>
-                                        <input type="text" id="documentNumber" required placeholder="Ingresa tu número de documento" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
+                                        <label style="display:block;margin-bottom:8px;font-weight:500;">NÃºmero de Documento</label>
+                                        <input type="text" id="documentNumber" required placeholder="Ingresa tu nÃºmero de documento" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div style="margin-bottom:16px;">
                                         <label style="display:block;margin-bottom:8px;font-weight:500;">Edificio de Destino</label>
                                         <select id="building" required style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                             <option value="">Selecciona el edificio</option>
-                                            <option value="torre-a">Torre A - Administración</option>
-                                            <option value="torre-b">Torre B - Tecnología</option>
+                                            <option value="torre-a">Torre A - AdministraciÃ³n</option>
+                                            <option value="torre-b">Torre B - TecnologÃ­a</option>
                                             <option value="torre-c">Torre C - Operaciones</option>
                                             <option value="laboratorio">Laboratorio</option>
                                         </select>
@@ -831,14 +831,14 @@
 
                             <!-- Multimodal Form -->
                             <div id="access-multimodal-form" class="access-form hidden">
-                                <h3 style="margin-bottom:8px;"><span class="material-icons" style="vertical-align:middle;margin-right:8px;">security</span>Validación Múltiple</h3>
-                                <p style="color:var(--text-secondary);margin-bottom:24px;">Complete al menos 2 métodos de validación</p>
+                                <h3 style="margin-bottom:8px;"><span class="material-icons" style="vertical-align:middle;margin-right:8px;">security</span>ValidaciÃ³n MÃºltiple</h3>
+                                <p style="color:var(--text-secondary);margin-bottom:24px;">Complete al menos 2 mÃ©todos de validaciÃ³n</p>
                                 <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
-                                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="qr-validation" style="margin-right:4px;"><span class="material-icons" style="color:var(--primary-color);">qr_code</span>Código QR verificado</label>
+                                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="qr-validation" style="margin-right:4px;"><span class="material-icons" style="color:var(--primary-color);">qr_code</span>CÃ³digo QR verificado</label>
                                     <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="facial-validation" style="margin-right:4px;"><span class="material-icons" style="color:var(--success-color);">face</span>Reconocimiento facial completado</label>
                                     <label style="display:flex;align-items:center;gap:8px;cursor:pointer;"><input type="checkbox" id="document-validation" style="margin-right:4px;"><span class="material-icons" style="color:var(--warning-color);">badge</span>Documento validado</label>
                                 </div>
-                                <button onclick="accessSystem.processMultimodalAccess()" class="btn btn-primary" id="multimodal-submit" disabled><span class="material-icons">verified_user</span> Completar Validación</button>
+                                <button onclick="accessSystem.processMultimodalAccess()" class="btn btn-primary" id="multimodal-submit" disabled><span class="material-icons">verified_user</span> Completar ValidaciÃ³n</button>
                             </div>
                         </div>
                     </div>
@@ -860,8 +860,8 @@
             <!-- ===== REPORTS PAGE ===== -->
             <div id="reports-page" class="hidden">
                 <div class="page-header">
-                    <h1 class="page-title">Reportes y Análisis</h1>
-                    <p class="page-subtitle">Dashboard completo de estadísticas y métricas</p>
+                    <h1 class="page-title">Reportes y AnÃ¡lisis</h1>
+                    <p class="page-subtitle">Dashboard completo de estadÃ­sticas y mÃ©tricas</p>
                 </div>
 
                 <!-- Filters -->
@@ -899,14 +899,14 @@
                 <!-- Stats -->
                 <div class="grid grid-cols-4 mb-4">
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="rpt-totalAccess">--</div><div class="stat-label">Total Accesos</div></div><div class="stat-icon primary"><span class="material-icons">login</span></div></div></div>
-                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="rpt-uniqueUsers">--</div><div class="stat-label">Usuarios Únicos</div></div><div class="stat-icon success"><span class="material-icons">people</span></div></div></div>
+                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="rpt-uniqueUsers">--</div><div class="stat-label">Usuarios Ãšnicos</div></div><div class="stat-icon success"><span class="material-icons">people</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="rpt-avgDailyAccess">--</div><div class="stat-label">Promedio Diario</div></div><div class="stat-icon warning"><span class="material-icons">trending_up</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="rpt-peakHour">--</div><div class="stat-label">Hora Pico</div></div><div class="stat-icon primary"><span class="material-icons">schedule</span></div></div></div>
                 </div>
 
                 <!-- Charts -->
                 <div class="grid grid-cols-2 mb-4">
-                    <div class="card"><div class="card-header"><div class="card-title">Accesos por Día</div></div><div class="card-content"><div class="chart-container"><canvas id="rpt-dailyChart"></canvas></div></div></div>
+                    <div class="card"><div class="card-header"><div class="card-title">Accesos por DÃ­a</div></div><div class="card-content"><div class="chart-container"><canvas id="rpt-dailyChart"></canvas></div></div></div>
                     <div class="card"><div class="card-header"><div class="card-title">Accesos por Hora</div></div><div class="card-content"><div class="chart-container"><canvas id="rpt-hourlyChart"></canvas></div></div></div>
                 </div>
 
@@ -931,7 +931,7 @@
             <div id="security-page" class="hidden">
                 <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
                     <div>
-                        <h1 class="page-title">Seguridad Crítica</h1>
+                        <h1 class="page-title">Seguridad CrÃ­tica</h1>
                         <p class="page-subtitle">Monitoreo de eventos y amenazas en tiempo real</p>
                     </div>
                     <div id="sec-systemStatus" style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;background:#27ae60;color:white;">
@@ -947,19 +947,19 @@
                                 <label style="display:block;margin-bottom:4px;font-size:0.875rem;color:var(--text-secondary);">Severidad</label>
                                 <select id="sec-severityFilter" style="padding:8px;border:1px solid var(--divider-color);border-radius:8px;">
                                     <option value="">Todos</option>
-                                    <option value="CRITICAL">Crítico</option>
+                                    <option value="CRITICAL">CrÃ­tico</option>
                                     <option value="HIGH">Alto</option>
                                     <option value="MEDIUM">Medio</option>
                                     <option value="LOW">Bajo</option>
                                 </select>
                             </div>
                             <div>
-                                <label style="display:block;margin-bottom:4px;font-size:0.875rem;color:var(--text-secondary);">Período</label>
+                                <label style="display:block;margin-bottom:4px;font-size:0.875rem;color:var(--text-secondary);">PerÃ­odo</label>
                                 <select id="sec-periodFilter" style="padding:8px;border:1px solid var(--divider-color);border-radius:8px;">
-                                    <option value="1">Última hora</option>
-                                    <option value="24" selected>Últimas 24h</option>
-                                    <option value="168">Última semana</option>
-                                    <option value="720">Último mes</option>
+                                    <option value="1">Ãšltima hora</option>
+                                    <option value="24" selected>Ãšltimas 24h</option>
+                                    <option value="168">Ãšltima semana</option>
+                                    <option value="720">Ãšltimo mes</option>
                                 </select>
                             </div>
                             <button onclick="securitySystem.refreshDashboard()" class="btn btn-primary"><span class="material-icons">refresh</span> Actualizar</button>
@@ -971,18 +971,18 @@
 
                 <!-- Stats -->
                 <div class="grid grid-cols-3 mb-4" style="grid-template-columns: repeat(auto-fit, minmax(140px,1fr));">
-                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-criticalCount" style="color:var(--error-color)">0</div><div class="stat-label">Críticos (24h)</div></div><div class="stat-icon error"><span class="material-icons">warning</span></div></div></div>
+                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-criticalCount" style="color:var(--error-color)">0</div><div class="stat-label">CrÃ­ticos (24h)</div></div><div class="stat-icon error"><span class="material-icons">warning</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-failedLoginsCount">0</div><div class="stat-label">Intentos Fallidos</div></div><div class="stat-icon warning"><span class="material-icons">login</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-violationsCount" style="color:var(--error-color)">0</div><div class="stat-label">Violaciones</div></div><div class="stat-icon error"><span class="material-icons">gpp_bad</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-systemErrorsCount">0</div><div class="stat-label">Errores Sistema</div></div><div class="stat-icon warning"><span class="material-icons">error</span></div></div></div>
-                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-riskScore">0</div><div class="stat-label">Índice de Riesgo</div></div><div class="stat-icon primary"><span class="material-icons">analytics</span></div></div></div>
+                    <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-riskScore">0</div><div class="stat-label">Ãndice de Riesgo</div></div><div class="stat-icon primary"><span class="material-icons">analytics</span></div></div></div>
                     <div class="stat-card"><div class="stat-header"><div><div class="stat-value" id="sec-activeThreats" style="color:var(--error-color)">0</div><div class="stat-label">Amenazas Activas</div></div><div class="stat-icon error"><span class="material-icons">shield</span></div></div></div>
                 </div>
 
                 <!-- Charts -->
                 <div class="grid grid-cols-2 mb-4">
                     <div class="card"><div class="card-header"><div class="card-title">Tendencia de Eventos</div></div><div class="card-content"><div class="chart-container"><canvas id="sec-eventsChart"></canvas></div></div></div>
-                    <div class="card"><div class="card-header"><div class="card-title">Distribución por Severidad</div></div><div class="card-content"><div class="chart-container"><canvas id="sec-severityChart"></canvas></div></div></div>
+                    <div class="card"><div class="card-header"><div class="card-title">DistribuciÃ³n por Severidad</div></div><div class="card-content"><div class="chart-container"><canvas id="sec-severityChart"></canvas></div></div></div>
                 </div>
 
                 <!-- Logs Table -->
@@ -994,7 +994,7 @@
                                 <tr>
                                     <th>Timestamp</th>
                                     <th>Severidad</th>
-                                    <th>Categoría</th>
+                                    <th>CategorÃ­a</th>
                                     <th>Evento</th>
                                     <th>Usuario/IP</th>
                                     <th>Acciones</th>
@@ -1011,8 +1011,8 @@
             <!-- ===== BIOMETRIC PAGE ===== -->
             <div id="biometric-page" class="hidden">
                 <div class="page-header">
-                    <h1 class="page-title">Verificación Biométrica</h1>
-                    <p class="page-subtitle">Registro y reconocimiento biométrico de dos fases</p>
+                    <h1 class="page-title">VerificaciÃ³n BiomÃ©trica</h1>
+                    <p class="page-subtitle">Registro y reconocimiento biomÃ©trico de dos fases</p>
                 </div>
 
                 <!-- Tabs -->
@@ -1022,10 +1022,10 @@
                             <span class="material-icons" style="vertical-align:middle;margin-right:8px;">person_add</span>Registro Completo
                         </button>
                         <button onclick="biometricSystem.switchTab('recognize')" class="bio-tab" id="bio-tab-recognize" style="flex:1;padding:16px;border:none;background:transparent;cursor:pointer;font-weight:500;color:var(--text-secondary);border-bottom:3px solid transparent;">
-                            <span class="material-icons" style="vertical-align:middle;margin-right:8px;">face</span>Reconocimiento Rápido
+                            <span class="material-icons" style="vertical-align:middle;margin-right:8px;">face</span>Reconocimiento RÃ¡pido
                         </button>
                         <button onclick="biometricSystem.switchTab('stats')" class="bio-tab" id="bio-tab-stats" style="flex:1;padding:16px;border:none;background:transparent;cursor:pointer;font-weight:500;color:var(--text-secondary);border-bottom:3px solid transparent;">
-                            <span class="material-icons" style="vertical-align:middle;margin-right:8px;">analytics</span>Estadísticas
+                            <span class="material-icons" style="vertical-align:middle;margin-right:8px;">analytics</span>EstadÃ­sticas
                         </button>
                     </div>
 
@@ -1037,7 +1037,7 @@
                         </div>
                         <form id="bio-register-form">
                             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px;">
-                                <div><label style="display:block;margin-bottom:4px;font-weight:500;">ID de Usuario</label><input type="text" id="bio-userId" name="userId" required placeholder="ID único" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;"></div>
+                                <div><label style="display:block;margin-bottom:4px;font-weight:500;">ID de Usuario</label><input type="text" id="bio-userId" name="userId" required placeholder="ID Ãºnico" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;"></div>
                                 <div><label style="display:block;margin-bottom:4px;font-weight:500;">DNI</label><input type="text" id="bio-dni" name="dni" required placeholder="12345678" maxlength="8" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;"></div>
                                 <div><label style="display:block;margin-bottom:4px;font-weight:500;">Nombre</label><input type="text" id="bio-firstName" name="firstName" required placeholder="Nombre" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;"></div>
                                 <div><label style="display:block;margin-bottom:4px;font-weight:500;">Apellido</label><input type="text" id="bio-lastName" name="lastName" required placeholder="Apellido" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;"></div>
@@ -1056,7 +1056,7 @@
                                 <div style="border:2px dashed var(--divider-color);border-radius:12px;padding:24px;text-align:center;">
                                     <span class="material-icons" style="font-size:2.5rem;color:var(--text-secondary);">face</span>
                                     <h4 style="margin:8px 0;">Captura tu Rostro</h4>
-                                    <button type="button" class="btn btn-primary" onclick="biometricSystem.startFaceCapture()" style="margin-bottom:8px;">Iniciar Cámara</button>
+                                    <button type="button" class="btn btn-primary" onclick="biometricSystem.startFaceCapture()" style="margin-bottom:8px;">Iniciar CÃ¡mara</button>
                                     <video id="bio-face-video" style="display:none;width:100%;border-radius:8px;" autoplay></video>
                                     <div id="bio-face-preview" style="display:none;">
                                         <img id="bio-face-image" style="max-width:100%;max-height:200px;border-radius:8px;border:2px solid var(--divider-color);" alt="Vista previa del rostro">
@@ -1075,7 +1075,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="width:100%;">🔐 Registrar Identidad Biométrica</button>
+                            <button type="submit" class="btn btn-primary" style="width:100%;">ðŸ” Registrar Identidad BiomÃ©trica</button>
                         </form>
                     </div>
 
@@ -1083,7 +1083,7 @@
                     <div id="bio-recognize-content" class="card-content hidden">
                         <div style="background:#e8f5e9;border:1px solid #c8e6c9;border-radius:8px;padding:16px;margin-bottom:24px;">
                             <strong style="color:#2e7d32;">Fase 2:</strong>
-                            <span style="color:#2e7d32;"> Reconocimiento rápido para personal de seguridad.</span>
+                            <span style="color:#2e7d32;"> Reconocimiento rÃ¡pido para personal de seguridad.</span>
                         </div>
                         <form id="bio-recognize-form">
                             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px;">
@@ -1102,7 +1102,7 @@
                                         <option value="admin">Administrador</option>
                                     </select>
                                 </div>
-                                <div><label style="display:block;margin-bottom:4px;font-weight:500;">Ubicación</label>
+                                <div><label style="display:block;margin-bottom:4px;font-weight:500;">UbicaciÃ³n</label>
                                     <input type="text" id="bio-location" name="location" placeholder="Ej: Entrada principal" value="Entrada principal" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                             </div>
@@ -1116,13 +1116,13 @@
                                     <br><button type="button" class="btn btn-outline" onclick="biometricSystem.retakeScan()" style="margin-top:8px;">Escanear Otra Vez</button>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="width:100%;">⚡ Reconocer Identidad</button>
+                            <button type="submit" class="btn btn-primary" style="width:100%;">âš¡ Reconocer Identidad</button>
                         </form>
                     </div>
 
                     <!-- Stats Tab -->
                     <div id="bio-stats-content" class="card-content hidden">
-                        <button class="btn btn-primary mb-4" onclick="biometricSystem.loadStats()">Actualizar Estadísticas</button>
+                        <button class="btn btn-primary mb-4" onclick="biometricSystem.loadStats()">Actualizar EstadÃ­sticas</button>
                         <div id="bio-stats-data" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;"></div>
                     </div>
 
@@ -1142,7 +1142,7 @@
             <!-- ===== USERS PAGE ===== -->
             <div id="users-page" class="hidden">
                 <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
-                    <div><h1 class="page-title">Usuarios</h1><p class="page-subtitle">Gestión de usuarios, roles y permisos del sistema</p></div>
+                    <div><h1 class="page-title">Usuarios</h1><p class="page-subtitle">GestiÃ³n de usuarios, roles y permisos del sistema</p></div>
                     <button class="btn btn-primary" onclick="usersModule.openCreateModal()"><span class="material-icons">person_add</span> Nuevo Usuario</button>
                 </div>
 
@@ -1188,7 +1188,7 @@
                                         <th>Email</th>
                                         <th>Rol</th>
                                         <th>Estado</th>
-                                        <th>Último acceso</th>
+                                        <th>Ãšltimo acceso</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -1231,8 +1231,8 @@
                                 <input type="email" id="usr-email" required placeholder="correo@empresa.com" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                             </div>
                             <div style="margin-bottom:16px;">
-                                <label style="display:block;margin-bottom:4px;font-weight:500;">Contraseña <span id="usr-pwd-hint" style="font-size:0.8rem;color:var(--text-secondary);">(requerida para nuevo usuario)</span></label>
-                                <input type="password" id="usr-password" placeholder="Mínimo 8 caracteres" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
+                                <label style="display:block;margin-bottom:4px;font-weight:500;">ContraseÃ±a <span id="usr-pwd-hint" style="font-size:0.8rem;color:var(--text-secondary);">(requerida para nuevo usuario)</span></label>
+                                <input type="password" id="usr-password" placeholder="MÃ­nimo 8 caracteres" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
                                 <div>
@@ -1246,7 +1246,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label style="display:block;margin-bottom:4px;font-weight:500;">Teléfono</label>
+                                    <label style="display:block;margin-bottom:4px;font-weight:500;">TelÃ©fono</label>
                                     <input type="tel" id="usr-phone" placeholder="+54 911..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                             </div>
@@ -1267,7 +1267,7 @@
             <!-- ===== BUILDINGS PAGE ===== -->
             <div id="buildings-page" class="hidden">
                 <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
-                    <div><h1 class="page-title">Edificios</h1><p class="page-subtitle">Gestión de edificios, pisos y puntos de acceso</p></div>
+                    <div><h1 class="page-title">Edificios</h1><p class="page-subtitle">GestiÃ³n de edificios, pisos y puntos de acceso</p></div>
                     <button class="btn btn-primary" onclick="buildingsModule.openCreateModal()"><span class="material-icons">add_business</span> Nuevo Edificio</button>
                 </div>
 
@@ -1297,7 +1297,7 @@
                                 <input type="text" id="bld-nombre" required placeholder="Ej: Torre A" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                             </div>
                             <div style="margin-bottom:16px;">
-                                <label style="display:block;margin-bottom:4px;font-weight:500;">Dirección *</label>
+                                <label style="display:block;margin-bottom:4px;font-weight:500;">DirecciÃ³n *</label>
                                 <input type="text" id="bld-direccion" required placeholder="Av. Corrientes 1234" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
@@ -1306,13 +1306,13 @@
                                     <input type="text" id="bld-ciudad" placeholder="Buenos Aires" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                                 <div>
-                                    <label style="display:block;margin-bottom:4px;font-weight:500;">Código Postal</label>
+                                    <label style="display:block;margin-bottom:4px;font-weight:500;">CÃ³digo Postal</label>
                                     <input type="text" id="bld-cp" placeholder="C1043" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                             </div>
                             <div style="margin-bottom:24px;">
-                                <label style="display:block;margin-bottom:4px;font-weight:500;">Descripción</label>
-                                <textarea id="bld-descripcion" rows="3" placeholder="Descripción opcional..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;"></textarea>
+                                <label style="display:block;margin-bottom:4px;font-weight:500;">DescripciÃ³n</label>
+                                <textarea id="bld-descripcion" rows="3" placeholder="DescripciÃ³n opcional..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;"></textarea>
                             </div>
                             <div id="bld-modal-error" style="display:none;background:#ffebee;color:#c62828;padding:12px;border-radius:8px;margin-bottom:16px;"></div>
                             <div style="display:flex;gap:12px;justify-content:flex-end;">
@@ -1327,7 +1327,7 @@
             <!-- ===== VISITORS PAGE ===== -->
             <div id="visitors-page" class="hidden">
                 <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
-                    <div><h1 class="page-title">Visitantes</h1><p class="page-subtitle">Registro, autorización y control de visitantes</p></div>
+                    <div><h1 class="page-title">Visitantes</h1><p class="page-subtitle">Registro, autorizaciÃ³n y control de visitantes</p></div>
                     <button class="btn btn-primary" onclick="visitorsModule.openCreateModal()"><span class="material-icons">person_add</span> Registrar Visitante</button>
                 </div>
 
@@ -1360,7 +1360,7 @@
                                     <tr>
                                         <th>Visitante</th>
                                         <th>Empresa</th>
-                                        <th>Anfitrión</th>
+                                        <th>AnfitriÃ³n</th>
                                         <th>Edificio</th>
                                         <th>Hora estimada</th>
                                         <th>Estado</th>
@@ -1400,7 +1400,7 @@
                                     </label>
                                     <label style="flex:1;display:flex;align-items:center;gap:8px;padding:12px;border:2px solid var(--divider-color);border-radius:8px;cursor:pointer;" id="vis-type-recurrente-label">
                                         <input type="radio" name="vis-tipo" id="vis-tipo-recurrente" value="recurrente" onchange="visitorsModule.onTipoChange('recurrente')" style="width:16px;height:16px;">
-                                        <div><div style="font-weight:500;">Recurrente</div><div style="font-size:0.8rem;color:var(--text-secondary);">Acceso periódico</div></div>
+                                        <div><div style="font-weight:500;">Recurrente</div><div style="font-size:0.8rem;color:var(--text-secondary);">Acceso periÃ³dico</div></div>
                                     </label>
                                 </div>
                             </div>
@@ -1408,7 +1408,7 @@
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
                                 <div>
                                     <label style="display:block;margin-bottom:4px;font-weight:500;">Nombre completo *</label>
-                                    <input type="text" id="vis-nombre" required placeholder="Juan Pérez" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
+                                    <input type="text" id="vis-nombre" required placeholder="Juan PÃ©rez" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                                 <div>
                                     <label style="display:block;margin-bottom:4px;font-weight:500;">DNI *</label>
@@ -1417,7 +1417,7 @@
                             </div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
                                 <div>
-                                    <label style="display:block;margin-bottom:4px;font-weight:500;">Teléfono <span style="font-size:0.8rem;color:var(--primary-color);">(para enviar QR)</span></label>
+                                    <label style="display:block;margin-bottom:4px;font-weight:500;">TelÃ©fono <span style="font-size:0.8rem;color:var(--primary-color);">(para enviar QR)</span></label>
                                     <input type="tel" id="vis-telefono" placeholder="+54 911..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                                 <div>
@@ -1456,17 +1456,17 @@
                                 </div>
                             </div>
 
-                            <!-- Configuración para RECURRENTE -->
+                            <!-- ConfiguraciÃ³n para RECURRENTE -->
                             <div id="vis-recurrente-fields" style="display:none;">
                                 <div style="background:#e3f2fd;border-radius:8px;padding:16px;margin-bottom:16px;">
-                                    <div style="font-weight:500;margin-bottom:12px;color:var(--primary-color);">Configuración de acceso recurrente</div>
+                                    <div style="font-weight:500;margin-bottom:12px;color:var(--primary-color);">ConfiguraciÃ³n de acceso recurrente</div>
                                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px;">
                                         <div>
-                                            <label style="display:block;margin-bottom:4px;font-weight:500;">Válido desde *</label>
+                                            <label style="display:block;margin-bottom:4px;font-weight:500;">VÃ¡lido desde *</label>
                                             <input type="date" id="vis-fecha-inicio" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;background:white;">
                                         </div>
                                         <div>
-                                            <label style="display:block;margin-bottom:4px;font-weight:500;">Válido hasta *</label>
+                                            <label style="display:block;margin-bottom:4px;font-weight:500;">VÃ¡lido hasta *</label>
                                             <input type="date" id="vis-fecha-fin" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;background:white;">
                                         </div>
                                     </div>
@@ -1481,25 +1481,25 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <label style="display:block;margin-bottom:8px;font-weight:500;">Días permitidos</label>
+                                        <label style="display:block;margin-bottom:8px;font-weight:500;">DÃ­as permitidos</label>
                                         <div style="display:flex;gap:8px;flex-wrap:wrap;">
                                             <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="lun" checked style="width:14px;height:14px;"> Lun</label>
                                             <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="mar" checked style="width:14px;height:14px;"> Mar</label>
-                                            <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="mie" checked style="width:14px;height:14px;"> Mié</label>
+                                            <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="mie" checked style="width:14px;height:14px;"> MiÃ©</label>
                                             <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="jue" checked style="width:14px;height:14px;"> Jue</label>
                                             <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="vie" checked style="width:14px;height:14px;"> Vie</label>
-                                            <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="sab" style="width:14px;height:14px;"> Sáb</label>
+                                            <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="sab" style="width:14px;height:14px;"> SÃ¡b</label>
                                             <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;background:white;"><input type="checkbox" name="vis-dias" value="dom" style="width:14px;height:14px;"> Dom</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Áreas permitidas -->
+                            <!-- Ãreas permitidas -->
                             <div style="margin-bottom:16px;">
-                                <label style="display:block;margin-bottom:8px;font-weight:500;">Áreas permitidas</label>
+                                <label style="display:block;margin-bottom:8px;font-weight:500;">Ãreas permitidas</label>
                                 <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                                    <label style="display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;"><input type="checkbox" name="vis-areas" value="recepcion" checked style="width:14px;height:14px;"> Recepción</label>
+                                    <label style="display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;"><input type="checkbox" name="vis-areas" value="recepcion" checked style="width:14px;height:14px;"> RecepciÃ³n</label>
                                     <label style="display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;"><input type="checkbox" name="vis-areas" value="ascensor" style="width:14px;height:14px;"> Ascensor</label>
                                     <label style="display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;"><input type="checkbox" name="vis-areas" value="oficinas" style="width:14px;height:14px;"> Oficinas</label>
                                     <label style="display:flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid var(--divider-color);border-radius:20px;cursor:pointer;"><input type="checkbox" name="vis-areas" value="laboratorio" style="width:14px;height:14px;"> Laboratorio</label>
@@ -1510,13 +1510,13 @@
 
                             <div style="margin-bottom:16px;">
                                 <label style="display:block;margin-bottom:4px;font-weight:500;">Motivo de la visita</label>
-                                <textarea id="vis-motivo" rows="2" placeholder="Reunión, entrega, mantenimiento..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;"></textarea>
+                                <textarea id="vis-motivo" rows="2" placeholder="ReuniÃ³n, entrega, mantenimiento..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;"></textarea>
                             </div>
 
-                            <!-- Enviar QR automáticamente -->
+                            <!-- Enviar QR automÃ¡ticamente -->
                             <div style="margin-bottom:24px;padding:12px;background:#e8f5e9;border-radius:8px;display:flex;align-items:center;gap:10px;">
                                 <input type="checkbox" id="vis-sendqr" checked style="width:16px;height:16px;flex-shrink:0;">
-                                <label for="vis-sendqr" style="cursor:pointer;"><strong>Enviar QR de acceso por WhatsApp</strong> al registrar (requiere teléfono)</label>
+                                <label for="vis-sendqr" style="cursor:pointer;"><strong>Enviar QR de acceso por WhatsApp</strong> al registrar (requiere telÃ©fono)</label>
                             </div>
 
                             <div id="vis-modal-error" style="display:none;background:#ffebee;color:#c62828;padding:12px;border-radius:8px;margin-bottom:16px;"></div>
@@ -1531,7 +1531,7 @@
                 <!-- QR Modal -->
                 <div id="vis-qr-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
                     <div style="background:white;border-radius:12px;padding:32px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 48px rgba(0,0,0,0.2);">
-                        <h3 style="margin-bottom:16px;">Código QR de Acceso</h3>
+                        <h3 style="margin-bottom:16px;">CÃ³digo QR de Acceso</h3>
                         <p id="vis-qr-visitor-name" style="color:var(--text-secondary);margin-bottom:16px;"></p>
                         <div id="vis-qr-container" style="display:flex;justify-content:center;margin-bottom:24px;"></div>
                         <div style="display:flex;gap:12px;justify-content:center;">
@@ -1544,7 +1544,7 @@
 
             <!-- ===== SETTINGS PAGE ===== -->
             <div id="settings-page" class="hidden">
-                <div class="page-header"><h1 class="page-title">Configuración</h1><p class="page-subtitle">Ajustes del sistema, perfil y seguridad</p></div>
+                <div class="page-header"><h1 class="page-title">ConfiguraciÃ³n</h1><p class="page-subtitle">Ajustes del sistema, perfil y seguridad</p></div>
 
                 <!-- Settings Tabs -->
                 <div style="display:flex;border-bottom:2px solid var(--divider-color);margin-bottom:24px;">
@@ -1566,7 +1566,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header"><div class="card-title">Información Personal</div></div>
+                            <div class="card-header"><div class="card-title">InformaciÃ³n Personal</div></div>
                             <div class="card-content">
                                 <form onsubmit="settingsModule.saveProfile(event)">
                                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
@@ -1584,7 +1584,7 @@
                                         <input type="email" id="cfg-email" placeholder="correo@empresa.com" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div style="margin-bottom:24px;">
-                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Teléfono</label>
+                                        <label style="display:block;margin-bottom:4px;font-weight:500;">TelÃ©fono</label>
                                         <input type="tel" id="cfg-phone" placeholder="+54 911..." style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div id="cfg-profile-msg" style="display:none;padding:12px;border-radius:8px;margin-bottom:16px;"></div>
@@ -1599,38 +1599,38 @@
                 <div id="cfg-security-tab" class="hidden">
                     <div class="grid grid-cols-2" style="gap:24px;align-items:start;">
                         <div class="card">
-                            <div class="card-header"><div class="card-title">Cambiar Contraseña</div></div>
+                            <div class="card-header"><div class="card-title">Cambiar ContraseÃ±a</div></div>
                             <div class="card-content">
                                 <form onsubmit="settingsModule.changePassword(event)">
                                     <div style="margin-bottom:16px;">
-                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Contraseña actual *</label>
+                                        <label style="display:block;margin-bottom:4px;font-weight:500;">ContraseÃ±a actual *</label>
                                         <input type="password" id="cfg-currentPwd" required style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div style="margin-bottom:16px;">
-                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Nueva contraseña *</label>
-                                        <input type="password" id="cfg-newPwd" required placeholder="Mínimo 8 caracteres" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
+                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Nueva contraseÃ±a *</label>
+                                        <input type="password" id="cfg-newPwd" required placeholder="MÃ­nimo 8 caracteres" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div style="margin-bottom:24px;">
-                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Confirmar nueva contraseña *</label>
+                                        <label style="display:block;margin-bottom:4px;font-weight:500;">Confirmar nueva contraseÃ±a *</label>
                                         <input type="password" id="cfg-confirmPwd" required style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                     </div>
                                     <div id="cfg-pwd-msg" style="display:none;padding:12px;border-radius:8px;margin-bottom:16px;"></div>
-                                    <button type="submit" class="btn btn-primary"><span class="material-icons">lock_reset</span> Actualizar Contraseña</button>
+                                    <button type="submit" class="btn btn-primary"><span class="material-icons">lock_reset</span> Actualizar ContraseÃ±a</button>
                                 </form>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header"><div class="card-title">Sesión Activa</div></div>
+                            <div class="card-header"><div class="card-title">SesiÃ³n Activa</div></div>
                             <div class="card-content">
                                 <div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--background-color);border-radius:8px;margin-bottom:16px;">
                                     <span class="material-icons" style="color:var(--success-color);font-size:2rem;">laptop</span>
                                     <div>
                                         <div style="font-weight:500;">Este dispositivo</div>
-                                        <div style="font-size:0.875rem;color:var(--text-secondary);" id="cfg-session-info">Sesión activa</div>
+                                        <div style="font-size:0.875rem;color:var(--text-secondary);" id="cfg-session-info">SesiÃ³n activa</div>
                                     </div>
                                     <span class="badge success" style="margin-left:auto;">Activa</span>
                                 </div>
-                                <button class="btn" style="background:var(--error-color);color:white;" onclick="settingsModule.logout()"><span class="material-icons">logout</span> Cerrar Sesión</button>
+                                <button class="btn" style="background:var(--error-color);color:white;" onclick="settingsModule.logout()"><span class="material-icons">logout</span> Cerrar SesiÃ³n</button>
                             </div>
                         </div>
                     </div>
@@ -1651,7 +1651,7 @@
                                     <label style="position:relative;display:inline-block;width:48px;height:26px;cursor:pointer;"><input type="checkbox" id="notif-visitors" checked style="opacity:0;width:0;height:0;"></label>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--background-color);border-radius:8px;">
-                                    <div><div style="font-weight:500;">Alertas de seguridad</div><div style="font-size:0.875rem;color:var(--text-secondary);">Notificar eventos críticos del sistema</div></div>
+                                    <div><div style="font-weight:500;">Alertas de seguridad</div><div style="font-size:0.875rem;color:var(--text-secondary);">Notificar eventos crÃ­ticos del sistema</div></div>
                                     <label style="position:relative;display:inline-block;width:48px;height:26px;cursor:pointer;"><input type="checkbox" id="notif-security" checked style="opacity:0;width:0;height:0;"></label>
                                 </div>
                                 <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;background:var(--background-color);border-radius:8px;">
@@ -1667,11 +1667,11 @@
 
                     <!-- Test notification -->
                     <div class="card" style="margin-top:24px;">
-                        <div class="card-header"><div class="card-title">Enviar Notificación de Prueba</div></div>
+                        <div class="card-header"><div class="card-title">Enviar NotificaciÃ³n de Prueba</div></div>
                         <div class="card-content">
                             <div style="display:grid;grid-template-columns:1fr auto;gap:12px;align-items:flex-end;">
                                 <div>
-                                    <label style="display:block;margin-bottom:4px;font-weight:500;">Teléfono (WhatsApp)</label>
+                                    <label style="display:block;margin-bottom:4px;font-weight:500;">TelÃ©fono (WhatsApp)</label>
                                     <input type="tel" id="cfg-test-phone" placeholder="+54 911 1234 5678" style="width:100%;padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
                                 </div>
                                 <button class="btn btn-primary" onclick="settingsModule.sendTestNotification()"><span class="material-icons">send</span> Enviar</button>
@@ -1691,12 +1691,12 @@
                         <div class="card-content">
                             <div class="grid grid-cols-2" style="gap:24px;">
                                 <div>
-                                    <h4 style="margin:0 0 12px;">Estado de conexión</h4>
+                                    <h4 style="margin:0 0 12px;">Estado de conexiÃ³n</h4>
                                     <div id="wa-bot-status-card" style="padding:16px;border-radius:10px;background:var(--background-color);display:flex;align-items:center;gap:12px;margin-bottom:16px;">
                                         <span id="wa-status-dot" style="width:14px;height:14px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s;"></span>
                                         <div>
                                             <div id="wa-status-label" style="font-weight:600;">Verificando...</div>
-                                            <div id="wa-status-sub" style="font-size:12px;color:var(--text-secondary);">—</div>
+                                            <div id="wa-status-sub" style="font-size:12px;color:var(--text-secondary);">â€”</div>
                                         </div>
                                     </div>
                                     <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -1709,22 +1709,22 @@
                                     <h4 style="margin:0 0 12px;">Enviar mensaje de prueba</h4>
                                     <div style="display:flex;flex-direction:column;gap:10px;">
                                         <input type="tel" id="wa-test-phone" placeholder="+54 911 1234 5678" style="padding:10px;border:1px solid var(--divider-color);border-radius:8px;">
-                                        <textarea id="wa-test-msg" rows="3" placeholder="Escribe el mensaje..." style="padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;font-family:inherit;">¡Hola! Esto es una prueba del bot de UnionTech 🤖</textarea>
+                                        <textarea id="wa-test-msg" rows="3" placeholder="Escribe el mensaje..." style="padding:10px;border:1px solid var(--divider-color);border-radius:8px;resize:vertical;font-family:inherit;">Â¡Hola! Esto es una prueba del bot de UnionTech ðŸ¤–</textarea>
                                         <button class="btn btn-primary" onclick="settingsModule.sendWaBotTest()"><span class="material-icons">send</span> Enviar por Bot</button>
                                     </div>
                                 </div>
                             </div>
                             <div style="margin-top:16px;padding:12px;background:#e8f5e9;border-radius:8px;font-size:13px;color:#2e7d32;">
-                                <strong>💡 Cómo activar:</strong> Abre una terminal y ejecuta <code style="background:#c8e6c9;padding:2px 6px;border-radius:4px;">npm run chatbot</code> — luego escanea el QR con WhatsApp en tu teléfono.
+                                <strong>ðŸ’¡ CÃ³mo activar:</strong> Abre una terminal y ejecuta <code style="background:#c8e6c9;padding:2px 6px;border-radius:4px;">npm run chatbot</code> â€” luego escanea el QR con WhatsApp en tu telÃ©fono.
                             </div>
                         </div>
                     </div>
                     <div class="grid grid-cols-2" style="gap:24px;">
                         <div class="card">
-                            <div class="card-header"><div class="card-title">Información del Sistema</div></div>
+                            <div class="card-header"><div class="card-title">InformaciÃ³n del Sistema</div></div>
                             <div class="card-content">
                                 <div style="display:flex;flex-direction:column;gap:12px;">
-                                    <div style="display:flex;justify-content:space-between;padding:12px;background:var(--background-color);border-radius:8px;"><span style="color:var(--text-secondary);">Versión</span><strong>1.0.0</strong></div>
+                                    <div style="display:flex;justify-content:space-between;padding:12px;background:var(--background-color);border-radius:8px;"><span style="color:var(--text-secondary);">VersiÃ³n</span><strong>1.0.0</strong></div>
                                     <div style="display:flex;justify-content:space-between;padding:12px;background:var(--background-color);border-radius:8px;"><span style="color:var(--text-secondary);">API Base</span><strong>localhost:3001</strong></div>
                                     <div style="display:flex;justify-content:space-between;padding:12px;background:var(--background-color);border-radius:8px;"><span style="color:var(--text-secondary);">Estado BD</span><span id="cfg-db-status" class="badge warning">Verificando...</span></div>
                                     <div style="display:flex;justify-content:space-between;padding:12px;background:var(--background-color);border-radius:8px;"><span style="color:var(--text-secondary);">Modo</span><span id="cfg-mode" class="badge success">Online</span></div>
@@ -1736,9 +1736,9 @@
                             <div class="card-header"><div class="card-title">Acciones del Sistema</div></div>
                             <div class="card-content">
                                 <div style="display:flex;flex-direction:column;gap:12px;">
-                                    <button class="btn btn-outline" onclick="settingsModule.clearCache()" style="justify-content:flex-start;"><span class="material-icons">cleaning_services</span> Limpiar Caché</button>
-                                    <button class="btn btn-outline" onclick="settingsModule.exportConfig()" style="justify-content:flex-start;"><span class="material-icons">download</span> Exportar Configuración</button>
-                                    <button class="btn" style="background:var(--error-color);color:white;justify-content:flex-start;" onclick="settingsModule.logout()"><span class="material-icons">logout</span> Cerrar Sesión</button>
+                                    <button class="btn btn-outline" onclick="settingsModule.clearCache()" style="justify-content:flex-start;"><span class="material-icons">cleaning_services</span> Limpiar CachÃ©</button>
+                                    <button class="btn btn-outline" onclick="settingsModule.exportConfig()" style="justify-content:flex-start;"><span class="material-icons">download</span> Exportar ConfiguraciÃ³n</button>
+                                    <button class="btn" style="background:var(--error-color);color:white;justify-content:flex-start;" onclick="settingsModule.logout()"><span class="material-icons">logout</span> Cerrar SesiÃ³n</button>
                                 </div>
                                 <div id="cfg-sys-msg" style="display:none;margin-top:16px;padding:12px;border-radius:8px;"></div>
                             </div>
@@ -1753,10 +1753,17 @@
     <script src="js/access-registration.js"></script>
     <script src="js/reports-dashboard.js"></script>
     <script>
+    // ===== API BASE & AUTH GUARD =====
+    window._APIBASE = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
+    if (!localStorage.getItem('uniontech_token') && !localStorage.getItem('authToken')) {
+        window.location.replace('/');
+    }
+    </script>
+    <script>
     // ===== ACCESS SYSTEM =====
     class AccessSystemAdapter {
         constructor() {
-            this.apiBaseUrl = 'http://localhost:3001/api';
+            this.apiBaseUrl = window._APIBASE;
             this.qrScanner = null;
             this.facialStream = null;
             this.multimodalValidations = { qr: false, facial: false, document: false };
@@ -1792,8 +1799,8 @@
                 this.qrScanner = new Html5Qrcode("qr-reader");
                 await this.qrScanner.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } },
                     (text) => this.processQRCode(text), () => {});
-                this.showStatus('Escáner activo', 'info');
-            } else { this.showStatus('Librería QR no disponible', 'error'); }
+                this.showStatus('EscÃ¡ner activo', 'info');
+            } else { this.showStatus('LibrerÃ­a QR no disponible', 'error'); }
         }
 
         async stopQRScanner() {
@@ -1806,7 +1813,7 @@
             try {
                 const res = await fetch(`${this.apiBaseUrl}/access/validate-qr`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAuthToken()}` }, body: JSON.stringify({ qrCode: qrData, method: 'qr' }) });
                 const result = await res.json();
-                this.showStatus(result.success ? '✅ Acceso concedido' : '❌ ' + result.message, result.success ? 'success' : 'error');
+                this.showStatus(result.success ? 'âœ… Acceso concedido' : 'âŒ ' + result.message, result.success ? 'success' : 'error');
                 if (result.success) { this.updateMultimodalValidation('qr', true); this.loadRecentAccess(); }
             } catch (e) { this.showStatus('Error validando QR', 'error'); }
         }
@@ -1816,7 +1823,7 @@
             this.facialStream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: 'user' } });
             video.srcObject = this.facialStream;
             video.play();
-            this.showStatus('Cámara activa', 'info');
+            this.showStatus('CÃ¡mara activa', 'info');
         }
 
         async takeFacialPhoto() {
@@ -1829,7 +1836,7 @@
             try {
                 const res = await fetch(`${this.apiBaseUrl}/access/validate-facial`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAuthToken()}` }, body: JSON.stringify({ faceImage: imageData, method: 'facial' }) });
                 const result = await res.json();
-                this.showStatus(result.success ? '✅ Reconocimiento exitoso' : '❌ No se pudo reconocer', result.success ? 'success' : 'error');
+                this.showStatus(result.success ? 'âœ… Reconocimiento exitoso' : 'âŒ No se pudo reconocer', result.success ? 'success' : 'error');
                 if (result.success) { this.updateMultimodalValidation('facial', true); this.loadRecentAccess(); }
             } catch (e) { this.showStatus('Error en reconocimiento', 'error'); }
         }
@@ -1844,7 +1851,7 @@
             try {
                 const res = await fetch(`${this.apiBaseUrl}/access/validate-document`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAuthToken()}` }, body: JSON.stringify({ documentType, documentNumber, building, method: 'document' }) });
                 const result = await res.json();
-                this.showStatus(result.success ? '✅ Acceso autorizado' : '❌ ' + result.message, result.success ? 'success' : 'error');
+                this.showStatus(result.success ? 'âœ… Acceso autorizado' : 'âŒ ' + result.message, result.success ? 'success' : 'error');
                 if (result.success) { this.updateMultimodalValidation('document', true); this.loadRecentAccess(); event.target.reset(); }
             } catch (e) { this.showStatus('Error validando documento', 'error'); }
         }
@@ -1869,7 +1876,7 @@
             try {
                 const res = await fetch(`${this.apiBaseUrl}/access/validate-multimodal`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getAuthToken()}` }, body: JSON.stringify({ validations, method: 'multimodal' }) });
                 const result = await res.json();
-                this.showStatus(result.success ? '🔒 Acceso de alta seguridad concedido' : '❌ Error multimodal', result.success ? 'success' : 'error');
+                this.showStatus(result.success ? 'ðŸ”’ Acceso de alta seguridad concedido' : 'âŒ Error multimodal', result.success ? 'success' : 'error');
                 if (result.success) { this.loadRecentAccess(); this.resetMultimodalValidations(); }
             } catch (e) { this.showStatus('Error multimodal', 'error'); }
         }
@@ -1899,7 +1906,7 @@
                     return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--divider-color);">
                         <div style="display:flex;align-items:center;gap:12px;">
                             <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary-color),var(--primary-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:500;">${name.charAt(0).toUpperCase()}</div>
-                            <div><div style="font-weight:500;">${name}</div><div style="font-size:0.875rem;color:var(--text-secondary);">${building} • ${method} • ${time}</div></div>
+                            <div><div style="font-weight:500;">${name}</div><div style="font-size:0.875rem;color:var(--text-secondary);">${building} â€¢ ${method} â€¢ ${time}</div></div>
                         </div>
                         <span class="badge ${ok ? 'success' : 'error'}">${ok ? 'Concedido' : 'Denegado'}</span>
                     </div>`;
@@ -1911,7 +1918,7 @@
     // ===== REPORTS SYSTEM =====
     class ReportsSystemAdapter {
         constructor() {
-            this.baseURL = 'http://localhost:3001/api/reports';
+            this.baseURL = window._APIBASE+"/reports";
             this.charts = {};
         }
 
@@ -1987,7 +1994,7 @@
             const container = document.getElementById('rpt-tableContainer');
             if (!container) return;
             if (!accesses.length) { container.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:20px;">Sin datos</p>'; return; }
-            container.innerHTML = `<table class="data-table"><thead><tr><th>Usuario</th><th>Edificio</th><th>Método</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>${accesses.map(a => `<tr><td>${a.userName || a.usuario || 'N/A'}</td><td>${a.building || a.edificio || 'N/A'}</td><td>${a.method || a.metodo || 'N/A'}</td><td>${new Date(a.timestamp || a.fecha || Date.now()).toLocaleString('es-ES')}</td><td><span class="badge ${a.status === 'granted' || a.estado === 'exitoso' ? 'success' : 'error'}">${a.status || a.estado || 'N/A'}</span></td></tr>`).join('')}</tbody></table>`;
+            container.innerHTML = `<table class="data-table"><thead><tr><th>Usuario</th><th>Edificio</th><th>MÃ©todo</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>${accesses.map(a => `<tr><td>${a.userName || a.usuario || 'N/A'}</td><td>${a.building || a.edificio || 'N/A'}</td><td>${a.method || a.metodo || 'N/A'}</td><td>${new Date(a.timestamp || a.fecha || Date.now()).toLocaleString('es-ES')}</td><td><span class="badge ${a.status === 'granted' || a.estado === 'exitoso' ? 'success' : 'error'}">${a.status || a.estado || 'N/A'}</span></td></tr>`).join('')}</tbody></table>`;
         }
 
         async applyFilters() { await this.loadDashboardData(); }
@@ -2010,7 +2017,7 @@
     // ===== SECURITY SYSTEM =====
     class SecuritySystemAdapter {
         constructor() {
-            this.apiBase = 'http://localhost:3001/api';
+            this.apiBase = window._APIBASE;
             this.charts = {};
             this.refreshTimer = null;
         }
@@ -2027,12 +2034,12 @@
             const evCtx = document.getElementById('sec-eventsChart');
             if (evCtx) {
                 if (this.charts.events) this.charts.events.destroy();
-                this.charts.events = new Chart(evCtx, { type: 'line', data: { labels: [], datasets: [{ label: 'Críticos', data: [], borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', tension: 0.4, fill: true }, { label: 'Totales', data: [], borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', tension: 0.4, fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
+                this.charts.events = new Chart(evCtx, { type: 'line', data: { labels: [], datasets: [{ label: 'CrÃ­ticos', data: [], borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', tension: 0.4, fill: true }, { label: 'Totales', data: [], borderColor: '#667eea', backgroundColor: 'rgba(102,126,234,0.1)', tension: 0.4, fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
             }
             const svCtx = document.getElementById('sec-severityChart');
             if (svCtx) {
                 if (this.charts.severity) this.charts.severity.destroy();
-                this.charts.severity = new Chart(svCtx, { type: 'doughnut', data: { labels: ['Crítico','Alto','Medio','Bajo'], datasets: [{ data: [0,0,0,0], backgroundColor: ['#e74c3c','#f39c12','#27ae60','#17a2b8'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } });
+                this.charts.severity = new Chart(svCtx, { type: 'doughnut', data: { labels: ['CrÃ­tico','Alto','Medio','Bajo'], datasets: [{ data: [0,0,0,0], backgroundColor: ['#e74c3c','#f39c12','#27ae60','#17a2b8'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } } });
             }
         }
 
@@ -2107,7 +2114,7 @@
         }
 
         async clearLogs() {
-            if (!confirm('¿Seguro que desea limpiar los logs? Esta acción no se puede deshacer.')) return;
+            if (!confirm('Â¿Seguro que desea limpiar los logs? Esta acciÃ³n no se puede deshacer.')) return;
             try {
                 const res = await fetch(`${this.apiBase}/security/cleanup`, { method: 'DELETE', headers: { 'Content-Type': 'application/json' } });
                 const result = await res.json();
@@ -2123,7 +2130,7 @@
     // ===== BIOMETRIC SYSTEM =====
     class BiometricSystemAdapter {
         constructor() {
-            this.apiBase = 'http://localhost:3001/api';
+            this.apiBase = window._APIBASE;
             this.currentStream = null;
             this.capturedImages = { face: null, document: null, scan: null };
         }
@@ -2164,7 +2171,7 @@
 
         async startFaceCapture() {
             await this.startCamera('bio-face-video');
-            const btn = document.createElement('button'); btn.id = 'bio-capture-face-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = '📸 Capturar Rostro'; btn.onclick = () => this.captureFace();
+            const btn = document.createElement('button'); btn.id = 'bio-capture-face-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = 'ðŸ“¸ Capturar Rostro'; btn.onclick = () => this.captureFace();
             const video = document.getElementById('bio-face-video');
             if (!document.getElementById('bio-capture-face-btn')) video.after(btn);
         }
@@ -2182,7 +2189,7 @@
 
         async startDocumentCapture() {
             await this.startCamera('bio-document-video');
-            const btn = document.createElement('button'); btn.id = 'bio-capture-doc-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = '📸 Capturar Documento'; btn.onclick = () => this.captureDocument();
+            const btn = document.createElement('button'); btn.id = 'bio-capture-doc-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = 'ðŸ“¸ Capturar Documento'; btn.onclick = () => this.captureDocument();
             const video = document.getElementById('bio-document-video');
             if (!document.getElementById('bio-capture-doc-btn')) video.after(btn);
         }
@@ -2200,7 +2207,7 @@
 
         async startScanCapture() {
             await this.startCamera('bio-scan-video');
-            const btn = document.createElement('button'); btn.id = 'bio-capture-scan-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = '📸 Capturar'; btn.onclick = () => this.captureScan();
+            const btn = document.createElement('button'); btn.id = 'bio-capture-scan-btn'; btn.type = 'button'; btn.className = 'btn btn-primary'; btn.style.marginTop = '8px'; btn.textContent = 'ðŸ“¸ Capturar'; btn.onclick = () => this.captureScan();
             const video = document.getElementById('bio-scan-video');
             if (!document.getElementById('bio-capture-scan-btn')) video.after(btn);
         }
@@ -2246,7 +2253,7 @@
                         ['Esta Semana', d.recentVerifications || 0]
                     ].map(([label, num]) => `<div class="stat-card"><div class="stat-value" style="color:var(--primary-color);font-size:1.5rem;">${num}</div><div class="stat-label">${label}</div></div>`).join('');
                 }
-            } catch (e) { this.showResult('error', 'Error', 'No se pudieron cargar las estadísticas'); }
+            } catch (e) { this.showResult('error', 'Error', 'No se pudieron cargar las estadÃ­sticas'); }
             this.showLoading(false);
         }
 
@@ -2263,7 +2270,7 @@
                     const result = await res.json();
                     this.showResult(result.success ? 'success' : 'error', result.success ? 'Registro Exitoso' : 'Error', result.message, result.data);
                     if (result.success) { e.target.reset(); this.capturedImages = { face: null, document: null, scan: null }; document.querySelectorAll('[id^="bio-"][id$="-preview"]').forEach(p => p.style.display = 'none'); }
-                } catch (e2) { this.showResult('error', 'Error', 'Error de conexión'); }
+                } catch (e2) { this.showResult('error', 'Error', 'Error de conexiÃ³n'); }
                 this.showLoading(false);
             });
 
@@ -2276,7 +2283,7 @@
                     const res = await fetch(`${this.apiBase}/biometric/recognize`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getToken()}` }, body: JSON.stringify({ image: this.capturedImages.scan, scanType: fd.get('scanType'), requestedAccess: fd.get('requestedAccess'), location: fd.get('location') }) });
                     const result = await res.json();
                     this.showResult(result.success ? 'success' : 'error', result.success ? 'Reconocimiento Exitoso' : 'Fallido', result.message, result.data);
-                } catch (e2) { this.showResult('error', 'Error', 'Error de conexión'); }
+                } catch (e2) { this.showResult('error', 'Error', 'Error de conexiÃ³n'); }
                 this.showLoading(false);
             });
         }
@@ -2306,7 +2313,7 @@
 
     // ===== USERS MODULE =====
     const usersModule = {
-        apiBase: 'http://localhost:3001/api',
+        apiBase: window._APIBASE,
         page: 1, limit: 15, total: 0,
 
         getToken() { return localStorage.getItem('authToken') || localStorage.getItem('uniontech_token') || 'demo'; },
@@ -2334,8 +2341,8 @@
                 // Fallback demo data
                 this.renderTable([
                     { id: '1', firstName: 'Admin', lastName: 'Sistema', email: 'admin@uniontech.com', role: 'admin', active: true, lastLogin: new Date().toISOString() },
-                    { id: '2', firstName: 'Juan', lastName: 'García', email: 'juan@uniontech.com', role: 'security', active: true, lastLogin: new Date(Date.now()-3600000).toISOString() },
-                    { id: '3', firstName: 'María', lastName: 'López', email: 'maria@uniontech.com', role: 'employee', active: true, lastLogin: null }
+                    { id: '2', firstName: 'Juan', lastName: 'GarcÃ­a', email: 'juan@uniontech.com', role: 'security', active: true, lastLogin: new Date(Date.now()-3600000).toISOString() },
+                    { id: '3', firstName: 'MarÃ­a', lastName: 'LÃ³pez', email: 'maria@uniontech.com', role: 'employee', active: true, lastLogin: null }
                 ]);
                 this.total = 3; this.updatePagination();
             }
@@ -2401,7 +2408,7 @@
                 document.getElementById('usr-active').checked = u.active !== false;
                 document.getElementById('usr-password').value = '';
                 document.getElementById('usr-password').required = false;
-                document.getElementById('usr-pwd-hint').textContent = '(dejar vacío para no cambiar)';
+                document.getElementById('usr-pwd-hint').textContent = '(dejar vacÃ­o para no cambiar)';
                 document.getElementById('usr-modal-title').textContent = 'Editar Usuario';
                 document.getElementById('usr-modal-error').style.display = 'none';
                 document.getElementById('usr-modal').style.display = 'flex';
@@ -2431,11 +2438,11 @@
                 const data = await res.json();
                 if (!res.ok || !data.success) { errEl.textContent = data.message || 'Error guardando usuario'; errEl.style.display = 'block'; return; }
                 this.closeModal(); this.loadUsers();
-            } catch { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+            } catch { errEl.textContent = 'Error de conexiÃ³n'; errEl.style.display = 'block'; }
         },
 
         async toggleActive(id, currentActive) {
-            if (!confirm(`¿${currentActive ? 'Desactivar' : 'Activar'} este usuario?`)) return;
+            if (!confirm(`Â¿${currentActive ? 'Desactivar' : 'Activar'} este usuario?`)) return;
             try {
                 const res = await fetch(`${this.apiBase}/users/${id}`, { method: 'PUT', headers: this.getHeaders(), body: JSON.stringify({ active: !currentActive }) });
                 if (res.ok) this.loadUsers();
@@ -2445,7 +2452,7 @@
 
     // ===== BUILDINGS MODULE =====
     const buildingsModule = {
-        apiBase: 'http://localhost:3001/api',
+        apiBase: window._APIBASE,
         getToken() { return localStorage.getItem('authToken') || localStorage.getItem('uniontech_token') || 'demo'; },
         getHeaders() { return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getToken()}` }; },
 
@@ -2488,7 +2495,7 @@
                             </div>
                         </div>
                         <div style="font-weight:500;font-size:1.1rem;margin-bottom:4px;">${b.nombre}</div>
-                        <div style="color:var(--text-secondary);font-size:0.875rem;margin-bottom:12px;"><span class="material-icons" style="font-size:14px;vertical-align:middle;">location_on</span> ${b.direccion || 'Sin dirección'}${b.ciudad ? ', ' + b.ciudad : ''}</div>
+                        <div style="color:var(--text-secondary);font-size:0.875rem;margin-bottom:12px;"><span class="material-icons" style="font-size:14px;vertical-align:middle;">location_on</span> ${b.direccion || 'Sin direcciÃ³n'}${b.ciudad ? ', ' + b.ciudad : ''}</div>
                         <div style="display:flex;gap:12px;">
                             <span style="display:flex;align-items:center;gap:4px;font-size:0.875rem;color:var(--text-secondary);"><span class="material-icons" style="font-size:16px;">door_front</span>${b.puertas_acceso?.length || 0} puertas</span>
                             <span class="badge success">Activo</span>
@@ -2542,11 +2549,11 @@
                 const res = await fetch(url, { method, headers: this.getHeaders(), body: JSON.stringify(payload) });
                 if (!res.ok) { const d = await res.json(); errEl.textContent = d.error || 'Error guardando'; errEl.style.display = 'block'; return; }
                 this.closeModal(); this.loadBuildings();
-            } catch { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+            } catch { errEl.textContent = 'Error de conexiÃ³n'; errEl.style.display = 'block'; }
         },
 
         async deleteBuilding(id) {
-            if (!confirm('¿Eliminar este edificio? Esta acción no se puede deshacer.')) return;
+            if (!confirm('Â¿Eliminar este edificio? Esta acciÃ³n no se puede deshacer.')) return;
             try {
                 await fetch(`${this.apiBase}/edificios/${id}`, { method: 'DELETE', headers: this.getHeaders() });
                 this.loadBuildings();
@@ -2556,7 +2563,7 @@
 
     // ===== VISITORS MODULE =====
     const visitorsModule = {
-        apiBase: 'http://localhost:3001/api',
+        apiBase: window._APIBASE,
         page: 1, limit: 15, total: 0, currentQRVisitor: null,
 
         getToken() { return localStorage.getItem('authToken') || localStorage.getItem('uniontech_token') || 'demo'; },
@@ -2581,8 +2588,8 @@
                 this.updatePagination();
             } catch {
                 const demo = [
-                    { id: 1, nombre: 'Carlos Ruiz', dni: '30123456', empresa: 'TechCorp', anfitrion_nombre: 'María García', edificio: 'Torre A', hora_estimada: '10:00', estado: 'pendiente' },
-                    { id: 2, nombre: 'Ana Martín', dni: '28765432', empresa: 'Consultora XYZ', anfitrion_nombre: 'Juan López', edificio: 'Torre B', hora_estimada: '14:30', estado: 'autorizado' },
+                    { id: 1, nombre: 'Carlos Ruiz', dni: '30123456', empresa: 'TechCorp', anfitrion_nombre: 'MarÃ­a GarcÃ­a', edificio: 'Torre A', hora_estimada: '10:00', estado: 'pendiente' },
+                    { id: 2, nombre: 'Ana MartÃ­n', dni: '28765432', empresa: 'Consultora XYZ', anfitrion_nombre: 'Juan LÃ³pez', edificio: 'Torre B', hora_estimada: '14:30', estado: 'autorizado' },
                     { id: 3, nombre: 'Pedro Sosa', dni: '25987654', empresa: 'Sin empresa', anfitrion_nombre: 'Admin', edificio: 'Laboratorio', hora_estimada: '09:00', estado: 'en_curso' }
                 ];
                 this.total = demo.length; this.renderTable(demo); this.updatePagination();
@@ -2711,11 +2718,11 @@
                 const newVisitor = data.data || data;
                 this.closeModal();
                 this.loadVisitors();
-                // Enviar QR por WhatsApp si tiene teléfono y el checkbox está marcado
+                // Enviar QR por WhatsApp si tiene telÃ©fono y el checkbox estÃ¡ marcado
                 if (sendQR && payload.telefono) {
                     await this.sendQRviaWhatsApp(newVisitor.id || newVisitor._id, payload.nombre, payload.telefono, tipo);
                 }
-            } catch { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+            } catch { errEl.textContent = 'Error de conexiÃ³n'; errEl.style.display = 'block'; }
         },
 
         async sendQRviaWhatsApp(visitorId, nombre, telefono, tipo, extra = {}) {
@@ -2728,7 +2735,7 @@
                 if (res.ok) {
                     const data = await res.json();
                     if (data.success) {
-                        this.showToast(`✅ QR enviado por WhatsApp a ${telefono}`, 'success');
+                        this.showToast(`âœ… QR enviado por WhatsApp a ${telefono}`, 'success');
                         return;
                     }
                 }
@@ -2738,13 +2745,13 @@
             try {
                 const qrData = `UNIONTECH-VISITOR-${visitorId || Date.now()}`;
                 const tipoMsg = tipo === 'recurrente' ? 'recurrente' : 'temporal';
-                const mensaje = `✅ *Hola ${nombre}!*\n\nTu acceso ${tipoMsg} ha sido registrado en UnionTech.\n\n🔑 Código de acceso: *${qrData}*\n\nMuestra este código en recepción al ingresar.\n\n_UnionTech - Control de Accesos_`;
+                const mensaje = `âœ… *Hola ${nombre}!*\n\nTu acceso ${tipoMsg} ha sido registrado en UnionTech.\n\nðŸ”‘ CÃ³digo de acceso: *${qrData}*\n\nMuestra este cÃ³digo en recepciÃ³n al ingresar.\n\n_UnionTech - Control de Accesos_`;
                 const res2 = await fetch(`${this.apiBase}/notifications/whatsapp`, {
                     method: 'POST', headers: this.getHeaders(),
                     body: JSON.stringify({ telefono, mensaje })
                 });
                 if (res2.ok) {
-                    this.showToast(`✅ Notificación enviada a ${telefono}`, 'success');
+                    this.showToast(`âœ… NotificaciÃ³n enviada a ${telefono}`, 'success');
                 } else {
                     this.showToast('Visitante registrado (WhatsApp no disponible)', 'warning');
                 }
@@ -2773,25 +2780,25 @@
                     const data = await res.json();
                     const visitor = data.data || {};
                     this.loadVisitors();
-                    // Enviar QR por WhatsApp si tiene teléfono
+                    // Enviar QR por WhatsApp si tiene telÃ©fono
                     if (visitor.telefono) {
                         await this.sendQRviaWhatsApp(id, visitor.nombre || 'Visitante', visitor.telefono, visitor.tipo_visita || 'temporal');
                     } else {
-                        this.showToast('Acceso autorizado. Sin teléfono registrado, QR no enviado.', 'warning');
+                        this.showToast('Acceso autorizado. Sin telÃ©fono registrado, QR no enviado.', 'warning');
                     }
                 } else {
                     this.showToast('Error autorizando visitante', 'error');
                 }
-            } catch { this.showToast('Error de conexión', 'error'); }
+            } catch { this.showToast('Error de conexiÃ³n', 'error'); }
         },
 
         async reject(id) {
-            if (!confirm('¿Rechazar acceso de este visitante?')) return;
+            if (!confirm('Â¿Rechazar acceso de este visitante?')) return;
             try {
                 const res = await fetch(`${this.apiBase}/visitors/${id}/reject`, { method: 'PUT', headers: this.getHeaders(), body: JSON.stringify({ estado: 'rechazado' }) });
                 if (res.ok) { this.loadVisitors(); this.showToast('Acceso rechazado', 'warning'); }
                 else this.showToast('Error rechazando visitante', 'error');
-            } catch { this.showToast('Error de conexión', 'error'); }
+            } catch { this.showToast('Error de conexiÃ³n', 'error'); }
         },
 
         async showQR(id) {
@@ -2802,7 +2809,7 @@
                 const container = document.getElementById('vis-qr-container');
                 container.innerHTML = '';
                 // Render QR as a simple canvas grid (basic QR visualization)
-                const qrText = `Visitante #${id} | Código: ${qrData.slice(0,20)}`;
+                const qrText = `Visitante #${id} | CÃ³digo: ${qrData.slice(0,20)}`;
                 container.innerHTML = `<div style="padding:16px;background:white;border:2px solid #333;border-radius:8px;font-family:monospace;font-size:0.8rem;word-break:break-all;max-width:280px;text-align:left;">${qrData}<br><br><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}" style="width:200px;height:200px;" alt="QR Code"></div>`;
                 document.getElementById('vis-qr-visitor-name').textContent = qrText;
                 this.currentQRVisitor = { id, qrData };
@@ -2824,7 +2831,7 @@
         closeQRModal() { document.getElementById('vis-qr-modal').style.display = 'none'; },
 
         async deleteVisitor(id) {
-            if (!confirm('¿Eliminar este visitante?')) return;
+            if (!confirm('Â¿Eliminar este visitante?')) return;
             try {
                 await fetch(`${this.apiBase}/visitors/${id}`, { method: 'DELETE', headers: this.getHeaders() });
                 this.loadVisitors();
@@ -2834,7 +2841,7 @@
 
     // ===== SETTINGS MODULE =====
     const settingsModule = {
-        apiBase: 'http://localhost:3001/api',
+        apiBase: window._APIBASE,
         getToken() { return localStorage.getItem('authToken') || localStorage.getItem('uniontech_token') || 'demo'; },
         getHeaders() { return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.getToken()}` }; },
 
@@ -2862,7 +2869,7 @@
                     document.getElementById('cfg-lastName').value = u.lastName || u.apellido || '';
                     document.getElementById('cfg-email').value = u.email || '';
                     document.getElementById('cfg-phone').value = u.phone || u.telefono || '';
-                    document.getElementById('cfg-session-info').textContent = `Última actividad: ${new Date().toLocaleString('es-ES')}`;
+                    document.getElementById('cfg-session-info').textContent = `Ãšltima actividad: ${new Date().toLocaleString('es-ES')}`;
                 }
             } catch { console.log('Auth verify not available'); }
         },
@@ -2875,7 +2882,7 @@
                 const res = await fetch(`${this.apiBase}/auth/profile`, { method: 'PUT', headers: this.getHeaders(), body: JSON.stringify(payload) });
                 if (res.ok) { msgEl.textContent = 'Perfil actualizado correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32'; }
                 else { msgEl.textContent = 'Error actualizando perfil'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
-            } catch { msgEl.textContent = 'Error de conexión'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
+            } catch { msgEl.textContent = 'Error de conexiÃ³n'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
             msgEl.style.display = 'block';
             setTimeout(() => { msgEl.style.display = 'none'; }, 4000);
         },
@@ -2886,14 +2893,14 @@
             const newPwd = document.getElementById('cfg-newPwd').value;
             const confirm = document.getElementById('cfg-confirmPwd').value;
             const msgEl = document.getElementById('cfg-pwd-msg');
-            if (newPwd !== confirm) { msgEl.textContent = 'Las contraseñas no coinciden'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
-            if (newPwd.length < 8) { msgEl.textContent = 'La contraseña debe tener al menos 8 caracteres'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
+            if (newPwd !== confirm) { msgEl.textContent = 'Las contraseÃ±as no coinciden'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
+            if (newPwd.length < 8) { msgEl.textContent = 'La contraseÃ±a debe tener al menos 8 caracteres'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
             try {
                 const res = await fetch(`${this.apiBase}/auth/change-password`, { method: 'PUT', headers: this.getHeaders(), body: JSON.stringify({ currentPassword: current, newPassword: newPwd }) });
                 const data = await res.json();
-                if (res.ok && data.success) { msgEl.textContent = 'Contraseña actualizada correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32'; document.getElementById('cfg-currentPwd').value = ''; document.getElementById('cfg-newPwd').value = ''; document.getElementById('cfg-confirmPwd').value = ''; }
-                else { msgEl.textContent = data.message || 'Error actualizando contraseña'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
-            } catch { msgEl.textContent = 'Error de conexión'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
+                if (res.ok && data.success) { msgEl.textContent = 'ContraseÃ±a actualizada correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32'; document.getElementById('cfg-currentPwd').value = ''; document.getElementById('cfg-newPwd').value = ''; document.getElementById('cfg-confirmPwd').value = ''; }
+                else { msgEl.textContent = data.message || 'Error actualizando contraseÃ±a'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
+            } catch { msgEl.textContent = 'Error de conexiÃ³n'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
             msgEl.style.display = 'block';
             setTimeout(() => { msgEl.style.display = 'none'; }, 5000);
         },
@@ -2907,13 +2914,13 @@
         async sendTestNotification() {
             const phone = document.getElementById('cfg-test-phone')?.value;
             const msgEl = document.getElementById('cfg-notif-msg');
-            if (!phone) { msgEl.textContent = 'Ingresa un número de teléfono'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
+            if (!phone) { msgEl.textContent = 'Ingresa un nÃºmero de telÃ©fono'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; msgEl.style.display = 'block'; return; }
             try {
-                const res = await fetch(`${this.apiBase}/notifications/whatsapp`, { method: 'POST', headers: this.getHeaders(), body: JSON.stringify({ telefono: phone, mensaje: '✅ Prueba de notificación UnionTech - Sistema funcionando correctamente.' }) });
+                const res = await fetch(`${this.apiBase}/notifications/whatsapp`, { method: 'POST', headers: this.getHeaders(), body: JSON.stringify({ telefono: phone, mensaje: 'âœ… Prueba de notificaciÃ³n UnionTech - Sistema funcionando correctamente.' }) });
                 const data = await res.json();
-                if (res.ok) { msgEl.textContent = 'Notificación enviada correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32'; }
-                else { msgEl.textContent = data.message || 'Error enviando notificación'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
-            } catch { msgEl.textContent = 'Error de conexión'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
+                if (res.ok) { msgEl.textContent = 'NotificaciÃ³n enviada correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32'; }
+                else { msgEl.textContent = data.message || 'Error enviando notificaciÃ³n'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
+            } catch { msgEl.textContent = 'Error de conexiÃ³n'; msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828'; }
             msgEl.style.display = 'block';
         },
 
@@ -2926,8 +2933,8 @@
                 const res = await fetch(`${this.apiBase}/auth/verify`, { headers: this.getHeaders() });
                 if (res.ok) { dbEl.textContent = 'Conectado'; dbEl.className = 'badge success'; modeEl.textContent = 'Online'; modeEl.className = 'badge success'; }
                 else { dbEl.textContent = 'Modo Fallback'; dbEl.className = 'badge warning'; modeEl.textContent = 'Fallback'; modeEl.className = 'badge warning'; }
-            } catch { dbEl.textContent = 'Sin conexión'; dbEl.className = 'badge error'; modeEl.textContent = 'Offline'; modeEl.className = 'badge error'; }
-            // También verificar bot de WhatsApp
+            } catch { dbEl.textContent = 'Sin conexiÃ³n'; dbEl.className = 'badge error'; modeEl.textContent = 'Offline'; modeEl.className = 'badge error'; }
+            // TambiÃ©n verificar bot de WhatsApp
             this.checkWaBot();
         },
 
@@ -2943,7 +2950,7 @@
                 if (data.connected) {
                     dot.style.background = '#25D366';
                     label.textContent = 'Conectado';
-                    sub.textContent = `📞 ${data.phone || ''} ${data.name ? '· ' + data.name : ''}`;
+                    sub.textContent = `ðŸ“ž ${data.phone || ''} ${data.name ? 'Â· ' + data.name : ''}`;
                 } else if (data.qrPending) {
                     dot.style.background = '#FF9800';
                     label.textContent = 'Esperando QR';
@@ -2968,7 +2975,7 @@
             const phone = document.getElementById('wa-test-phone')?.value?.trim();
             const msg = document.getElementById('wa-test-msg')?.value?.trim();
             const msgEl = document.getElementById('wa-bot-msg');
-            if (!phone || !msg) { showToast('Completa teléfono y mensaje', 'warning'); return; }
+            if (!phone || !msg) { showToast('Completa telÃ©fono y mensaje', 'warning'); return; }
             msgEl.style.display = 'none';
             try {
                 const res = await fetch(`${this.apiBase}/whatsapp/send`, {
@@ -2977,14 +2984,14 @@
                 });
                 const data = await res.json();
                 if (data.success) {
-                    msgEl.textContent = '✅ Mensaje enviado correctamente por el bot';
+                    msgEl.textContent = 'âœ… Mensaje enviado correctamente por el bot';
                     msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32';
                 } else {
-                    msgEl.textContent = '❌ ' + (data.error || 'Error enviando mensaje');
+                    msgEl.textContent = 'âŒ ' + (data.error || 'Error enviando mensaje');
                     msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828';
                 }
             } catch {
-                msgEl.textContent = '❌ No se pudo conectar con el bot. ¿Está ejecutándose?';
+                msgEl.textContent = 'âŒ No se pudo conectar con el bot. Â¿EstÃ¡ ejecutÃ¡ndose?';
                 msgEl.style.background = '#ffebee'; msgEl.style.color = '#c62828';
             }
             msgEl.style.display = 'block';
@@ -2993,7 +3000,7 @@
         clearCache() {
             localStorage.removeItem('dashboardCache');
             const msgEl = document.getElementById('cfg-sys-msg');
-            msgEl.textContent = 'Caché limpiado correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32';
+            msgEl.textContent = 'CachÃ© limpiado correctamente'; msgEl.style.background = '#e8f5e9'; msgEl.style.color = '#2e7d32';
             msgEl.style.display = 'block';
             setTimeout(() => { msgEl.style.display = 'none'; }, 3000);
         },
@@ -3007,7 +3014,7 @@
         logout() {
             if (!confirm('¿Cerrar sesión?')) return;
             localStorage.removeItem('authToken'); localStorage.removeItem('uniontech_token');
-            window.location.href = 'password-recovery.html';
+            window.location.href = '/';
         }
     };
 

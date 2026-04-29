@@ -350,6 +350,7 @@ class ReportsDashboard {
 
     showLoading() {
         const container = document.getElementById('tableContainer');
+        if (!container) return;
         container.innerHTML = `
             <div class="loading">
                 <div class="spinner"></div>
