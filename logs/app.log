@@ -6993,3 +6993,98 @@ For more information, check the blog post at https://a.co/cUPnyil
 2026-04-26 21:56:57 [INFO]: 🚀 Aplicando optimizaciones automáticas...
 2026-04-26 21:56:57 [INFO]: ✅ Optimización aplicada: dbPool {"previousSize":5,"newSize":8}
 2026-04-26 21:56:57 [INFO]: ✅ Optimización aplicada: circuitBreaker {"status":"active","threshold":5,"timeout":60000}
+2026-04-28 20:56:23 [DEBUG]: OK
+2026-04-28 20:57:50 [INFO]: 🔴 Redis Service iniciado en modo fallback (memoria)
+2026-04-28 20:57:50 [INFO]: 📊 Dashboard en modo fallback (sin base de datos)
+2026-04-28 20:57:50 [INFO]: ✅ Servicios de expiración de invitaciones inicializados
+2026-04-28 20:57:50 [INFO]: 📊 Sistema de métricas iniciado
+2026-04-28 20:57:51 [WARN]: ⚠️  Email service no disponible, usando modo fallback
+2026-04-28 20:57:51 [INFO]: ✅ Servicio de almacenamiento (local) configurado
+2026-04-28 20:57:51 [WARN]: ⚠️  Push notifications no disponibles, usando modo fallback
+2026-04-28 20:57:51 [WARN]: ⚠️ Base de datos deshabilitada por configuración - modo fallback
+2026-04-28 20:57:51 [INFO]: 🚀 Iniciando UNIONTECH Backend Server v1.0.0
+2026-04-28 20:57:51 [INFO]: ⚙️ Configurando Express...
+2026-04-28 20:57:51 [INFO]: ✅ Express configurado
+2026-04-28 20:57:51 [INFO]: 🛡️ Configurando seguridad...
+2026-04-28 20:57:51 [INFO]: ✅ Seguridad configurada
+2026-04-28 20:57:51 [INFO]: 📊 Configurando monitoreo...
+2026-04-28 20:57:51 [INFO]: ✅ Monitoreo configurado
+2026-04-28 20:57:51 [INFO]: 🛤️ Configurando rutas...
+2026-04-28 20:57:51 [INFO]: ✅ Rutas configuradas
+2026-04-28 20:57:51 [INFO]: 🔌 Configurando WebSocket...
+2026-04-28 20:57:51 [INFO]: ⏱️ Actualizaciones periódicas del dashboard iniciadas
+2026-04-28 20:57:51 [INFO]: 🔄 Dashboard en tiempo real inicializado
+2026-04-28 20:57:51 [INFO]: ✅ WebSocket configurado
+2026-04-28 20:57:51 [INFO]: 📚 Configurando documentación...
+2026-04-28 20:57:51 [ERROR]: (node:15996) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-28 20:57:51 [INFO]: 📁 Directorio de documentos inicializado: C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\uploads\documentos-invitaciones
+2026-04-28 20:57:51 [INFO]: ✅ Documentación configurada en /api/docs
+2026-04-28 20:57:51 [INFO]: 🔧 Configurando manejo de errores...
+2026-04-28 20:57:51 [INFO]: ✅ Manejo de errores configurado
+2026-04-28 20:57:51 [INFO]: 🔄 Inicializando servicios...
+2026-04-28 20:57:51 [WARN]: ⚠️ Conexión a base de datos omitida - usando modo fallback
+2026-04-28 20:57:51 [INFO]: ⚠️ Usando cache en memoria (Redis no disponible)
+2026-04-28 20:57:51 [INFO]: ✅ Servicios externos inicializados
+2026-04-28 20:57:51 [INFO]: ✅ Todos los servicios externos inicializados correctamente
+2026-04-28 20:57:51 [INFO]: ⚡ Configurando optimizaciones...
+2026-04-28 20:57:51 [INFO]: ✅ Optimizaciones de BD aplicadas: {"indexes":0,"views":0}
+2026-04-28 20:57:51 [WARN]: ⚠️ Monitoreo de DB omitido (modo fallback)
+2026-04-28 20:57:51 [INFO]: ✅ Optimizaciones configuradas
+2026-04-28 20:57:51 [INFO]: ✅ Servidor configurado exitosamente
+2026-04-28 20:57:51 [INFO]: 🎉 UNIONTECH Server iniciado exitosamente
+2026-04-28 20:57:51 [INFO]: 🌐 Servidor: http://localhost:3001
+2026-04-28 20:57:51 [INFO]: 📚 Documentación: http://localhost:3001/api/docs
+2026-04-28 20:57:51 [INFO]: 💚 Health Check: http://localhost:3001/health
+2026-04-28 20:57:51 [INFO]: 📊 Dashboard: WebSocket en puerto 3001
+2026-04-28 20:57:51 [INFO]: 🚀 UNIONTECH Backend completamente operativo
+2026-04-28 20:57:51 [WARN]: ⚠️  SMS service no disponible, usando modo fallback
+2026-04-28 20:57:51 [INFO]: ✅ Todos los servicios externos inicializados correctamente
+2026-04-28 20:58:20 [ERROR]: Application Error this.get is not a function {"path":"/health","method":"GET","ip":"::1","userAgent":"curl/8.18.0"}
+TypeError: this.get is not a function
+    at AuditLogger.send (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:148:17)
+    at AuditLogger.<anonymous> (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\auditLogger.js:63:29)
+    at ServerResponse.json (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:278:15)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\server-complete.js:245:17
+    at Layer.handle [as handle_request] (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:346:12)
+2026-04-28 20:58:20 [ERROR]: TypeError: this.get is not a function
+    at AuditLogger.send (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:148:17)
+    at AuditLogger.<anonymous> (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\auditLogger.js:63:29)
+    at ServerResponse.json (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:278:15)
+    at errorHandler (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\error-handler.js:79:28)
+    at Layer.handle_error (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:326:13)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:280:10)
+    at Layer.handle_error (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:67:12)
+2026-04-28 20:58:20 [ERROR]: 🚨 EVENTO CRÍTICO: [object Object]
+2026-04-28 20:58:20 [ERROR]: 🚨 EVENTO CRÍTICO: [object Object]
+2026-04-28 20:58:20 [WARN]: 🚨 Problemas de rendimiento detectados: {"0":{"type":"HIGH_MEMORY_USAGE","severity":"WARNING","value":0.9270580653885617,"threshold":0.8},"1":{"type":"HIGH_ERROR_RATE","severity":"CRITICAL","value":0.1,"threshold":0.05}}
+2026-04-28 20:58:20 [INFO]: 🔧 Aplicando optimizaciones de memoria...
+2026-04-28 20:58:20 [INFO]: 🔧 Configurando pool de conexiones DB: 8
+2026-04-28 20:58:20 [WARN]: 🔍 Investigando alta tasa de errores...
+2026-04-28 20:58:20 [INFO]: 📝 Activando logging detallado por 10 minutos...
+2026-04-28 20:58:20 [INFO]: 🛡️ Activando circuit breaker...
+2026-04-28 20:58:20 [INFO]: 🚀 Aplicando optimizaciones automáticas...
+2026-04-28 20:58:20 [INFO]: ✅ Optimización aplicada: dbPool {"previousSize":5,"newSize":8}
+2026-04-28 20:58:20 [INFO]: ✅ Optimización aplicada: circuitBreaker {"status":"active","threshold":5,"timeout":60000}
+2026-04-28 20:58:21 [DEBUG]: Métricas recopiladas: {"requestCount":1,"averageResponseTime":3,"memoryUsage":0.927239336131565,"cpuUsage":0,"activeConnections":0,"errorRate":0.1,"processUptime":31.4151759,"systemLoadAvg":[0,0,0],"freeMemory":8545890304,"totalMemory":25129320448}
+2026-04-28 20:58:21 [WARN]: 🚨 Problemas de rendimiento detectados: {"0":{"type":"HIGH_MEMORY_USAGE","severity":"WARNING","value":0.927239336131565,"threshold":0.8},"1":{"type":"HIGH_ERROR_RATE","severity":"CRITICAL","value":0.1,"threshold":0.05}}
+2026-04-28 20:58:21 [INFO]: 🔧 Aplicando optimizaciones de memoria...
+2026-04-28 20:58:21 [INFO]: 🔧 Configurando pool de conexiones DB: 8
+2026-04-28 20:58:21 [WARN]: 🔍 Investigando alta tasa de errores...
+2026-04-28 20:58:21 [INFO]: 📝 Activando logging detallado por 10 minutos...
+2026-04-28 20:58:21 [INFO]: 🛡️ Activando circuit breaker...
+2026-04-28 20:58:21 [INFO]: 🚀 Aplicando optimizaciones automáticas...
+2026-04-28 20:58:21 [INFO]: ✅ Optimización aplicada: dbPool {"previousSize":5,"newSize":8}
+2026-04-28 20:58:21 [INFO]: ✅ Optimización aplicada: circuitBreaker {"status":"active","threshold":5,"timeout":60000}

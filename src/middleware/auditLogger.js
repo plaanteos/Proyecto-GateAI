@@ -38,14 +38,15 @@ class AuditLogger {
       };
 
       // Interceptar la respuesta
-      const originalSend = res.send;
+      const self = this;
+      const originalSend = res.send.bind(res);
       res.send = function(body) {
         const endTime = Date.now();
         const duration = endTime - startTime;
         
         auditData.statusCode = res.statusCode;
         auditData.duration = duration;
-        auditData.responseSize = Buffer.byteLength(body);
+        auditData.responseSize = body ? Buffer.byteLength(String(body)) : 0;
         
         // Solo loggear el cuerpo de respuesta si es un error o acción crítica
         if (res.statusCode >= 400 || auditData.url.includes('/access/') || auditData.url.includes('/auth/')) {
@@ -58,10 +59,10 @@ class AuditLogger {
         }
 
         // Escribir log de auditoría
-        this.writeAuditLog(auditData);
+        self.writeAuditLog(auditData);
         
-        return originalSend.call(this, body);
-      }.bind(this);
+        return originalSend(body);
+      };
 
       next();
     };

@@ -264,3 +264,34 @@ For more information, check the blog post at https://a.co/cUPnyil
 2026-04-26 20:00:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
 2026-04-26 20:30:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
 2026-04-26 21:30:04 [ERROR]: ❌ ERROR: Error enviando notificaciones de expiración: [object Object]
+2026-04-28 20:57:51 [ERROR]: (node:15996) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+2026-04-28 20:58:20 [ERROR]: Application Error this.get is not a function {"path":"/health","method":"GET","ip":"::1","userAgent":"curl/8.18.0"}
+TypeError: this.get is not a function
+    at AuditLogger.send (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:148:17)
+    at AuditLogger.<anonymous> (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\auditLogger.js:63:29)
+    at ServerResponse.json (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:278:15)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\server-complete.js:245:17
+    at Layer.handle [as handle_request] (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:346:12)
+2026-04-28 20:58:20 [ERROR]: TypeError: this.get is not a function
+    at AuditLogger.send (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:148:17)
+    at AuditLogger.<anonymous> (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\auditLogger.js:63:29)
+    at ServerResponse.json (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\response.js:278:15)
+    at errorHandler (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\src\middleware\error-handler.js:79:28)
+    at Layer.handle_error (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:71:5)
+    at trim_prefix (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:326:13)
+    at C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:286:9
+    at router.process_params (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\index.js:280:10)
+    at Layer.handle_error (C:\Users\Jesu\Documents\aplicaciones\UNIONTECH\node_modules\express\lib\router\layer.js:67:12)
+2026-04-28 20:58:20 [ERROR]: 🚨 EVENTO CRÍTICO: [object Object]
+2026-04-28 20:58:20 [ERROR]: 🚨 EVENTO CRÍTICO: [object Object]

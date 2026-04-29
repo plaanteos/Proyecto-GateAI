@@ -1,12 +1,9 @@
 const express = require('express');
-const AuthController = require('../controllers/authController');
+const authController = require('../controllers/authController');
 const { authValidation, handleValidationErrors } = require('../middleware/validation');
 const { auth } = require('../middleware/auth');
 
 const router = express.Router();
-
-// Instanciar controlador real con Prisma
-const authController = new AuthController();
 
 // POST /api/auth/login
 router.post('/login', 
