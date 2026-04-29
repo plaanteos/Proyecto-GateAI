@@ -24,6 +24,9 @@ RUN npm ci --only=production && npm cache clean --force
 # Copiar código fuente
 COPY --chown=uniontech:nodejs . .
 
+# Generar cliente Prisma para PostgreSQL
+RUN npx prisma generate
+
 # Crear directorios necesarios
 RUN mkdir -p logs data/documents data/faces
 RUN chown -R uniontech:nodejs logs data
@@ -41,8 +44,8 @@ USER uniontech
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "const http=require('http');const req=http.request({host:'localhost',port:3000,path:'/api/health',timeout:2000},res=>{process.exit(res.statusCode===200?0:1)});req.on('error',()=>{process.exit(1)});req.end();"
+  CMD node -e "const http=require('http');const req=http.request({host:'localhost',port:3000,path:'/health',timeout:2000},res=>{process.exit(res.statusCode===200?0:1)});req.on('error',()=>{process.exit(1)});req.end();"
 
 # Comando de inicio con dumb-init
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "main-server.js"]
+CMD ["node", "src/server-complete.js"]
