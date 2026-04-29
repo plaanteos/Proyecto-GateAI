@@ -144,6 +144,13 @@ class UNIONTECHServer {
         this.app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
         this.app.use('/docs', express.static(path.join(__dirname, '../docs')));
         
+        // Servir frontend (SPA)
+        this.app.use(express.static(path.join(__dirname, '../frontend')));
+        // Ruta raíz → index.html del frontend
+        this.app.get('/', (req, res) => {
+            res.sendFile(path.join(__dirname, '../frontend/index.html'));
+        });
+        
         logger.info('✅ Express configurado');
     }
 

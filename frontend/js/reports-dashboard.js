@@ -3,7 +3,7 @@
 
 class ReportsDashboard {
     constructor() {
-        this.baseURL = 'http://localhost:3001/api/reports';
+        this.baseURL = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api/reports';
         this.currentData = null;
         this.charts = {};
         this.init();

@@ -3,7 +3,7 @@
 
 class PasswordRecovery {
     constructor() {
-        this.baseURL = 'http://localhost:3001/api/auth';
+        this.baseURL = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api/auth';
         this.currentStep = 1;
         this.userEmail = '';
         this.resetToken = '';

@@ -6,7 +6,7 @@
 class UnionTechMVP {
     constructor() {
         this.currentUser = null;
-        this.baseURL = 'http://localhost:3001/api';
+        this.baseURL = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
         this.token = localStorage.getItem('uniontech_token');
         this.notifications = [];
         this.realTimeData = {};

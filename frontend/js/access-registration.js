@@ -3,7 +3,7 @@
 
 class AccessRegistrationSystem {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:3001/api';
+        this.apiBaseUrl = (window.API_BASE_URL || 'https://uniontech-backend-production.up.railway.app') + '/api';
         this.currentMethod = null;
         this.qrScanner = null;
         this.facialStream = null;
