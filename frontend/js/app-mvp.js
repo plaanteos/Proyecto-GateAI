@@ -100,8 +100,9 @@ class UnionTechMVP {
             const data = await response.json();
 
             if (data.success) {
-                this.token = data.token;
-                this.currentUser = data.user;
+                const payload = data.data || data;
+                this.token = payload.token;
+                this.currentUser = payload.user;
                 localStorage.setItem('uniontech_token', this.token);
                 localStorage.setItem('uniontech_user', JSON.stringify(this.currentUser));
                 

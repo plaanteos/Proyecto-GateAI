@@ -404,7 +404,7 @@ class AccessRegistrationSystem {
     // Historial de Accesos
     async loadRecentAccess() {
         try {
-            const response = await fetch(`${this.apiBaseUrl}/access/recent?limit=10`, {
+            const response = await fetch(`${this.apiBaseUrl}/accesos?limit=10`, {
                 headers: {
                     'Authorization': `Bearer ${this.getAuthToken()}`
                 }
@@ -419,7 +419,8 @@ class AccessRegistrationSystem {
 
         } catch (error) {
             console.error('Error cargando historial:', error);
-            document.getElementById('access-history-list').innerHTML = `
+            const container = document.getElementById('access-history-list');
+            if (container) container.innerHTML = `
                 <div class="status-message status-error">
                     <span class="material-icons">error</span>
                     Error cargando historial de accesos

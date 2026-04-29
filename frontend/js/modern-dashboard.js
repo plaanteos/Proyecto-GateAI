@@ -343,7 +343,7 @@ class ModernDashboard {
 
     async loadRecentActivity() {
         try {
-            const response = await fetch(`${this.apiBaseUrl}/access/recent?limit=10`, {
+            const response = await fetch(`${this.apiBaseUrl}/accesos?limit=10`, {
                 headers: this.getAuthHeaders()
             });
 

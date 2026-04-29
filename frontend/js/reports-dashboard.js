@@ -31,16 +31,19 @@ class ReportsDashboard {
         const today = new Date();
         const lastWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
         
-        document.getElementById('dateFrom').value = lastWeek.toISOString().split('T')[0];
-        document.getElementById('dateTo').value = today.toISOString().split('T')[0];
+        const fromEl = document.getElementById('dateFrom');
+        const toEl = document.getElementById('dateTo');
+        if (fromEl) fromEl.value = lastWeek.toISOString().split('T')[0];
+        if (toEl) toEl.value = today.toISOString().split('T')[0];
     }
 
     setupEventListeners() {
         // Auto-aplicar filtros cuando cambien las fechas
-        document.getElementById('dateFrom').addEventListener('change', () => this.applyFilters());
-        document.getElementById('dateTo').addEventListener('change', () => this.applyFilters());
-        document.getElementById('building').addEventListener('change', () => this.applyFilters());
-        document.getElementById('accessType').addEventListener('change', () => this.applyFilters());
+        const bind = (id, fn) => { const el = document.getElementById(id); if (el) el.addEventListener('change', fn); };
+        bind('dateFrom', () => this.applyFilters());
+        bind('dateTo', () => this.applyFilters());
+        bind('building', () => this.applyFilters());
+        bind('accessType', () => this.applyFilters());
     }
 
     async loadDashboardData() {
@@ -357,6 +360,7 @@ class ReportsDashboard {
 
     showError(message) {
         const container = document.getElementById('tableContainer');
+        if (!container) { console.error(message); return; }
         container.innerHTML = `
             <div class="error-message">
                 ⚠️ ${message}

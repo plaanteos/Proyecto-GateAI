@@ -165,16 +165,24 @@ class UNIONTECHServer {
             contentSecurityPolicy: {
                 directives: {
                     defaultSrc: ["'self'"],
-                    styleSrc: ["'self'", "'unsafe-inline'"],
-                    scriptSrc: ["'self'"],
-                    imgSrc: ["'self'", "data:", "https:"]
+                    styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
+                    scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com"],
+                    fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+                    imgSrc: ["'self'", "data:", "blob:", "https:"],
+                    connectSrc: ["'self'", "https://uniontech-backend-production.up.railway.app", "wss://uniontech-backend-production.up.railway.app"],
+                    mediaSrc: ["'self'", "blob:"],
+                    workerSrc: ["'self'", "blob:"]
                 }
             }
         }));
         
         // CORS configurado
         this.app.use(cors({
-            origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3001', 'http://localhost:3000'],
+            origin: process.env.ALLOWED_ORIGINS?.split(',') || [
+                'http://localhost:3001',
+                'http://localhost:3000',
+                'https://uniontech-backend-production.up.railway.app'
+            ],
             credentials: true,
             methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
             allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
