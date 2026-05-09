@@ -4,8 +4,9 @@ echo "=== UNIONTECH STARTUP ==="
 echo "NODE_ENV: $NODE_ENV"
 echo "DATABASE_URL set: $([ -n "$DATABASE_URL" ] && echo 'YES' || echo 'NO')"
 
-echo "--- Ejecutando migraciones ---"
-npx prisma migrate deploy 2>&1 || echo "WARN: migrate deploy falló, continuando..."
+echo "--- Aplicando schema a la base de datos ---"
+npx prisma db push --accept-data-loss 2>&1
+echo "--- Schema aplicado ---"
 
 echo "--- Creando usuario admin ---"
 node -e "
