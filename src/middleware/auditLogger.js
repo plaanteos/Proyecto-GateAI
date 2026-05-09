@@ -321,10 +321,14 @@ class AuditLogger {
         );
       }
 
-      // Acceso a datos sensibles
-      if (auditData.url && (auditData.url.includes('/reports/') || auditData.url.includes('/security/'))) {
+      // Acceso a datos sensibles (solo si fue exitoso y con usuario autenticado)
+      if (
+        auditData.userId && auditData.userId !== 'anonymous' &&
+        auditData.statusCode >= 200 && auditData.statusCode < 300 &&
+        auditData.url && (auditData.url.includes('/reports/') || auditData.url.includes('/security/'))
+      ) {
         await this.criticalLogger.logDataAccess(
-          auditData.userId || 'anonymous',
+          auditData.userId,
           'SECURITY_LOGS',
           auditData.method,
           1,
