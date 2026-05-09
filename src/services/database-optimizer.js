@@ -397,19 +397,12 @@ class DatabaseOptimizer {
             {
                 name: 'Actualizar estadísticas',
                 schedule: 'daily',
-                sql: 'EXEC sp_updatestats'
+                sql: 'ANALYZE'
             },
             {
-                name: 'Limpiar log de transacciones',
+                name: 'Vaciar tablas muertas',
                 schedule: 'daily',
-                sql: `
-                    DECLARE @logSize INT
-                    SELECT @logSize = size * 8 / 1024 FROM sys.database_files WHERE type = 1
-                    IF @logSize > 1000 -- Si es mayor a 1GB
-                    BEGIN
-                        DBCC SHRINKFILE(2, 100) -- Reducir a 100MB
-                    END
-                `
+                sql: 'VACUUM ANALYZE'
             }
         ];
 
@@ -467,22 +460,22 @@ class DatabaseOptimizer {
         const queries = {
             connectionCount: `
                 SELECT COUNT(*) as count
-                FROM sys.dm_exec_connections
+                FROM pg_stat_activity
+                WHERE state IS NOT NULL
             `,
             activeQueries: `
                 SELECT COUNT(*) as count
-                FROM sys.dm_exec_requests
-                WHERE status IN ('running', 'runnable')
+                FROM pg_stat_activity
+                WHERE state = 'active'
             `,
             blockingQueries: `
                 SELECT COUNT(*) as count
-                FROM sys.dm_exec_requests
-                WHERE blocking_session_id > 0
+                FROM pg_stat_activity
+                WHERE wait_event_type = 'Lock'
             `,
             databaseSize: `
-                SELECT 
-                    SUM(size * 8 / 1024) as sizeMB
-                FROM sys.database_files
+                SELECT
+                    pg_database_size(current_database()) / (1024 * 1024) AS "sizeMB"
             `
         };
 
